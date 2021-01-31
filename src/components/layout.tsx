@@ -20,6 +20,7 @@ const Layout = ({ children }) => {
 
   return (
     <div>
+      <Navigation />
       <Header siteTitle={data.site.siteMetadata?.title || `księgowość`} />
       <main>{children}</main>
       <footer></footer>
