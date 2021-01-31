@@ -1,7 +1,13 @@
-/**
- * Implement Gatsby's Node APIs in this file.
- *
- * See: https://www.gatsbyjs.com/docs/node-apis/
- */
+//resolve issue "React-Hot-Loader: react-🔥-dom patch is not detected. React 16.6+ features may not work.""
 
-// You can delete this file if you're not using it
+exports.onCreateWebpackConfig = ({ stage, actions }) => {
+    if (stage.startsWith("develop")) {
+        actions.setWebpackConfig({
+            resolve: {
+                alias: {
+                    "react-dom": "@hot-loader/react-dom",
+                },
+            },
+        })
+    }
+}
