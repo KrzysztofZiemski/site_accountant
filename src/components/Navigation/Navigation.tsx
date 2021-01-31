@@ -7,6 +7,10 @@ const NavigationWrapper = styled.nav`
   align-items: center;
 `
 
+const NavigationList = styled.ul`
+  display: flex;
+`
+
 const LOGO = styled.span``
 
 export const Navigation = () => {
@@ -15,7 +19,7 @@ export const Navigation = () => {
       <span>
         <Link to="/">MAGFI</Link>
       </span>
-      <ul>
+      <NavigationList>
         <li>
           <Link to="/about">O NAS</Link>
         </li>
@@ -31,7 +35,7 @@ export const Navigation = () => {
         <li>
           <Link to="/#contanc">KONTAKT</Link>
         </li>
-      </ul>
+      </NavigationList>
     </NavigationWrapper>
   )
 }
