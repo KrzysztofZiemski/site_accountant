@@ -7,9 +7,12 @@ type BurgerProps = {
   onClick: () => void
 }
 
-const Burger = ({ isOpen, ...props }: BurgerProps) => {
+export const Burger = ({ isOpen, ...props }: BurgerProps) => {
   return (
-    <button className="relative w-8 h-5 focus:outline-none" {...props}>
+    <button
+      className="relative w-8 h-5 focus:outline-none lg:hidden"
+      {...props}
+    >
       <span
         className={`absolute transition-all border w-full block border-primary transform ${
           isOpen ? "rotate-45 top-1/2" : "rotate-0 top-0"
@@ -28,4 +31,3 @@ const Burger = ({ isOpen, ...props }: BurgerProps) => {
     </button>
   )
 }
-export default Burger

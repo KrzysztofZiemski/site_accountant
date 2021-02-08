@@ -4,6 +4,9 @@
 @tailwind utilities;
 
 @layer components {
+  .font-monTserrat {
+    font-family: "MonTserrat";
+  }
   .text-primary {
     color: var(--mainColor);
   }

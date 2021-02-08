@@ -3,15 +3,16 @@ import { Link } from "gatsby"
 
 type NavMenuItemProps = {
   to: string
+  className?: string
 }
 
-const NavMenuItem = ({ to, children }) => {
+const NavMenuItem = ({ to, children, ...props }) => {
   return (
-    <li>
+    <li className="  flex items-center border-r lg:border-0" {...props}>
       <Link
         to={to || "#"}
-        className={` block active border-b-2 m-3  lg:inline-block text-md font-bold sm:hover:border-indigo-400 hover:text-orange-500 mx-2 focus:text-blue-500 p-1 hover:bg-gray-300 sm:hover:bg-transparent rounded-sm `}
-        activeClassName="text-primary"
+        className={`flex items-center w-full h-full py-3 lg:py-0 px-4 border-primary  text-primary lg:text-white  border-b-2  lg:text-sm text-md font-bold hover:bg-white hover:text-secondary  p-1 lg:border-0 rounded-sm `}
+        activeClassName="lg:text-secondary lg:bg-white lg:hover:text-secondary"
       >
         {children}
       </Link>
@@ -21,7 +22,6 @@ const NavMenuItem = ({ to, children }) => {
 
 NavMenuItem.defaultProps = {
   to: "/",
-  active: false,
 }
 
 export default NavMenuItem

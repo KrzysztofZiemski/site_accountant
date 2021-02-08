@@ -6,7 +6,7 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
-    'gatsby-plugin-postcss',
+    `gatsby-plugin-postcss`,
     {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
@@ -36,7 +36,7 @@ module.exports = {
         background_color: `#2CAFE6`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/magfi-icon.png`,
+        icon: `src/images/icon-manifest.png`,
       },
     },
   ],

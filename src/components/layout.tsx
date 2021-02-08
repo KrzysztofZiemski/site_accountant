@@ -2,7 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 
-import Header from "./Header/Header"
+import { Header } from "./Header/Header"
 import { Navigation } from "./Navigation/Navigation"
 
 const Layout = ({ children }) => {
@@ -15,13 +15,14 @@ const Layout = ({ children }) => {
       }
     }
   `)
+  const title: string = data.site.siteMetadata?.title || `księgowość`
 
   return (
-    <div>
+    <div className="flex flex-col min-h-screen">
       <Navigation />
-      <Header siteTitle={data.site.siteMetadata?.title || `księgowość`} />
-      <main>{children}</main>
-      <footer></footer>
+      <Header siteTitle={title} />
+      <main className="flex-grow">{children}</main>
+      <footer>footer</footer>
     </div>
   )
 }
