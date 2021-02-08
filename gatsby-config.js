@@ -1,18 +1,21 @@
+require('dotenv').config()
+
 module.exports = {
   siteMetadata: {
     title: `Magfi księgowość - Magdalena Pol`,
-    description: ``,
+    description: `Księgowość online, pomoc rachukowa, kadry i płace Magdalena Pol`,
     author: `@Magdalena Pol`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-postcss`,
+    `gatsby-plugin-recaptcha`,
     {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
         fonts: [
-          `MonTserrat`, `Roboto`
-            `source sans pro\:300,400,400i,700`
+          `MonTserrat`, `Roboto`,
+          `source sans pro\:300,400,400i,700`
         ],
         display: 'swap'
       }
