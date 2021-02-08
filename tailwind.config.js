@@ -1,3 +1,6 @@
+const { colors } = require('./src/styles/colors')
+
+
 module.exports = {
   purge: ['./src/**/*.{js,jsx,ts,tsx}'],
   darkMode: false, // or 'media' or 'class'
@@ -5,6 +8,16 @@ module.exports = {
     fontFamily: {
       'MonTserrat': [`MonTserrat`, 'Open Sans']
     },
+    backgroundColor: theme => ({
+      ...theme('colors'),
+      'primary': colors.mainColor,
+      'secondary': colors.secondaryColor
+    }),
+    textColor: theme => ({
+      ...theme('colors'),
+      'primary': colors.mainColor,
+      'secondary': colors.secondaryColor
+    }),
     extend: {
       maxHeight: {
         '0': '0',
@@ -14,7 +27,14 @@ module.exports = {
     },
   },
   variants: {
-    extend: {},
+    extend: {
+      backgroundColor: ['hover', 'focus', 'active'],
+      pointerEvents: ['hover', 'focus', 'active'],
+      ringWidth: ['active', 'focus', 'hover'],
+      ringColor: ['active', 'focus', 'hover'],
+      opacity: ['hover'],
+      boxShadow: ['active', 'hover'],
+    },
   },
   plugins: [],
 }
