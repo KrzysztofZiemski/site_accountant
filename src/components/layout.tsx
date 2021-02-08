@@ -4,6 +4,7 @@ import { useStaticQuery, graphql } from "gatsby"
 
 import { Header } from "./Header/Header"
 import { Navigation } from "./Navigation/Navigation"
+import { Footer } from "./Footer/Footer"
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -22,7 +23,7 @@ const Layout = ({ children }) => {
       <Navigation />
       <Header siteTitle={title} />
       <main className="flex-grow">{children}</main>
-      <footer>footer</footer>
+      <Footer />
     </div>
   )
 }
