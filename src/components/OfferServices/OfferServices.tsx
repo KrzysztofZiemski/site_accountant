@@ -11,15 +11,21 @@ export const OfferServices = () => {
     <div className="flex flex-row p-2 flex-wrap text-primary sm:flex-row justify-center md:justify-around lg:justify-center">
       <div className="flex justify-start items-center text-bold p-4 mb-2 sm:flex-col lg:m-10">
         <IconAccountant className="w-auto h-20 md:mb-5"></IconAccountant>
-        <p className="ml-4 text-2xl">Księgowość</p>
+        <p className="ml-4 text-2xl">
+          <strong>Księgowość</strong>
+        </p>
       </div>
       <div className="flex justify-start items-center text-bold p-4 mb-2 sm:flex-col lg:m-10">
         <IconHr className="w-auto h-20 md:mb-5"></IconHr>
-        <p className="ml-4 text-2xl">Kadry i płace</p>
+        <p className="ml-4 text-2xl">
+          <strong>Kadry i płace</strong>
+        </p>
       </div>
       <div className="flex justify-start items-center text-bold p-4 mb-2 sm:flex-col lg:m-10">
         <IconConsultant className="w-auto h-20 md:mb-5"></IconConsultant>
-        <p className="ml-4 text-2xl">Konsultacje</p>
+        <p className="ml-4 text-2xl">
+          <strong>Konsultacje</strong>
+        </p>
       </div>
     </div>
   )

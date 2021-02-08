@@ -17,9 +17,18 @@ export const query = graphql`
         }
       }
       author
+      date
       articleContent {
         ... on DatoCmsParagraph {
           contentParagraph
+          id
+        }
+        ... on DatoCmsStrong {
+          contentStrong
+          id
+        }
+        ... on DatoCmsLink {
+          contentLink
           id
         }
         ... on DatoCmsHeading {
@@ -28,8 +37,8 @@ export const query = graphql`
         }
         ... on DatoCmsArticleImage {
           contentImage {
-            fixed(width: 500) {
-              ...GatsbyDatoCmsFixed_tracedSVG
+            fluid {
+              ...GatsbyDatoCmsFluid_tracedSVG
             }
           }
           id
@@ -51,17 +60,44 @@ const PostLayout = ({ data }) => {
       intro,
     },
   } = data
-
+  console.log(data)
   const content = articleContent.map(item => {
     //do przebudowy - datocms jako pierwszy wcsika nam niepotrzebny element. Teraz jest podatne na zmianę kolejności wpisywanych parametrów w query
     const itemKey = Object.keys(item)[1]
+
     switch (itemKey) {
       case "contentParagraph":
-        return <p key={item.id}>{item[itemKey]}</p>
+        return (
+          <p key={item.id} className="my-2">
+            {item[itemKey]}
+          </p>
+        )
       case "contentHeader":
         return <h2 key={item.id}>{item[itemKey]}</h2>
       case "contentImage":
-        return <Image key={item.id} fixed={item[itemKey].fixed} />
+        return (
+          <Image
+            style={{
+              maxWidth: "54rem",
+              width: "100%",
+              margin: "1rem auto",
+            }}
+            key={item.id}
+            fluid={item[itemKey].fluid}
+          />
+        )
+      case "articleLink":
+        return (
+          <a
+            className="text-primary hover:text-secondary"
+            key={item.id}
+            href={item[itemKey]}
+          >
+            {item[itemKey]}
+          </a>
+        )
+      case "content_Strong":
+        return <strong key={item.id}>{item[itemKey]}</strong>
       default:
         return null
     }
