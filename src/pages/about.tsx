@@ -1,7 +1,7 @@
 import React from "react"
 import { Button } from "../components/Button/Button"
 
-import Layout from "../components/layout"
+import Layout from "../layouts/layout"
 import SEO from "../components/seo"
 
 const AboutPage = () => (

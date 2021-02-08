@@ -21,10 +21,24 @@ module.exports = {
       }
     },
     {
+      resolve: `gatsby-source-datocms`,
+      options: {
+        apiToken: process.env.API_DATO_CMS,
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-react-svg',
+      options: {
+        rule: {
+          include: /assets/
+        }
+      }
+    },
+    {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
-        path: `${__dirname}/src/images`,
+        path: `${__dirname}/src/assets`,
       },
     },
     `gatsby-transformer-sharp`,
@@ -39,7 +53,7 @@ module.exports = {
         background_color: `#2CAFE6`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/icon-manifest.png`,
+        icon: `src/assets/icon-manifest.png`,
       },
     },
   ],

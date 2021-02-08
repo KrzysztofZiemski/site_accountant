@@ -22,6 +22,7 @@ export const ContactForm = ({ ...props }) => {
   const [message, setMessage] = useState("")
   const [recaptcha, setRecaptcha] = useState("")
   const [failValid, setFailValid] = useState({})
+  const [submited, setSubmited] = useState(false)
 
   const toggleErrors = (): void => {
     setFailValid({
@@ -69,46 +70,55 @@ export const ContactForm = ({ ...props }) => {
     const isOk = validate()
     if (!isOk) return toggleErrors()
     sendMail({ phone, mail, message })
+    setSubmited(true)
     clearForm()
   }
 
   return (
-    <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-      <form
-        className="m-auto w-4/5 lg:w-2/5 md:text-center"
-        {...props}
-        onSubmit={handleSend}
-      >
-        <h2 className="text-center text-lg font-bold mb-4">KONTAKT</h2>
-        <InputText
-          name="phone"
-          label="TELEFON"
-          onChange={handleChangePhone}
-          value={phone}
-          error={failValid["phone"]}
-        ></InputText>
-        <InputText
-          label="ADRES E-MAIL"
-          name="mail"
-          onChange={handleChangeMail}
-          value={mail}
-          error={failValid["mail"]}
-        ></InputText>
-        <Textarea
-          label="WIADOMOŚĆ"
-          name="message"
-          rows={5}
-          onChange={handleChangeMessage}
-          value={message}
-          error={failValid["message"]}
-        ></Textarea>
-        <div className="m-auto mb-4 flex justify-center items-center ">
-          <Recaptcha verifyCallback={handleRecaptcha} sitekey={SITE_KEY} />
-        </div>
-        <div className="flex flex-col m-auto w-full md:w-4/5 lg:w-2/5">
-          <Button>WYŚLIJ</Button>
-        </div>
-      </form>
+    <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-full overflow-hidden">
+      {submited ? (
+        <p className="font-bold text-center text-primary text-base md:text-xl leading-10">
+          Dziękuję za kontakt.
+          <br />
+          Skontaktuję się w najbliższym terminie.
+        </p>
+      ) : (
+        <form
+          className="m-auto w-5/5 sm:w-3/5 lg:w-2/5 sm:text-center"
+          {...props}
+          onSubmit={handleSend}
+        >
+          <h2 className="text-center text-lg font-bold mb-4">KONTAKT</h2>
+          <InputText
+            name="phone"
+            label="TELEFON"
+            onChange={handleChangePhone}
+            value={phone}
+            error={failValid["phone"]}
+          ></InputText>
+          <InputText
+            label="ADRES E-MAIL"
+            name="mail"
+            onChange={handleChangeMail}
+            value={mail}
+            error={failValid["mail"]}
+          ></InputText>
+          <Textarea
+            label="WIADOMOŚĆ"
+            name="message"
+            rows={5}
+            onChange={handleChangeMessage}
+            value={message}
+            error={failValid["message"]}
+          ></Textarea>
+          <div className="m-auto mb-4 flex justify-center items-center ">
+            <Recaptcha verifyCallback={handleRecaptcha} sitekey={SITE_KEY} />
+          </div>
+          <div className="flex flex-col m-auto w-full md:w-4/5 lg:w-2/5">
+            <Button>WYŚLIJ</Button>
+          </div>
+        </form>
+      )}
     </div>
   )
 }

@@ -1,13 +1,14 @@
 import React from "react"
 import { ContactForm } from "../components/ContactForm/ContactForm"
 
-import Layout from "../components/layout"
+import Layout from "../layouts/layout"
+import { OfferServices } from "../components/OfferServices/OfferServices"
 import SEO from "../components/seo"
 
 const IndexPage = () => (
   <Layout>
     <SEO title="Home" />
-    main
+    <OfferServices />
     <ContactForm />
   </Layout>
 )

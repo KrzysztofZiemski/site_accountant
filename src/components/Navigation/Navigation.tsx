@@ -21,12 +21,14 @@ export const Navigation = () => {
     >
       <div className="flex items-center p-2 justify-between flex-wrap px-2 lg:mx-4 xl:mx-4 z-50 lg:hidden">
         <span>
-          <LogoBlue />
+          <Link to="/">
+            <LogoBlue />
+          </Link>
         </span>
         <Burger isOpen={isOpen} onClick={handleOpen} />
       </div>
       <ul
-        className={`bg-white lg:bg-transparent md:bg-in lg:flex top-full w-full font-monTserrat absolute lg:static lg:justify-center lg:align-center text-base  transition-all ease-in duration-400 overflow-hidden  ${
+        className={`bg-white lg:bg-transparent md:bg-in lg:flex top-full w-full font-monTserrat absolute lg:static lg:justify-center lg:align-center text-base  transition-all ease-in duration-400 overflow-auto ${
           isOpen ? "nav-full" : "h-0"
         } lg:h-auto`}
       >
