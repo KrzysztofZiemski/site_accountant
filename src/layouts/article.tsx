@@ -110,7 +110,7 @@ const PostLayout = ({ data }) => {
         <Image
           fluid={feathuredImage.fluid}
           className="w-full h-auto object-cover	max-h-96"
-          alt={alt}
+          alt={feathuredImage.alt}
         />
         <div className="flex-grow p-3 text-justify	">{content}</div>
         <address className="text-right px-2 mt-2 mb-6">{author}</address>
