@@ -15,16 +15,13 @@ export const query = graphql`
         fluid {
           ...GatsbyDatoCmsFluid_tracedSVG
         }
+        alt
       }
       author
       date
       articleContent {
         ... on DatoCmsParagraph {
           contentParagraph
-          id
-        }
-        ... on DatoCmsStrong {
-          contentStrong
           id
         }
         ... on DatoCmsLink {
@@ -40,6 +37,7 @@ export const query = graphql`
             fluid {
               ...GatsbyDatoCmsFluid_tracedSVG
             }
+            alt
           }
           id
         }
@@ -58,9 +56,10 @@ const PostLayout = ({ data }) => {
       id,
       date,
       intro,
+      alt,
     },
   } = data
-  console.log(data)
+
   const content = articleContent.map(item => {
     //do przebudowy - datocms jako pierwszy wcsika nam niepotrzebny element. Teraz jest podatne na zmianę kolejności wpisywanych parametrów w query
     const itemKey = Object.keys(item)[1]
@@ -82,6 +81,7 @@ const PostLayout = ({ data }) => {
               width: "100%",
               margin: "1rem auto",
             }}
+            alt={item[itemKey].alt}
             key={item.id}
             fluid={item[itemKey].fluid}
           />
@@ -96,8 +96,6 @@ const PostLayout = ({ data }) => {
             {item[itemKey]}
           </a>
         )
-      case "content_Strong":
-        return <strong key={item.id}>{item[itemKey]}</strong>
       default:
         return null
     }
@@ -112,6 +110,7 @@ const PostLayout = ({ data }) => {
         <Image
           fluid={feathuredImage.fluid}
           className="w-full h-auto object-cover	max-h-96"
+          alt={alt}
         />
         <div className="flex-grow p-3 text-justify	">{content}</div>
         <address className="text-right px-2 mt-2 mb-6">{author}</address>
