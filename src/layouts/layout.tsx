@@ -24,7 +24,7 @@ const Layout = ({ children, includeHeader }) => {
   const title: string = data.site.siteMetadata?.title || `księgowość`
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col" style={{ minHeight: "100vh" }}>
       <Navigation />
       {includeHeader ? <Header siteTitle={title} /> : null}
       <main className="flex-grow">{children}</main>

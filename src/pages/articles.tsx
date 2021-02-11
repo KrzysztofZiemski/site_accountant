@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { graphql, useStaticQuery } from "gatsby"
+import { graphql } from "gatsby"
 const slugify = require("slugify")
 
 import Layout from "../layouts/layout"
@@ -7,13 +7,11 @@ import SEO from "../components/seo"
 import { ArticleListItem } from "../components/ArticleListItem/ArticleListItem"
 import { FilterBar } from "../components/FilterBar/FilterBar"
 import { GatsbyImageFluidProps } from "gatsby-image"
-// childImageSharp {
-//   fluid {
-//     ...GatsbyImageSharpFluid_tracedSVG
-//   }
-const query = graphql`
+import { SiteTitle } from "../components/SiteTitle/SiteTitle"
+
+export const query = graphql`
   {
-    allDatoCmsArticle {
+    allDatoCmsArticle(sort: { fields: [date], order: DESC }) {
       nodes {
         title
         author
@@ -49,10 +47,11 @@ const filterReducer = (filter: string) => {
   return reducer
 }
 
-const ArticlesPage = () => {
-  const {
+const ArticlesPage = ({
+  data: {
     allDatoCmsArticle: { nodes },
-  } = useStaticQuery(query)
+  },
+}) => {
   const listArticles: Array<ArticleListType> = nodes
   const [filterArticlesList, setFilterArticlesList] = useState("")
 
@@ -79,9 +78,7 @@ const ArticlesPage = () => {
     <Layout includeHeader={false}>
       <SEO title="Articles" />
       <div className="mb-10 ">
-        <h1 className="text-2xl text-center p-2 text-white 	mb-6 lg:mb-12 bg-secondary md:bg-white md:text-primary md:mt-5 border-primary md:border-b-2">
-          AKTUALNOŚCI
-        </h1>
+        <SiteTitle>AKTUALNOŚCI</SiteTitle>
         <div className="my-3 flex justify-center">
           <FilterBar search={handleFilter} />
         </div>
@@ -116,3 +113,4 @@ export default ArticlesPage
 //     }
 //   }
 // }
+// /sort: { fields: [publicationDate], order: DESC }, limit: 5

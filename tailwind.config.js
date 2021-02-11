@@ -28,6 +28,14 @@ module.exports = {
       'primary': colors.mainColor,
       'secondary': colors.secondaryColor
     }),
+    minHeight: {
+      '0': '0',
+      '1/4': '25%',
+      '1/2': '50%',
+      '3/4': '75%',
+      'full': '100%',
+      '10': '10rem'
+    },
     extend: {
       maxHeight: {
         '0': '0',
