@@ -1,6 +1,5 @@
 import React, { useState } from "react"
 import { graphql } from "gatsby"
-import Img from "gatsby-image"
 
 type BurgerProps = {
   isOpen: boolean

@@ -1,5 +1,6 @@
 import React from "react"
 import { Link } from "gatsby"
+import Image, { GatsbyImageFluidProps } from "gatsby-image"
 
 type ArticleListItemProps = {
   title: string
@@ -7,6 +8,7 @@ type ArticleListItemProps = {
   date: string
   intro: string
   link: string
+  image: GatsbyImageFluidProps
 }
 // / md:mt-5 md:w-2/5  lg:p-5
 export const ArticleListItem = ({
@@ -14,23 +16,37 @@ export const ArticleListItem = ({
   intro,
   author,
   title,
+  image,
   link,
+  ...props
 }: ArticleListItemProps) => {
   return (
-    <li className="ring-4 ring-primary rounded-lg mb-10 py-1 px-3 lg:w-2/4 lg:m-12">
+    <li
+      className="shadow-xl rounded-lg mb-10 py-3 px-6 md:w-2/5 md:m-5"
+      {...props}
+    >
+      <div>
+        <Image
+          fluid={image.fluid}
+          className="overflow-hidden rounded-lg object-cover max-h-48 mb-4"
+        />
+      </div>
+
       <article className="flex flex-col">
         <span className="text-xs self-end">{date}</span>
-        <h2 className="text-center text-lg font-bold mb-3 text-primary">
+        <h2 className=" text-lg  mb-3 " style={{ fontFamily: "Lato" }}>
           <Link to={link}>{title}</Link>
         </h2>
         <p className="text-justify">{intro}</p>
         <Link
-          className="text-sm self-end text-blue-600 flex-wrapmt-4"
+          className="text-sm self-end text-blue-800 flex-wrapmt-4"
           to={link}
         >
           czytaj dalej
         </Link>
-        <address className="text-sm self-end mt-2">{author}</address>
+        <address className="text-sm text-primary self-end mt-2">
+          {author}
+        </address>
       </article>
     </li>
   )
@@ -41,4 +57,17 @@ ArticleListItem.defaultProps = {
   intro: "",
   author: "",
   title: "",
+}
+
+{
+  /* <Image
+            style={{
+              maxWidth: "54rem",
+              width: "100%",
+              margin: "1rem auto",
+            }}
+            alt={item[itemKey].alt}
+            key={item.id}
+            fluid={item[itemKey].fluid}
+          /> */
 }

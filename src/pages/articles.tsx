@@ -7,7 +7,10 @@ import SEO from "../components/seo"
 import { ArticleListItem } from "../components/ArticleListItem/ArticleListItem"
 import { FilterBar } from "../components/FilterBar/FilterBar"
 import { GatsbyImageFluidProps } from "gatsby-image"
-
+// childImageSharp {
+//   fluid {
+//     ...GatsbyImageSharpFluid_tracedSVG
+//   }
 const query = graphql`
   {
     allDatoCmsArticle {
@@ -37,13 +40,11 @@ const filterReducer = (filter: string) => {
   const reducer = ({ title, author, date, intro }: ArticleListType) => {
     const filterFrase = filter.toLowerCase()
 
-    const finded =
+    return (
       title.toLowerCase().includes(filterFrase) ||
       author.toLowerCase().includes(filterFrase) ||
       intro.toLowerCase().includes(filterFrase)
-
-    console.log("finded", finded)
-    return finded
+    )
   }
   return reducer
 }
@@ -57,16 +58,19 @@ const ArticlesPage = () => {
 
   const renderListItem = () => {
     const list = nodes.filter(filterReducer(filterArticlesList))
-    return list.map(({ title, author, date, intro }: ArticleListType) => (
-      <ArticleListItem
-        key={title}
-        date={date}
-        title={title}
-        intro={intro}
-        author={author}
-        link={slugify(title, { lower: true })}
-      />
-    ))
+    return list.map(
+      ({ title, author, date, intro, feathuredImage }: ArticleListType) => (
+        <ArticleListItem
+          key={title}
+          date={date}
+          title={title}
+          intro={intro}
+          author={author}
+          link={slugify(title, { lower: true })}
+          image={feathuredImage}
+        />
+      )
+    )
   }
 
   const handleFilter = (filter: string) => setFilterArticlesList(filter)
@@ -83,7 +87,7 @@ const ArticlesPage = () => {
         </div>
 
         <ul
-          className="flex flex-col px-2 flex-wrap md:flex-row md:justify-around mx-auto"
+          className="flex flex-col px-2 flex-wrap md:flex-row md:justify-center mx-auto"
           style={{ maxWidth: "1280px" }}
         >
           {renderListItem()}
