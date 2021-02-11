@@ -41,8 +41,6 @@ export const Navigation = () => {
 
         <NavMenuItem to="/articles">AKTUALNOŚCI</NavMenuItem>
 
-        <NavMenuItem to="/clients">KLIENCI</NavMenuItem>
-
         <NavMenuItem to="/charity">DZIAŁALNOŚĆ CHARYTATYWNA</NavMenuItem>
 
         <NavMenuItem to="/#contact">KONTAKT</NavMenuItem>

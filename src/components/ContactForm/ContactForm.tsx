@@ -75,7 +75,7 @@ export const ContactForm = ({ ...props }) => {
   }
 
   return (
-    <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-full overflow-hidden">
+    <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 w-full overflow-hidden">
       {submited ? (
         <p className="font-bold text-center text-primary text-base md:text-xl leading-10">
           Dziękuję za kontakt.
