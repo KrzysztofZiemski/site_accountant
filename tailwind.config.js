@@ -18,6 +18,16 @@ module.exports = {
       'primary': colors.mainColor,
       'secondary': colors.secondaryColor
     }),
+    borderColor: theme => ({
+      ...theme('colors'),
+      'primary': colors.mainColor,
+      'secondary': colors.secondaryColor
+    }),
+    ringColor: theme => ({
+      ...theme('colors'),
+      'primary': colors.mainColor,
+      'secondary': colors.secondaryColor
+    }),
     extend: {
       maxHeight: {
         '0': '0',

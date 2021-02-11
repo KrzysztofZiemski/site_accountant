@@ -10,6 +10,7 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-postcss`,
     `gatsby-plugin-recaptcha`,
+    `gatsby-plugin-mdx`,
     {
       resolve: `gatsby-plugin-google-fonts`,
       options: {

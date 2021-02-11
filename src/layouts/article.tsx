@@ -4,7 +4,9 @@ import { graphql } from "gatsby"
 import SEO from "../components/seo"
 import { Navigation } from "../components/Navigation/Navigation"
 import { Footer } from "../components/Footer/Footer"
-//nie wiem cz ybedzie działać bez layouts wtyczki(inny sposób query)
+import ReactMarkdown from "react-markdown"
+
+import "./article.css"
 
 export const query = graphql`
   query querySingleArticle($id: String!) {
@@ -22,10 +24,6 @@ export const query = graphql`
       articleContent {
         ... on DatoCmsParagraph {
           contentParagraph
-          id
-        }
-        ... on DatoCmsLink {
-          contentLink
           id
         }
         ... on DatoCmsHeading {
@@ -66,11 +64,7 @@ const PostLayout = ({ data }) => {
 
     switch (itemKey) {
       case "contentParagraph":
-        return (
-          <p key={item.id} className="my-2">
-            {item[itemKey]}
-          </p>
-        )
+        return <ReactMarkdown key={item.id} children={item[itemKey]} />
       case "contentHeader":
         return <h2 key={item.id}>{item[itemKey]}</h2>
       case "contentImage":
@@ -86,23 +80,13 @@ const PostLayout = ({ data }) => {
             fluid={item[itemKey].fluid}
           />
         )
-      case "articleLink":
-        return (
-          <a
-            className="text-primary hover:text-secondary"
-            key={item.id}
-            href={item[itemKey]}
-          >
-            {item[itemKey]}
-          </a>
-        )
       default:
         return null
     }
   })
 
   return (
-    <div className="flex flex-col min-h-screen w-full max-h-96">
+    <div className="flex flex-col min-h-screen w-full max-h-96 article-container">
       <SEO title={title} description={intro || ""} />
       <Navigation />
       <main className="mx-auto flex-grow" style={{ maxWidth: "1280px" }}>

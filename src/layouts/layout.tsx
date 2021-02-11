@@ -6,7 +6,12 @@ import { Header } from "../components/Header/Header"
 import { Navigation } from "../components/Navigation/Navigation"
 import { Footer } from "../components/Footer/Footer"
 
-const Layout = ({ children }) => {
+type LayoutProps = {
+  children: any
+  includeHeader: boolean
+}
+
+const Layout = ({ children, includeHeader }) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -21,15 +26,14 @@ const Layout = ({ children }) => {
   return (
     <div className="flex flex-col min-h-screen">
       <Navigation />
-      <Header siteTitle={title} />
+      {includeHeader ? <Header siteTitle={title} /> : null}
       <main className="flex-grow">{children}</main>
       <Footer />
     </div>
   )
 }
-
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
+Layout.defaultProps = {
+  includeHeader: true,
 }
 
 export default Layout
