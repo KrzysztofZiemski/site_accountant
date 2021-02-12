@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import { ClientPost } from "../ClientPost/ClientPost"
 
@@ -22,6 +22,7 @@ type ClientType = {
 export const Clients = () => {
   const { allDatoCmsClient: nodes } = useStaticQuery(query)
   const clients: Array<ClientType> = nodes.nodes
+
   const opinions = clients.map(({ name, clientOpinion, score }) => (
     <ClientPost
       key={name}

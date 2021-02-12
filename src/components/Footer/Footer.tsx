@@ -2,6 +2,8 @@ import React from "react"
 import Image from "gatsby-image"
 import { graphql, useStaticQuery } from "gatsby"
 
+//@ts-ignore
+import PointerIcon from "../../assets/location-pointer.svg"
 import "./Footer.css"
 
 export const query = graphql`
@@ -20,23 +22,35 @@ export const Footer = () => {
   const { file } = useStaticQuery(query)
 
   return (
-    <footer className="bg-secondary flex flex-col md:flex-row justify-center md:justify-start text-white text-xs">
+    <footer className="bg-secondary flex flex-col md:flex-row justify-center md:justify-between text-white text-xs">
+      <address className="p-2 pt-2 md:flex-grow md:text-base md:flex md:justify-around items-center">
+        <div className="mb-4">
+          <p className="leading-9">GODZINY OTWARCIA</p>
+          <p className="leading-9">PN - PT: 8 - 19</p>
+        </div>
+        <div>
+          <div className="flex">
+            <PointerIcon className="w-5 h-5 mr-4" />
+            <div>
+              <p className="uppercase mb-3">
+                <strong>Nasze biuro</strong>
+              </p>
+              <p>ul. Łukasińskiego 12-14/4</p>
+              <p> 50-436 Wrocław</p>
+              <p className="mt-3">604065485</p>
+              <p>magifi@gmail.com</p>
+              <div className="flex md:block mb-2 mt-5">
+                <p className="mr-1"> NIP 9151737051</p>
+                <p> Regon 380206135</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </address>
       <Image
-        className="footer-image w-full md:w-64 md:mr-4"
+        className="footer-image w-full md:w-96"
         fluid={file.childImageSharp.fluid}
       />
-      <address className="p-2 pt-0 md:flex-grow md:text-base md:flex md:justify-around items-center">
-        <span className="block mb-2 md:mr-9">
-          {" "}
-          Magfi Magdalena Pol <br />
-          ul. Łukasińskiego 12-14/4 <br />
-          50-436 Wrocław <br />
-        </span>
-        <span>
-          NIP 9151737051 <br />
-          Regon 380206135
-        </span>
-      </address>
     </footer>
   )
 }
