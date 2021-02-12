@@ -3,9 +3,7 @@ import ReactCalendar from "react-calendar"
 import "./Calendar.css"
 import { colors } from "../../styles/colors"
 
-const numbers = [1, 5, 10]
-
-const renderDays = () => {
+const renderDays = (days: Array<number>) => {
   //customizacja inlinowych styli komponentu
   setTimeout(() => {
     const allButtonsDays = Array.from(
@@ -15,11 +13,11 @@ const renderDays = () => {
     )
     if (allButtonsDays.length < 20) return
 
-    numbers.forEach((numberOfDay: number, index: number) => {
+    days.forEach((numberOfDay: number, index: number) => {
+      if (allButtonsDays.length < index + 1) return
       setTimeout(() => {
         allButtonsDays[numberOfDay - 1].style.borderRadius = `50%`
-        allButtonsDays[numberOfDay - 1].style.backgroundColor = "#03763a"
-        allButtonsDays[numberOfDay - 1].style.color = "black"
+        allButtonsDays[numberOfDay - 1].style.border = "2px solid #FFC700"
       }, index * 400)
     })
   }, 200)
@@ -28,21 +26,21 @@ const renderDays = () => {
 type CalendarProps = {
   date: Date
   setDate: () => void
-  events: Array<Date>
+  markedDays?: Array<number>
 }
 
-export const Calendar = ({ date, setDate, events }) => {
+export const Calendar = ({ date, setDate, markedDays }) => {
   const handleChangeDate = (date: Date) => {
-    renderDays()
+    renderDays(markedDays)
     setDate(date)
   }
 
   useEffect(() => {
-    renderDays()
+    renderDays(markedDays)
   }, [])
 
   return (
-    <div className="w-full max-w-sm mx-auto p-2 text-sm text-white">
+    <div className="w-full mx-auto text-sm text-white">
       <ReactCalendar
         onChange={handleChangeDate}
         value={date}
@@ -54,4 +52,5 @@ export const Calendar = ({ date, setDate, events }) => {
 
 Calendar.defaultProps = {
   events: [],
+  markedDays: [],
 }

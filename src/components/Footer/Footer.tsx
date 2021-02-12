@@ -23,7 +23,7 @@ export const Footer = () => {
 
   return (
     <footer className="bg-secondary flex flex-col md:flex-row justify-center md:justify-between text-white text-xs">
-      <address className="p-2 pt-2 md:flex-grow md:text-base md:flex md:justify-around items-center">
+      <address className="p-2 pt-2 md:flex-grow md:text-base md:flex md:justify-around items-center md:order-2">
         <div className="mb-4">
           <p className="leading-9">GODZINY OTWARCIA</p>
           <p className="leading-9">PN - PT: 8 - 19</p>
@@ -47,10 +47,12 @@ export const Footer = () => {
           </div>
         </div>
       </address>
-      <Image
-        className="footer-image w-full md:w-96"
-        fluid={file.childImageSharp.fluid}
-      />
+      <div className="w-full md:w-1/3 md:order-1 md:min-w-475px">
+        <Image
+          className="footer-image h-full"
+          fluid={file.childImageSharp.fluid}
+        />
+      </div>
     </footer>
   )
 }

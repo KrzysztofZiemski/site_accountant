@@ -34,7 +34,7 @@ export const ClientPost = ({ name, description, score }: ClientOpinionType) => {
         </h2>
         <div className="flex justify-self-end	self-end	">{stars}</div>
       </div>
-      <div className="text-justify w-full">
+      <div className="text-justify w-full ">
         <ReactMarkdown children={description} />
       </div>
     </article>

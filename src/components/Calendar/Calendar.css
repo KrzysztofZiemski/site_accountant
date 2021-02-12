@@ -1,3 +1,5 @@
+/* copy from default library react-calendar with a few modify */
+
 .react-calendar {
   width: 100%;
   padding: 2rem;
@@ -31,10 +33,11 @@
   margin: 0;
   border: 0;
   outline: none;
-  border: 1px solid transparent;
+  border: 2px solid transparent;
 }
 .react-calendar button:enabled:hover {
   cursor: pointer;
+  color: black;
 }
 .react-calendar__navigation {
   /* zmiana */
