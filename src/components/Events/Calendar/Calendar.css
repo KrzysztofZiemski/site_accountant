@@ -11,6 +11,7 @@
 .react-calendar--doubleView {
   width: 100%;
 }
+
 .react-calendar--doubleView .react-calendar__viewContainer {
   display: flex;
 
@@ -34,14 +35,16 @@
   outline: none;
   border: 2px solid transparent;
 }
+.react-calendar button.enabled {
+  border: 2px solid #ffc700;
+  border-radius: 50%;
+}
+
 .react-calendar button:enabled:hover {
   cursor: pointer;
   color: black;
 }
 .react-calendar__navigation {
-  /* zmiana */
-  /* display: none !important; */
-  /*  */
   height: 44px;
   margin-bottom: 1em;
 }

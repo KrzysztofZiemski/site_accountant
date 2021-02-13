@@ -27,7 +27,7 @@ const Layout = ({ children, includeHeader }) => {
     <div className="flex flex-col" style={{ minHeight: "100vh" }}>
       <Navigation />
       {includeHeader ? <Header siteTitle={title} /> : null}
-      <main className="flex-grow m-auto" style={{ maxWidth: "1280px" }}>
+      <main className="flex-grow m-auto w-full" style={{ maxWidth: "1280px" }}>
         {children}
       </main>
       <Footer />

@@ -2,49 +2,45 @@ import React, { useState, useEffect } from "react"
 import ReactCalendar from "react-calendar"
 import "./Calendar.css"
 import { colors } from "../../../styles/colors"
+import { isSameDate } from "../../../helpers/date"
 
-const renderDays = (days: Array<number>) => {
-  //customizacja inlinowych styli komponentu
-  setTimeout(() => {
-    const allButtonsDays = Array.from(
-      document.getElementsByClassName(
-        "react-calendar__tile"
-      ) as HTMLCollectionOf<HTMLElement>
-    )
-    if (allButtonsDays.length < 20) return
+const markDays = (markedDays: Array<number>, eventsDate: Array<Date>) => {
+  return ({ activeStartDate, date, view }) => {
+    const day = date.getDate()
+    if (view === "month") {
+      const isMarkedDay = markedDays.find(
+        markedDayNumber => markedDayNumber === day
+      )
+        ? true
+        : false
 
-    days.forEach((numberOfDay: number, index: number) => {
-      if (allButtonsDays.length < index + 1) return
-      setTimeout(() => {
-        allButtonsDays[numberOfDay - 1].style.borderRadius = `50%`
-        allButtonsDays[numberOfDay - 1].style.border = "2px solid #FFC700"
-      }, index * 400)
-    })
-  }, 200)
+      const isEvent = eventsDate.find(eventDate => isSameDate(eventDate, date))
+
+      return isEvent || isMarkedDay ? "enabled" : "disabled"
+    } else {
+      return null
+    }
+  }
 }
 
 type CalendarProps = {
   date: Date
   setDate: () => void
   markedDays?: Array<number>
+  eventDays: Array<Date>
 }
 
-export const Calendar = ({ date, setDate, markedDays }) => {
+export const Calendar = ({ date, setDate, markedDays, eventDays }) => {
   const handleChangeDate = (date: Date) => {
-    renderDays(markedDays)
     setDate(date)
   }
-
-  useEffect(() => {
-    renderDays(markedDays)
-  }, [])
 
   return (
     <div className="w-full mx-auto text-sm text-white">
       <ReactCalendar
         onChange={handleChangeDate}
         value={date}
-        showNavigation={false}
+        tileClassName={markDays(markedDays, eventDays)}
       />
     </div>
   )
@@ -53,4 +49,5 @@ export const Calendar = ({ date, setDate, markedDays }) => {
 Calendar.defaultProps = {
   events: [],
   markedDays: [],
+  eventDays: [],
 }

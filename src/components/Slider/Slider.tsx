@@ -8,9 +8,12 @@ type SliderProps = {
 
 export const Slider = ({ activeIndex, list, className }: SliderProps) => {
   const renderList = () => {
-    return list.map(element => {
+    return list.map((element, index) => {
       return (
-        <div className="flex-shrink-0 w-full h-full p-3 text-justify overflow-auto">
+        <div
+          key={index}
+          className="flex-shrink-0 w-full h-full p-3 text-justify overflow-auto"
+        >
           <div className="shadow p-3 h-full bg-white rounded-lg overflow-auto">
             {element}
           </div>
