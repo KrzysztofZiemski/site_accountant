@@ -28,7 +28,6 @@ module.exports = {
       'primary': colors.mainColor,
       'secondary': colors.secondaryColor
     }),
-
     extend: {
       height: {
         '1/2screen': '50vh'

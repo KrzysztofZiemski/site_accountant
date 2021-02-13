@@ -1,12 +1,13 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { graphql, useStaticQuery } from "gatsby"
-import { Calendar } from "../Calendar/Calendar"
+import ReactMarkdown from "react-markdown"
+import { Calendar } from "./Calendar/Calendar"
 
-import { EventDashboard } from "./EventDashboard/EventDashboard"
+import { Slider } from "../Slider/Slider"
 
 const query = graphql`
   {
-    allDatoCmsTerm {
+    allDatoCmsTerm(sort: { fields: dayOfTheMonth, order: ASC }) {
       nodes {
         dayOfTheMonth
         description
@@ -45,16 +46,34 @@ export const Events = () => {
     getNearestEvent(events.map(({ dayOfTheMonth }) => dayOfTheMonth))
   )
 
+  const activeIndex = () =>
+    events.findIndex(
+      ({ dayOfTheMonth }) => dayOfTheMonth === selectedDate.getDate()
+    )
+
+  const renderList = () => {
+    return events.map(({ description, dayOfTheMonth }) => (
+      <>
+        <h3>Dzień {dayOfTheMonth}</h3>
+        <ReactMarkdown>{description}</ReactMarkdown>
+      </>
+    ))
+  }
+
   return (
-    <div className="mx-2">
-      <div>
+    <div className="md:flex md:justify-center md:items-center items-center bg-secondary">
+      <div className="m-auto md:m-3 flex justify-center items-center min-w- max-w-sm md:w-1/2">
         <Calendar
           date={selectedDate}
           markedDays={events.map(({ dayOfTheMonth }) => dayOfTheMonth)}
           setDate={setSelectedDate}
         />
       </div>
-      <EventDashboard events={events} active={selectedDate.getDate()} />
+      <Slider
+        list={renderList()}
+        className="h-48 md:h-72 md:w-1/2"
+        activeIndex={activeIndex()}
+      />
     </div>
   )
 }

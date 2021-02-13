@@ -83,10 +83,7 @@ const ArticlesPage = ({
           <FilterBar search={handleFilter} />
         </div>
 
-        <ul
-          className="flex flex-col px-2 flex-wrap md:flex-row md:justify-center mx-auto"
-          style={{ maxWidth: "1280px" }}
-        >
+        <ul className="flex flex-col px-2 flex-wrap md:flex-row md:justify-center mx-auto">
           {renderListItem()}
         </ul>
       </div>

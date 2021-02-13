@@ -89,7 +89,7 @@ const PostLayout = ({ data }) => {
     <div className="flex flex-col min-h-screen w-full max-h-96 article-container">
       <SEO title={title} description={intro || ""} />
       <Navigation />
-      <main className="mx-auto flex-grow" style={{ maxWidth: "1280px" }}>
+      <main className="mx-auto flex-grow">
         <h1 className="text-center text-xl m-5 font-bold	">{title}</h1>
         <Image
           fluid={feathuredImage.fluid}

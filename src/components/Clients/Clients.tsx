@@ -32,10 +32,7 @@ export const Clients = () => {
     />
   ))
   return (
-    <ul
-      className="flex flex-col flex-wrap px-2 md:flex-row md:justify-center mx-auto"
-      style={{ maxWidth: "1280px" }}
-    >
+    <ul className="flex flex-col flex-wrap px-2 md:flex-row md:justify-center mx-auto">
       {opinions}
     </ul>
   )

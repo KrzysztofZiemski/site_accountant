@@ -10,7 +10,7 @@ const AboutPage = () => (
   <Layout>
     <SEO title="About" description="nowy opis" />
     <SiteTitle>O NAS</SiteTitle>
-    <div style={{ maxWidth: "1280px" }} className="mx-auto">
+    <div className="mx-auto">
       <div className="px-3 text-justify">
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora

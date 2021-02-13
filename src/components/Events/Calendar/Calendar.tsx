@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import ReactCalendar from "react-calendar"
 import "./Calendar.css"
-import { colors } from "../../styles/colors"
+import { colors } from "../../../styles/colors"
 
 const renderDays = (days: Array<number>) => {
   //customizacja inlinowych styli komponentu
