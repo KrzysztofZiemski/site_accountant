@@ -60,6 +60,7 @@ const PostLayout = ({ data }) => {
 
   const content = articleContent.map(item => {
     //do przebudowy - datocms jako pierwszy wcsika nam niepotrzebny element. Teraz jest podatne na zmianę kolejności wpisywanych parametrów w query
+    if (Object.keys(item).length === 1) return null
     const itemKey = Object.keys(item)[1]
 
     switch (itemKey) {
