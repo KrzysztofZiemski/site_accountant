@@ -78,9 +78,7 @@ export const Events = () => {
       arrDates.forEach(date => {
         const index = listDates.findIndex(item => isSameDate(item.date, date))
         if (index !== -1) {
-          listDates[index].description += `
-          \
-
+          listDates[index].description += `\  
           ${description}`
           return
         }

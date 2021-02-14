@@ -1,4 +1,5 @@
 import React from "react"
+import { Animate, typeAnimation } from "../components/Animate/Animate"
 import SEO from "../components/seo"
 import Layout from "../layouts/layout"
 import { ContactForm } from "../components/ContactForm/ContactForm"
