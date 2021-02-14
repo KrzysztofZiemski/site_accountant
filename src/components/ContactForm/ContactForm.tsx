@@ -1,6 +1,4 @@
 import React, { ChangeEvent, useState, lazy } from "react"
-import Recaptcha from "react-recaptcha"
-import { SITE_KEY } from "../../../config"
 import { InputText } from "../Input/InputText"
 import { Textarea } from "../Textarea/Textarea"
 import { Button } from "../Button/Button"
@@ -19,7 +17,6 @@ export const ContactForm = ({ ...props }) => {
   const [phone, setPhone] = useState("")
   const [mail, setMail] = useState("")
   const [message, setMessage] = useState("")
-  const [recaptcha, setRecaptcha] = useState("")
   const [failValid, setFailValid] = useState({})
   const [submited, setSubmited] = useState(false)
 
@@ -28,15 +25,13 @@ export const ContactForm = ({ ...props }) => {
       phone: !regexpPhone.test(phone),
       mail: !regexpMail.test(mail),
       message: !regexpMessage.test(message),
-      recaptcha: recaptcha ? true : false,
     })
   }
   const validate = (): boolean => {
     const phoneOk = regexpPhone.test(phone)
     const mailOk = regexpMail.test(mail)
     const messageOk = regexpMessage.test(message)
-    const recapthaOk = recaptcha ? true : false
-    return (phoneOk || mailOk) && messageOk && recapthaOk
+    return (phoneOk || mailOk) && messageOk
   }
 
   const handleChangePhone = ({ target }: ChangeEvent<HTMLInputElement>) => {
@@ -47,7 +42,6 @@ export const ContactForm = ({ ...props }) => {
     setPhone("")
     setMail("")
     setMessage("")
-    setRecaptcha("")
   }
 
   const handleChangeMail = ({ target }: ChangeEvent<HTMLInputElement>) => {
@@ -59,9 +53,7 @@ export const ContactForm = ({ ...props }) => {
   }: ChangeEvent<HTMLTextAreaElement>) => {
     setMessage((target as HTMLTextAreaElement).value)
   }
-  const handleRecaptcha = response => {
-    setRecaptcha(response)
-  }
+
   const sendMail = (data: SendDataMail) => {}
 
   const handleSend = event => {
@@ -110,9 +102,7 @@ export const ContactForm = ({ ...props }) => {
             value={message}
             error={failValid["message"]}
           ></Textarea>
-          <div className="m-auto mb-4 flex justify-center items-center ">
-            <Recaptcha verifyCallback={handleRecaptcha} sitekey={SITE_KEY} />
-          </div>
+          <div className="m-auto mb-4 flex justify-center items-center "></div>
           <div className="flex flex-col m-auto w-full md:w-4/5 lg:w-2/5">
             <Button>WYŚLIJ</Button>
           </div>
