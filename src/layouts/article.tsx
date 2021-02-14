@@ -5,7 +5,7 @@ import SEO from "../components/seo"
 import { Navigation } from "../components/Navigation/Navigation"
 import { Footer } from "../components/Footer/Footer"
 import ReactMarkdown from "react-markdown"
-
+ 
 import "./article.css"
 
 export const query = graphql`

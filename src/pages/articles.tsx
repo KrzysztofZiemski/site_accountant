@@ -24,6 +24,11 @@ export const query = graphql`
         }
       }
     }
+    datoCmsMetaDataPage(namePage: { eq: "aktualnosci" }) {
+      namePage
+      title
+      description
+    }
   }
 `
 type ArticleListType = {
@@ -50,6 +55,7 @@ const filterReducer = (filter: string) => {
 const ArticlesPage = ({
   data: {
     allDatoCmsArticle: { nodes },
+    datoCmsMetaDataPage,
   },
 }) => {
   const listArticles: Array<ArticleListType> = nodes
@@ -74,9 +80,10 @@ const ArticlesPage = ({
 
   const handleFilter = (filter: string) => setFilterArticlesList(filter)
 
+  const { title, description } = datoCmsMetaDataPage
   return (
     <Layout includeHeader={false}>
-      <SEO title="Articles" />
+      <SEO title={title || "Articles"} description={description || "opis"} />
       <div className="mb-10 ">
         <SiteTitle>AKTUALNOŚCI</SiteTitle>
         <div className="my-3 flex justify-center">

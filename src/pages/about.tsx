@@ -34,15 +34,21 @@ export const query = graphql`
         }
       }
     }
+    datoCmsMetaDataPage(namePage: { eq: "oferta" }) {
+      namePage
+      title
+      description
+    }
   }
 `
 
-const AboutPage = ({ data: { datoCmsAboutPage: contentAbout } }) => {
+const AboutPage = ({
+  data: { datoCmsAboutPage: contentAbout, datoCmsMetaDataPage },
+}) => {
   const content = contentAbout.contentAbout.map((item, index) => {
     //do przebudowy - datocms jako pierwszy wcsika nam niepotrzebny element. Teraz jest podatne na zmianę kolejności wpisywanych parametrów w query
     if (Object.keys(item).length === 1) return null
     const itemKey = Object.keys(item)[1]
-
     switch (itemKey) {
       case "contentSubText":
         return (
@@ -86,9 +92,11 @@ const AboutPage = ({ data: { datoCmsAboutPage: contentAbout } }) => {
     }
   })
 
+  const { title, description } = datoCmsMetaDataPage
+
   return (
     <Layout>
-      <SEO title="About" description="nowy opis" />
+      <SEO title={title || "About"} description={description || "nowy opis"} />
       <div className="flex flex-col sm:flex-row">
         <div
           className="uppercase bg-primary p-3 pt-10 text-7xl font-bold"
