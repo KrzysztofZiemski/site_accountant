@@ -1,7 +1,6 @@
-import React, { ChangeEvent, useState } from "react"
+import React, { ChangeEvent, useState, lazy } from "react"
 import Recaptcha from "react-recaptcha"
 import { SITE_KEY } from "../../../config"
-
 import { InputText } from "../Input/InputText"
 import { Textarea } from "../Textarea/Textarea"
 import { Button } from "../Button/Button"

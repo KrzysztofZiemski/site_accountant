@@ -10,13 +10,11 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-postcss`,
     `gatsby-plugin-recaptcha`,
-    `gatsby-plugin-mdx`,
     {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
         fonts: [
           `Montserrat`, `Roboto`, `Lato`,
-          `source sans pro\:300,400,400i,700`
         ],
         display: 'swap'
       }
@@ -52,7 +50,7 @@ module.exports = {
         short_name: `Magfi`,
         start_url: `/`,
         background_color: `#2CAFE6`,
-        theme_color: `#663399`,
+        theme_color: `#2CAFE6`,
         display: `minimal-ui`,
         icon: `src/assets/icon-manifest.png`,
       },

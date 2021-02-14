@@ -5,8 +5,6 @@
   "version": "0.1.0",
   "author": "Magdalena Pol",
   "dependencies": {
-    "@mdx-js/mdx": "^1.6.22",
-    "@mdx-js/react": "^1.6.22",
     "autoprefixer": "^10.2.4",
     "dotenv": "^8.2.0",
     "gatsby": "^2.26.1",
@@ -21,12 +19,10 @@
     "gatsby-plugin-react-svg": "^3.0.0",
     "gatsby-plugin-recaptcha": "^1.0.5",
     "gatsby-plugin-sharp": "^2.8.0",
-    "gatsby-plugin-styled-components": "^3.9.0",
     "gatsby-source-datocms": "^2.5.10",
     "gatsby-source-filesystem": "^2.5.0",
     "gatsby-transformer-sharp": "^2.6.0",
     "postcss": "^8.2.4",
-    "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "react-calendar": "^3.3.1",
     "react-dom": "^16.14.0",
@@ -35,7 +31,6 @@
     "react-recaptcha": "^2.3.10",
     "react-spring": "^8.0.27",
     "slugify": "^1.4.6",
-    "styled-components": "^5.2.1",
     "tailwindcss": "^2.0.2"
   },
   "devDependencies": {
