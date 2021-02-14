@@ -75,9 +75,13 @@ export const ContactForm = ({ ...props }) => {
         </p>
       ) : (
         <form
+          name="contact"
+          method="POST"
+          data-netlify-recaptcha="true"
+          data-netlify="true"
           className="m-auto w-5/5 sm:w-3/5 lg:w-2/5 sm:text-center"
           {...props}
-          onSubmit={handleSend}
+          // onSubmit={handleSend}
         >
           <h2 className="text-center text-lg font-bold mb-4">KONTAKT</h2>
           <InputText
@@ -103,6 +107,7 @@ export const ContactForm = ({ ...props }) => {
             error={failValid["message"]}
           ></Textarea>
           <div className="m-auto mb-4 flex justify-center items-center "></div>
+          <div className="margin-x-auto" data-netlify-recaptcha="true"></div>
           <div className="flex flex-col m-auto w-full md:w-4/5 lg:w-2/5">
             <Button>WYŚLIJ</Button>
           </div>

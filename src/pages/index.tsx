@@ -1,11 +1,13 @@
 import React from "react"
 import { graphql } from "gatsby"
+import loadable from "@loadable/component"
 import { Animate, typeAnimation } from "../components/Animate/Animate"
 import SEO from "../components/seo"
 import Layout from "../layouts/layout"
 import { ContactForm } from "../components/ContactForm/ContactForm"
 import { OfferServices } from "../components/OfferServices/OfferServices"
 import { GoogleMap } from "../components/GoogleMap/GoogleMap"
+
 import Events from "../components/Events/Events"
 
 export const query = graphql`
