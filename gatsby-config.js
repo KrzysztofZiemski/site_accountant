@@ -8,14 +8,15 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
+    // `gatsby-plugin-preact`,
+    `gatsby-plugin-preload-fonts`,
     `gatsby-plugin-postcss`,
     {
-      resolve: `gatsby-plugin-google-fonts`,
+      resolve: 'gatsby-plugin-web-font-loader',
       options: {
-        fonts: [
-          `Montserrat`, `Roboto`, `Lato`,
-        ],
-        display: 'swap'
+        google: {
+          families: [`Montserrat`, `Roboto`, `Lato`,]
+        }
       }
     },
     {
@@ -41,7 +42,16 @@ module.exports = {
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
-
+    {
+      resolve: `gatsby-plugin-purgecss`,
+      options: {
+        printRejected: true,
+        tailwind: true,
+      }
+    },
+    {
+      resolve: "gatsby-plugin-webpack-bundle-analyser-v2",
+    },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {

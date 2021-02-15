@@ -1,6 +1,5 @@
 import React from "react"
 import { graphql } from "gatsby"
-import loadable from "@loadable/component"
 import { Animate, typeAnimation } from "../components/Animate/Animate"
 import SEO from "../components/seo"
 import Layout from "../layouts/layout"

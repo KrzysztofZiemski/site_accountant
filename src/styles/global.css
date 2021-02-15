@@ -3,6 +3,9 @@
 @tailwind utilities;
 
 @layer components {
+  @font-face {
+    font-display: swap;
+  }
   html {
     scroll-behavior: smooth;
   }
