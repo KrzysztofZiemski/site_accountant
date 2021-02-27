@@ -1,7 +1,10 @@
-import React, { ChangeEvent, useState, lazy } from "react"
+import React, { ChangeEvent, useState, lazy, FormEvent, useRef } from "react"
+import ReCAPTCHA from "react-google-recaptcha"
 import { InputText } from "../Input/InputText"
 import { Textarea } from "../Textarea/Textarea"
 import { Button } from "../Button/Button"
+import { encode } from "../../helpers/request"
+import { Modal } from "../Modal/Modal"
 
 const regexpPhone = new RegExp(/^\d{9}$/)
 const regexpMail = new RegExp(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)
@@ -12,13 +15,28 @@ interface SendDataMail {
   phone: string
   message: string
 }
+interface ErrorFetch {
+  isError: boolean
+  headerMessage: string
+  message: string
+}
+
+const errorFetchDefault = {
+  isError: false,
+  headerMessage: "",
+  message: "",
+}
 
 export const ContactForm = ({ ...props }) => {
   const [phone, setPhone] = useState("")
   const [mail, setMail] = useState("")
   const [message, setMessage] = useState("")
+  const [recaptcha, setRecaptcha] = useState("")
+
   const [failValid, setFailValid] = useState({})
+
   const [submited, setSubmited] = useState(false)
+  const [errorFetch, setErrorFetch] = useState(errorFetchDefault)
 
   const toggleErrors = (): void => {
     setFailValid({
@@ -54,19 +72,58 @@ export const ContactForm = ({ ...props }) => {
     setMessage((target as HTMLTextAreaElement).value)
   }
 
-  const sendMail = (data: SendDataMail) => {}
+  const sendMail = () => {
+    return fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: encode({
+        "form-name": "contact",
+        "g-recaptcha-response": recaptcha,
+        phone,
+        mail,
+        message,
+      }).toString(),
+    })
+  }
+  const verifyRecaptcha = response => {
+    setRecaptcha(response)
+  }
+  const closeErrorModal = () => setErrorFetch(errorFetchDefault)
 
-  const handleSend = event => {
+  const handleSend = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     const isOk = validate()
     if (!isOk) return toggleErrors()
-    sendMail({ phone, mail, message })
-    setSubmited(true)
+    sendMail()
+      .then(res => {
+        if (res.ok) return setSubmited(true)
+        setErrorFetch({
+          isError: true,
+          headerMessage: "Nie udało się wysłać wiadomości.",
+          message:
+            "Przepraszamy - wystąpił błąd podczas wysyłania. Spróbuj ponownie",
+        })
+      })
+      .catch(error =>
+        setErrorFetch({
+          isError: true,
+          headerMessage: "Nie udało się wysłać wiadomości.",
+          message:
+            "Przepraszamy - wystąpił błąd podczas wysyłania. Spróbuj ponownie",
+        })
+      )
     clearForm()
   }
 
   return (
     <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 w-full overflow-hidden">
+      {errorFetch.isError && (
+        <Modal
+          onClose={closeErrorModal}
+          header={errorFetch.headerMessage}
+          text={errorFetch.message}
+        />
+      )}
       {submited ? (
         <p className="font-bold text-center text-primary text-base md:text-xl leading-10">
           Dziękuję za kontakt.
@@ -75,15 +132,17 @@ export const ContactForm = ({ ...props }) => {
         </p>
       ) : (
         <form
+          // onReset={}
           name="contact"
           method="POST"
-          // data-netlify-recaptcha="true"
+          data-netlify-recaptcha="true"
           data-netlify="true"
           className="m-auto w-5/5 sm:w-3/5 lg:w-2/5 sm:text-center"
           action="/thank-you"
           {...props}
-          // onSubmit={handleSend}
+          onSubmit={handleSend}
         >
+          <input type="hidden" name="form-name" value="contact" />
           <h2 className="text-center text-lg font-bold mb-4">KONTAKT</h2>
           <InputText
             name="phone"
@@ -107,9 +166,10 @@ export const ContactForm = ({ ...props }) => {
             value={message}
             error={failValid["message"]}
           ></Textarea>
-          <input type="hidden" name="contact" value="contact" />
-          <div className="m-auto mb-4 flex justify-center items-center "></div>
-          {/* <div className="margin-x-auto" data-netlify-recaptcha="true"></div> */}
+          <ReCAPTCHA
+            sitekey="6LeR210aAAAAADI_8dHgHuMaYWIx-nSbxwnZCFKu"
+            onChange={verifyRecaptcha}
+          />
           <div className="flex flex-col m-auto w-full md:w-4/5 lg:w-2/5">
             <Button>WYŚLIJ</Button>
           </div>

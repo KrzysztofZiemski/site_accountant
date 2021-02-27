@@ -103,7 +103,7 @@ export const Events = () => {
 
   return (
     <div className="md:flex md:justify-center md:items-center items-center bg-secondary py-10">
-      <div className="m-auto md:m-3 flex justify-center items-center min-w- max-w-sm md:w-1/2">
+      <div className="m-auto md:m-3 flex justify-center items-center max-w-sm md:w-1/2 ">
         <Calendar
           date={selectedDate}
           eventDays={events.map(({ date }) => date)}
