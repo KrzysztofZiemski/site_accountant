@@ -6,6 +6,8 @@ import { Button } from "../Button/Button"
 import { encode } from "../../helpers/request"
 import { Modal } from "../Modal/Modal"
 
+const RECAPTCHA_KEY = process.env.SITE_RECAPTCHA_KEY
+
 const regexpPhone = new RegExp(/^\d{9}$/)
 const regexpMail = new RegExp(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)
 const regexpMessage = new RegExp(/[^()]/)
@@ -102,8 +104,6 @@ export const ContactForm = ({ ...props }) => {
     //@ts-ignore
     const value: TypeOfContactClient.mail | TypeOfContactClient.phone =
       target.value
-
-    console.log(value)
     SettypeOfContactClient(value)
   }
   const handleSend = (event: React.FormEvent<HTMLFormElement>) => {
@@ -202,10 +202,7 @@ export const ContactForm = ({ ...props }) => {
             error={failValid["message"]}
           ></Textarea>
           <div className="flex justify-center w-full">
-            <ReCAPTCHA
-              sitekey="6LeR210aAAAAADI_8dHgHuMaYWIx-nSbxwnZCFKu"
-              onChange={verifyRecaptcha}
-            />
+            <ReCAPTCHA sitekey={RECAPTCHA_KEY} onChange={verifyRecaptcha} />
           </div>
           <div className="flex flex-col m-auto w-full md:w-4/5 lg:w-2/5 mt-2">
             <Button>WYŚLIJ</Button>

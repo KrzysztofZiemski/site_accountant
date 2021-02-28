@@ -33,7 +33,10 @@ const contact = ({ data: datoCmsMetaDataPage }) => {
 
       <div className="p-3 flex flex-col md:flex-row md:justify-center md:items-center">
         <div className="flex flex-col mx-auto lg:ml-9  md:m-0">
-          <PhoneIcon className="w-12 h-12" style={{ marginLeft: "17px" }} />
+          <PhoneIcon
+            className="w-12 h-12 mb-4"
+            style={{ marginLeft: "17px" }}
+          />
           <h2 className="mb-4 text-2xl">
             <strong>Kontakt ze mną</strong>
           </h2>
@@ -51,8 +54,8 @@ const contact = ({ data: datoCmsMetaDataPage }) => {
               pon. - pt. w godzinach <strong>7-20</strong>
             </p>
           </div>
-          <div className="mt-4">
-            <PointerIcon className="w-12 h-12" style={{ fill: "black" }} />
+          <div className="mt-10">
+            <PointerIcon className="w-12 h-12 mb-4" style={{ fill: "black" }} />
             <h2 className="mb-4 text-2xl">Nasze biuro</h2>
             <address>
               <p className="text-xl mb-2">
