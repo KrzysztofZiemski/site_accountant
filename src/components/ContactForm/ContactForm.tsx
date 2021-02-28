@@ -6,7 +6,7 @@ import { Button } from "../Button/Button"
 import { encode } from "../../helpers/request"
 import { Modal } from "../Modal/Modal"
 
-const RECAPTCHA_KEY = process.env.SITE_RECAPTCHA_KEY
+const RECAPTCHA_KEY = process.env.GATSBY_SITE_RECAPTCHA_KEY
 
 const regexpPhone = new RegExp(/^\d{9}$/)
 const regexpMail = new RegExp(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)
