@@ -42,7 +42,6 @@ export const ContactForm = ({ ...props }) => {
   const [typeOfContactClient, SettypeOfContactClient] = useState(
     TypeOfContactClient.mail
   )
-
   const [failValid, setFailValid] = useState({})
 
   const [submited, setSubmited] = useState(false)
@@ -162,18 +161,14 @@ export const ContactForm = ({ ...props }) => {
           <input type="hidden" name="form-name" value="contact" />
           <div className="flex text-right text-xl">
             <select
+              value={typeOfContactClient}
               onChange={handleTypeOfContactClient}
               className="block appearance-none w-full bg-grey-lighter border border-grey-lighter text-grey-darker py-2 px-3 rounded outline-none"
             >
-              <option value={TypeOfContactClient.phone}>Telefon</option>
               <option value={TypeOfContactClient.mail}>E-mail</option>
+              <option value={TypeOfContactClient.phone}>Telefon</option>
             </select>
           </div>
-          {console.log(
-            "wartość",
-            typeOfContactClient,
-            TypeOfContactClient.phone
-          )}
           {typeOfContactClient === TypeOfContactClient.phone && (
             <InputText
               placeholder="Numer telefonu"
