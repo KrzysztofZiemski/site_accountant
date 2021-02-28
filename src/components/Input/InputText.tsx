@@ -21,7 +21,7 @@ export const InputText = ({
   const refInput = useRef(null)
 
   return (
-    <div className="mb-4">
+    <div className="mb-4 text-xl">
       <label
         className="block text-gray-700 text-sm font-bold mb-2"
         htmlFor={id || ""}

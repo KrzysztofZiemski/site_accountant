@@ -27,11 +27,19 @@ const errorFetchDefault = {
   message: "",
 }
 
+enum TypeOfContactClient {
+  phone = "phone",
+  mail = "mail",
+}
+
 export const ContactForm = ({ ...props }) => {
   const [phone, setPhone] = useState("")
   const [mail, setMail] = useState("")
   const [message, setMessage] = useState("")
   const [recaptcha, setRecaptcha] = useState("")
+  const [typeOfContactClient, SettypeOfContactClient] = useState(
+    TypeOfContactClient.mail
+  )
 
   const [failValid, setFailValid] = useState({})
 
@@ -89,7 +97,15 @@ export const ContactForm = ({ ...props }) => {
     setRecaptcha(response)
   }
   const closeErrorModal = () => setErrorFetch(errorFetchDefault)
+  const handleTypeOfContactClient = (e: ChangeEvent<HTMLSelectElement>) => {
+    const target = e.target as HTMLSelectElement
+    //@ts-ignore
+    const value: TypeOfContactClient.mail | TypeOfContactClient.phone =
+      target.value
 
+    console.log(value)
+    SettypeOfContactClient(value)
+  }
   const handleSend = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     const isOk = validate()
@@ -116,7 +132,8 @@ export const ContactForm = ({ ...props }) => {
   }
 
   return (
-    <div className="bg-white shadow-md rounded px-2 pt-6 pb-8 w-full overflow-hidden">
+    <div className="bg-white shadow-md rounded px-2 pt-6 pb-3 w-full overflow-hidden">
+      <h3 className="text-center text-2xl p-3 mb-6">Formularz kontaktowy</h3>
       {errorFetch.isError && (
         <Modal
           onClose={closeErrorModal}
@@ -137,26 +154,45 @@ export const ContactForm = ({ ...props }) => {
           method="POST"
           data-netlify-recaptcha="true"
           data-netlify="true"
-          className="m-auto w-5/5 sm:w-3/5 lg:w-2/5 sm:text-center"
+          className="m-auto w-5/5 sm:w-3/5 md:w-full sm:text-center"
           action="/thank-you"
           {...props}
           onSubmit={handleSend}
         >
           <input type="hidden" name="form-name" value="contact" />
-          <InputText
-            name="phone"
-            label="TELEFON"
-            onChange={handleChangePhone}
-            value={phone}
-            error={failValid["phone"]}
-          ></InputText>
-          <InputText
-            label="ADRES E-MAIL"
-            name="mail"
-            onChange={handleChangeMail}
-            value={mail}
-            error={failValid["mail"]}
-          ></InputText>
+          <div className="flex text-right text-xl">
+            <select
+              onChange={handleTypeOfContactClient}
+              className="block appearance-none w-full bg-grey-lighter border border-grey-lighter text-grey-darker py-2 px-3 rounded outline-none"
+            >
+              <option value={TypeOfContactClient.phone}>Telefon</option>
+              <option value={TypeOfContactClient.mail}>E-mail</option>
+            </select>
+          </div>
+          {console.log(
+            "wartość",
+            typeOfContactClient,
+            TypeOfContactClient.phone
+          )}
+          {typeOfContactClient === TypeOfContactClient.phone && (
+            <InputText
+              placeholder="Numer telefonu"
+              name="phone"
+              onChange={handleChangePhone}
+              value={phone}
+              error={failValid["phone"]}
+            ></InputText>
+          )}
+          {typeOfContactClient === TypeOfContactClient.mail && (
+            <InputText
+              name="mail"
+              placeholder="Adres e-mail"
+              onChange={handleChangeMail}
+              value={mail}
+              error={failValid["mail"]}
+            ></InputText>
+          )}
+
           <Textarea
             label="WIADOMOŚĆ"
             name="message"
