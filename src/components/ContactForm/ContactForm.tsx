@@ -116,7 +116,7 @@ export const ContactForm = ({ ...props }) => {
   }
 
   return (
-    <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 w-full overflow-hidden">
+    <div className="bg-white shadow-md rounded px-2 pt-6 pb-8 w-full overflow-hidden">
       {errorFetch.isError && (
         <Modal
           onClose={closeErrorModal}
@@ -143,7 +143,6 @@ export const ContactForm = ({ ...props }) => {
           onSubmit={handleSend}
         >
           <input type="hidden" name="form-name" value="contact" />
-          <h2 className="text-center text-lg font-bold mb-4">KONTAKT</h2>
           <InputText
             name="phone"
             label="TELEFON"
@@ -166,11 +165,13 @@ export const ContactForm = ({ ...props }) => {
             value={message}
             error={failValid["message"]}
           ></Textarea>
-          <ReCAPTCHA
-            sitekey="6LeR210aAAAAADI_8dHgHuMaYWIx-nSbxwnZCFKu"
-            onChange={verifyRecaptcha}
-          />
-          <div className="flex flex-col m-auto w-full md:w-4/5 lg:w-2/5">
+          <div className="flex justify-center w-full">
+            <ReCAPTCHA
+              sitekey="6LeR210aAAAAADI_8dHgHuMaYWIx-nSbxwnZCFKu"
+              onChange={verifyRecaptcha}
+            />
+          </div>
+          <div className="flex flex-col m-auto w-full md:w-4/5 lg:w-2/5 mt-2">
             <Button>WYŚLIJ</Button>
           </div>
         </form>

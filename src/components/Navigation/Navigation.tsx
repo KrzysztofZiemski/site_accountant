@@ -1,12 +1,11 @@
 import React, { useState } from "react"
 import { Link } from "gatsby"
-import styled from "styled-components"
 import { Burger } from "../Burger/Burger"
 import LogoWhite from "../Logo/LogoWhite"
 import NavMenuItem from "../NavMenuItem/NavMenuItem"
+import LogoBlue from "../Logo/LogoBlue"
 
 import "./Navigation.css"
-import LogoBlue from "../Logo/LogoBlue"
 
 export const Navigation = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false)
@@ -43,7 +42,7 @@ export const Navigation = () => {
 
         <NavMenuItem to="/charity">DZIAŁALNOŚĆ CHARYTATYWNA</NavMenuItem>
 
-        <NavMenuItem to="/#contact">KONTAKT</NavMenuItem>
+        <NavMenuItem to="/contact">KONTAKT</NavMenuItem>
       </ul>
     </nav>
   )

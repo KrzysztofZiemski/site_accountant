@@ -16,7 +16,7 @@ const charity = ({ data: datoCmsMetaDataPage }) => {
   const { title, description } = datoCmsMetaDataPage
 
   return (
-    <Layout includeHeader={false}>
+    <Layout>
       <SEO title={title || "Articles"} description={description || ""} />
       articles
     </Layout>

@@ -6,10 +6,7 @@ import { Header } from "../components/Header/Header"
 import { Navigation } from "../components/Navigation/Navigation"
 import { Footer } from "../components/Footer/Footer"
 
-type LayoutProps = {
-  children: any
-  includeHeader: boolean
-}
+type LayoutProps = {}
 
 const Layout = ({ children, includeHeader }) => {
   const data = useStaticQuery(graphql`
@@ -26,7 +23,6 @@ const Layout = ({ children, includeHeader }) => {
   return (
     <div className="flex flex-col" style={{ minHeight: "100vh" }}>
       <Navigation />
-      {includeHeader ? <Header siteTitle={title} /> : null}
       <main className="flex-grow m-auto w-full" style={{ maxWidth: "1280px" }}>
         {children}
       </main>

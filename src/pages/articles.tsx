@@ -82,10 +82,10 @@ const ArticlesPage = ({
 
   const { title, description } = datoCmsMetaDataPage
   return (
-    <Layout includeHeader={false}>
+    <Layout>
       <SEO title={title || "Articles"} description={description || "opis"} />
       <div className="mb-10 ">
-        <SiteTitle>AKTUALNOŚCI</SiteTitle>
+        <SiteTitle>Aktualności</SiteTitle>
         <div className="my-3 flex justify-center">
           <FilterBar search={handleFilter} />
         </div>
