@@ -23,7 +23,7 @@ const contact = ({ data: datoCmsMetaDataPage }) => {
     <Layout>
       <SEO title={title || "Articles"} description={description || ""} />
       <SiteTitle>Kontakt</SiteTitle>
-      <div className="px-2 text-1xl text-center lg:text-2xl lg:mb-9">
+      <div className="px-2 mt-4 md:mt-8 lg:mt-16 text-1xl text-center lg:text-2xl lg:mb-9">
         <p className="text-2xl mb-4 lg:text-3xl">W czym mogę Ci pomóc?</p>
         <p>Z przyjemnością odpowiem na wszelkie Twoje pytania.</p>
       </div>
