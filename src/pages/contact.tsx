@@ -27,7 +27,6 @@ const contact = ({ data: datoCmsMetaDataPage }) => {
         <p className="text-2xl mb-4 lg:text-3xl">W czym mogę Ci pomóc?</p>
         <p>Z przyjemnością odpowiem na wszelkie Twoje pytania.</p>
       </div>
-
       <div className="p-3 flex flex-col md:flex-row md:justify-center md:items-center">
         <div className="flex flex-col mx-auto lg:ml-9  md:m-0">
           <ContactInfo />

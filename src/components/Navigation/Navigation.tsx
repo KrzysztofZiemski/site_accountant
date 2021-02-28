@@ -4,7 +4,7 @@ import { Burger } from "../Burger/Burger"
 import LogoWhite from "../Logo/LogoWhite"
 import NavMenuItem from "../NavMenuItem/NavMenuItem"
 import LogoBlue from "../Logo/LogoBlue"
-
+import { routes } from "../../routes"
 import "./Navigation.css"
 
 export const Navigation = () => {
@@ -31,18 +31,18 @@ export const Navigation = () => {
           isOpen ? "nav-full" : "h-0"
         } lg:h-auto`}
       >
-        <Link to="/" className="lg:mr-9 hidden lg:block py-2 pr-9">
+        <Link to={routes.main} className="lg:mr-9 hidden lg:block py-2 pr-9">
           <LogoWhite />
         </Link>
-        <NavMenuItem to="/about">O NAS</NavMenuItem>
+        <NavMenuItem to={routes.about}>O NAS</NavMenuItem>
 
-        <NavMenuItem to="/offer">OFERTA</NavMenuItem>
+        <NavMenuItem to={routes.offer}>OFERTA</NavMenuItem>
 
-        <NavMenuItem to="/articles">AKTUALNOŚCI</NavMenuItem>
+        <NavMenuItem to={routes.articles}>AKTUALNOŚCI</NavMenuItem>
 
-        <NavMenuItem to="/charity">DZIAŁALNOŚĆ CHARYTATYWNA</NavMenuItem>
+        <NavMenuItem to={routes.charity}>DZIAŁALNOŚĆ CHARYTATYWNA</NavMenuItem>
 
-        <NavMenuItem to="/contact">KONTAKT</NavMenuItem>
+        <NavMenuItem to={routes.contact}>KONTAKT</NavMenuItem>
       </ul>
     </nav>
   )
