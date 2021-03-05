@@ -1,6 +1,5 @@
 import React from "react"
 import { graphql } from "gatsby"
-import { Animate, typeAnimation } from "../components/Animate/Animate"
 import SEO from "../components/seo"
 import Layout from "../layouts/layout"
 import { Clients } from "../components/Clients/Clients"
@@ -9,6 +8,7 @@ import { GoogleMap } from "../components/GoogleMap/GoogleMap"
 
 import Events from "../components/Events/Events"
 import { Header } from "../components/Header/Header"
+import { SimpleSlider } from "../components/SimpleSlider/SimpleSlider"
 
 export const query = graphql`
   {
@@ -32,6 +32,7 @@ const IndexPage = ({ data: datoCmsMetaDataPage }) => {
         Zobacz co mówią nasi kliencji
       </h2>
       <Clients />
+      <div style={{ width: "400px", border: "1px solid black" }}></div>
     </Layout>
   )
 }
