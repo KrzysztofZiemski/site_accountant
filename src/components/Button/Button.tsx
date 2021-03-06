@@ -1,11 +1,10 @@
 import React from "react"
 
-type ButtonProps = {
-  onClick?: () => void
+interface ButtonProps {
+  onClick: () => void
   className?: string
   children: any
-  style?: object
-  small?: boolean
+  small: boolean
 }
 
 export const Button = ({ children, small, ...props }: ButtonProps) => {
@@ -19,4 +18,8 @@ export const Button = ({ children, small, ...props }: ButtonProps) => {
       {children}
     </button>
   )
+}
+Button.defaultProps = {
+  small: false,
+  onClick: () => {},
 }

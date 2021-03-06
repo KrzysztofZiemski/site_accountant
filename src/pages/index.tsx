@@ -32,6 +32,7 @@ const IndexPage = ({ data: datoCmsMetaDataPage }) => {
         Zobacz co mówią nasi kliencji
       </h2>
       <Clients />
+
       <div style={{ width: "400px", border: "1px solid black" }}></div>
     </Layout>
   )

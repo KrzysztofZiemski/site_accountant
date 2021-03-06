@@ -5,4 +5,5 @@ export enum routes {
   charity = "/charity",
   contact = "/contact",
   offer = "/offer",
+  policy = "/policy",
 }

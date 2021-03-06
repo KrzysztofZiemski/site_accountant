@@ -11,6 +11,27 @@ module.exports = {
     `gatsby-plugin-preload-fonts`,
     `gatsby-plugin-postcss`,
     {
+      resolve: `gatsby-plugin-gdpr-cookies`,
+      options: {
+        googleAnalytics: {
+          trackingId: process.env.GOOGLE_ANALYTICS_TRACKING_ID,
+          cookieName: 'gatsby-gdpr-google-analytics',
+          anonymize: true,
+          allowAdFeatures: false
+        },
+        googleTagManager: {
+          trackingId: process.env.GOOGLE_TAG_MANAGER_TRACKING_ID,
+          cookieName: 'gatsby-gdpr-google-tagmanager',
+          dataLayerName: 'dataLayer',
+        },
+        facebookPixel: {
+          pixelId: process.env.FACEBOOK_PIXEL_ID,
+          cookieName: 'gatsby-gdpr-facebook-pixel',
+        },
+        environments: ['production', 'development']
+      },
+    },
+    {
       resolve: 'gatsby-plugin-web-font-loader',
       options: {
         google: {

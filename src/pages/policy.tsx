@@ -1,9 +1,37 @@
-import React from "react"
+import React, { useMemo } from "react"
+import { Button } from "../components/Button/Button"
+import SEO from "../components/seo"
 import Layout from "../layouts/layout"
 
+import { useCookies } from "react-cookie"
+import { cookiesName } from "../components/CookieBanner/CookieBanner"
+
 const policy = () => {
+  const [cookieAgreeUse, setCookieAgreeUse] = useCookies([
+    cookiesName.googleAnalytics,
+    cookiesName.googleTagManager,
+    cookiesName.facebookPixel,
+  ])
+
+  const setDisagreeCookie = () => {
+    setCookieAgreeUse(cookiesName.googleAnalytics, false)
+    setCookieAgreeUse(cookiesName.googleTagManager, false)
+    setCookieAgreeUse(cookiesName.facebookPixel, false)
+  }
+  const isAccepted = useMemo(() => {
+    return (
+      cookieAgreeUse[cookiesName.facebookPixel] === "true" &&
+      cookieAgreeUse[cookiesName.googleAnalytics] === "true" &&
+      cookieAgreeUse[cookiesName.googleTagManager] === "true"
+    )
+  }, [cookieAgreeUse])
+
   return (
-    <Layout>
+    <div style={{ maxWidth: "1280px", margin: "auto" }}>
+      <SEO
+        title="Magfi Magdalena Pol - Polityka prywatności"
+        description="Magfi Magdalena - Pol Polityka prywatności"
+      />
       <div className="mb-3 p-2 md:py-4 md:px-6">
         <h1 className="text-center">Polityka Cookies</h1>
         <p>
@@ -209,13 +237,6 @@ const policy = () => {
               </strong>
             </p>
           </li>
-          <li className="my-2">
-            <p>
-              <strong>
-                <span className="text-primary">Youtube</span>
-              </strong>
-            </p>
-          </li>
         </ul>
         <h2 className="text-center">
           § 6 Możliwości określania warunków przechowywania i uzyskiwania
@@ -235,7 +256,10 @@ const policy = () => {
               Informacje o sposobie wyłączenia plików Cookie w
               najpopularniejszych przeglądarkach komputerowych i urządzeń
               mobilnych dostępna są na stronie:{" "}
-              <a href="http://jakwylaczyccookie.pl">jak wyłączyć cookie</a>.
+              <a href="http://jakwylaczyccookie.pl" className="text-primary">
+                jak wyłączyć cookie
+              </a>
+              .
             </p>
           </li>
           <li className="my-2">
@@ -269,7 +293,10 @@ const policy = () => {
             poprzednim zagrożeniami powinni stosować się do{" "}
             <span id="cyber_random">
               wytycznych związanych z{" "}
-              <a href="https://nety.pl/cyberbezpieczenstwo/">
+              <a
+                className="text-primary"
+                href="https://nety.pl/cyberbezpieczenstwo/"
+              >
                 cyberbezpieczeństwem
               </a>
             </span>
@@ -324,8 +351,16 @@ const policy = () => {
             </p>
           </li>
         </ul>
+        {isAccepted && (
+          <div className="flex justify-center">
+            {" "}
+            <Button onClick={setDisagreeCookie} small>
+              cofnij zgodę
+            </Button>
+          </div>
+        )}
       </div>
-    </Layout>
+    </div>
   )
 }
 

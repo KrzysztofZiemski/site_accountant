@@ -11,7 +11,8 @@ module.exports = {
     backgroundColor: theme => ({
       ...theme('colors'),
       'primary': colors.mainColor,
-      'secondary': colors.secondaryColor
+      'secondary': colors.secondaryColor,
+      'primary-opacity': colors.mainOpacityColor
     }),
     textColor: theme => ({
       ...theme('colors'),
