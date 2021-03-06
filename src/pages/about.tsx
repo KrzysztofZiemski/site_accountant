@@ -7,7 +7,7 @@ import { SiteTitle } from "../components/SiteTitle/SiteTitle"
 import Layout from "../layouts/layout"
 import SEO from "../components/seo"
 import { GoogleMap } from "../components/GoogleMap/GoogleMap"
-import { Clients } from "../components/Clients/Clients"
+import { ClientsOpinions } from "../components/ClientsOpinions/ClientsOpinions"
 
 import "../styles/aboutPage.css"
 
@@ -120,7 +120,7 @@ const AboutPage = ({
             <h2 className="text-center uppercase font-bold text-white p-1 text-md my-5 bg-primary mx-auto">
               Zobacz co mówią nasi kliencji
             </h2>
-            <Clients />
+            <ClientsOpinions />
             <p className="text-center uppercase font-bold text-black p-1 text-md my-5  mx-auto">
               tu nas znajdziesz
             </p>
