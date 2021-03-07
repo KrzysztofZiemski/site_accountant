@@ -52,13 +52,15 @@ export const ContactForm = ({ ...props }) => {
       phone: !regexpPhone.test(phone),
       mail: !regexpMail.test(mail),
       message: !regexpMessage.test(message),
+      recaptcha: recaptcha === "" ? true : false,
     })
   }
   const validate = (): boolean => {
     const phoneOk = regexpPhone.test(phone)
     const mailOk = regexpMail.test(mail)
     const messageOk = regexpMessage.test(message)
-    return (phoneOk || mailOk) && messageOk
+    const recaptchaOk = recaptcha === "" ? false : true
+    return (phoneOk || mailOk) && messageOk && recaptchaOk
   }
 
   const handleChangePhone = ({ target }: ChangeEvent<HTMLInputElement>) => {
@@ -196,7 +198,11 @@ export const ContactForm = ({ ...props }) => {
             value={message}
             error={failValid["message"]}
           ></Textarea>
-          <div className="flex justify-center w-full">
+          <div
+            className={`flex justify-center w-full ${
+              failValid["recaptcha"] && "border text-red-600"
+            }`}
+          >
             <ReCAPTCHA sitekey={RECAPTCHA_KEY} onChange={verifyRecaptcha} />
           </div>
           <div className="flex flex-col m-auto w-full md:w-4/5 lg:w-2/5 mt-2">
