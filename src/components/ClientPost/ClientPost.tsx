@@ -27,16 +27,14 @@ export const ClientPost = ({ name, description, score }: ClientOpinionType) => {
   const stars = useMemo(() => renderStars(score), [score])
 
   return (
-    <article className="shadow-lg p-4 overflow-y-auto h-60 m-2 mt-4 bg-primary rounded-lg md:h-80">
-      <div className="flex flex-col w-full">
-        <h2 className="text-lg font-bold mb-2 text-center lg:text-left">
+    <article className="bg-white p-4 overflow-y-auto text-secondary h-60 m-2 mt-4 rounded-lg md:h-80 ring-2 flex flex-col">
+      <div className="flex w-full justify-between border-b p-2">
+        <h2 className="ml-4 text-lg font-bold text-center lg:text-left">
           {name}
         </h2>
-        <div className="flex justify-self-end	self-end mb-2 md:mb-4">
-          {stars}
-        </div>
+        <div className="flex justify-self-end	self-end">{stars}</div>
       </div>
-      <div className="text-justify w-full ">
+      <div className="text-justify w-full flex-grow rounded-md p-2">
         <ReactMarkdown children={description} />
       </div>
     </article>

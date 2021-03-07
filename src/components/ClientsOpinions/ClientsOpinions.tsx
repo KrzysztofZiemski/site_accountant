@@ -33,8 +33,8 @@ export const ClientsOpinions = () => {
     />
   ))
   return (
-    <div className="pb-7 border-8 text-secondary">
-      <h2 className="text-center uppercase font-bold text-secondary p-3 text-md border-b-8">
+    <div className="pb-7 bg-gray-100">
+      <h2 className="text-center uppercase font-bold text-secondary p-3 text-md">
         Zobacz co mówią nasi kliencji
       </h2>
       <SimpleSlider className="w-10/12 md:w-11/12 m-auto text-white">

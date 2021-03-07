@@ -5,8 +5,6 @@ import RightArrowIcon from "../../assets/right-arrow.svg"
 //@ts-ignore
 import LeftArrowIcon from "../../assets/left-arrow.svg"
 
-import "slick-carousel/slick/slick.css"
-import "slick-carousel/slick/slick-theme.css"
 import "./SimpleSlider.css"
 
 interface SimpleSliderProps {
@@ -35,6 +33,7 @@ const PreviousButton = ({ currentSlide, slideCount, ...props }) => {
 export const SimpleSlider = ({ children, countShow, className }) => {
   const refSlider = useRef()
   const [numberSlideToshow, setNumberSlideToshow] = useState(1)
+  const [isRendered, setIsRendered] = useState(false)
   //@ts-ignore
   const next = () => refSlider.current.slickNext()
 
@@ -45,18 +44,18 @@ export const SimpleSlider = ({ children, countShow, className }) => {
       setNumberSlideToshow(1)
     }
   }
+
   useEffect(() => {
-    window.addEventListener("resize", checkNumberSlideToShow)
-    return () => window.removeEventListener("resize", checkNumberSlideToShow)
+    setIsRendered(true)
   }, [])
 
   const settings = {
     arrows: true,
-    dots: true,
+    dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: numberSlideToshow,
-    slidesToScroll: numberSlideToshow,
+    slidesToShow: 3,
+    slidesToScroll: 3,
     autoplay: true,
     autoplaySpeed: 6000,
     pauseOnHover: true,
@@ -64,17 +63,36 @@ export const SimpleSlider = ({ children, countShow, className }) => {
     nextArrow: <NextButton />,
     //@ts-ignore
     prevArrow: <PreviousButton />,
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 1199,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+        },
+      },
+    ],
   }
-
-  return (
-    <Slider
-      ref={c => (refSlider.current = c)}
-      {...settings}
-      className={className}
-    >
-      {children}
-    </Slider>
-  )
+  if (!isRendered) {
+    return <div></div>
+  } else {
+    return (
+      <Slider
+        ref={c => (refSlider.current = c)}
+        {...settings}
+        className={className}
+      >
+        {children}
+      </Slider>
+    )
+  }
 }
 
 SimpleSlider.defaultProps = {
