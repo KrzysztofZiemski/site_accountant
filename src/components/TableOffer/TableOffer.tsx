@@ -1,5 +1,6 @@
 import React, { useMemo } from "react"
-import { graphql, useStaticQuery } from "gatsby"
+import { graphql, useStaticQuery, Link } from "gatsby"
+import { routes } from "../../routes"
 
 interface ServiceItem {
   nameService: string
@@ -38,17 +39,27 @@ export const TableOffer = ({ className }: TableOfferProps) => {
   }, [serviceItemArray])
 
   return (
-    <div className="relative bg-secondary text-white w-full">
-      <div className="flex border-b md:text-xl">
-        <p className="w-3/4 p-2">Usługa</p>
-        <p className="p-2 w-1/4">Cena netto</p>
+    <>
+      <div className="relative bg-secondary text-white w-full">
+        <div className="flex border-b md:text-xl">
+          <p className="w-3/4 p-2">Usługa</p>
+          <p className="p-2 w-1/4">Cena netto</p>
+        </div>
+        <div>{servicetableItems}</div>
+        <span
+          className="absolute left-3/4 top-0 bg-white"
+          style={{ height: "100%", width: "1px", zIndex: 10 }}
+        ></span>
       </div>
-      <div>{servicetableItems}</div>
-      <span
-        className="absolute left-3/4 top-0 bg-white"
-        style={{ height: "100%", width: "1px", zIndex: 10 }}
-      ></span>
-    </div>
+      <p>
+        *cena uzależniona jest od ilości obsługiwanych dokumentów. W celu
+        uzyskania dodatkowych informacji{" "}
+        <Link className="text-primary underline" to={routes.contact}>
+          napisz do nas
+        </Link>
+        .
+      </p>
+    </>
   )
 }
 TableOffer.defaultProps = {

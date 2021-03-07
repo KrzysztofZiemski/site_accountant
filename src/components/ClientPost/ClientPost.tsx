@@ -10,6 +10,7 @@ type ClientOpinionType = {
   description: string
   score: number
   className: string
+  company: string
 }
 
 const renderStars = (score: number) => {
@@ -29,6 +30,7 @@ export const ClientPost = ({
   description,
   score,
   className,
+  company,
 }: ClientOpinionType) => {
   const stars = useMemo(() => renderStars(score), [score])
 
@@ -38,12 +40,13 @@ export const ClientPost = ({
     >
       <div className="flex w-full justify-between border-b p-2">
         <h2 className="ml-4 text-lg font-bold text-center lg:text-left">
-          {name}
+          {company}
         </h2>
         <div className="flex justify-self-end	self-end">{stars}</div>
       </div>
       <div className="text-justify w-full flex-grow rounded-md p-2">
         <ReactMarkdown children={description} />
+        <span className="block text-right mr-1 mt-3">{name}</span>
       </div>
     </article>
   )
