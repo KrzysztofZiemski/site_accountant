@@ -1,6 +1,6 @@
 .clients-opinion-container {
   position: relative;
-  background-image: url("../../../static/opinions-background.jpg");
+  background-image: url("../../../static/OpinionsImage/opinion-backgroundx400.jpg");
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-position: center center;
@@ -25,4 +25,15 @@
   content: "";
   display: block;
   background: #fff;
+}
+
+@media (min-width: 401px) {
+  .clients-opinion-container {
+    background-image: url("../../../static/OpinionsImage/opinion-backgroundx800.jpg");
+  }
+}
+@media (min-width: 801px) {
+  .clients-opinion-container {
+    background-image: url("../../../static/OpinionsImage/opinion-backgroundx1280.jpg");
+  }
 }

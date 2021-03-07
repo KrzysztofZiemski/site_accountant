@@ -9,6 +9,7 @@ type ClientOpinionType = {
   name: string
   description: string
   score: number
+  className: string
 }
 
 const renderStars = (score: number) => {
@@ -23,11 +24,18 @@ const renderStars = (score: number) => {
   return stars
 }
 // className="overflow-y-auto h-48"
-export const ClientPost = ({ name, description, score }: ClientOpinionType) => {
+export const ClientPost = ({
+  name,
+  description,
+  score,
+  className,
+}: ClientOpinionType) => {
   const stars = useMemo(() => renderStars(score), [score])
 
   return (
-    <article className="bg-white p-4 overflow-y-auto text-secondary h-60 m-2 mt-4 rounded-lg md:h-80 ring-2 flex flex-col">
+    <article
+      className={`bg-white-opacity p-4 overflow-y-auto text-secondary h-60 m-2 mt-4 rounded-lg md:h-80 ring-2 flex flex-col ${className}`}
+    >
       <div className="flex w-full justify-between border-b p-2">
         <h2 className="ml-4 text-lg font-bold text-center lg:text-left">
           {name}
@@ -39,4 +47,7 @@ export const ClientPost = ({ name, description, score }: ClientOpinionType) => {
       </div>
     </article>
   )
+}
+ClientPost.defaultProps = {
+  className: "",
 }

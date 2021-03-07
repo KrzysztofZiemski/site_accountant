@@ -39,13 +39,13 @@ export const ClientsOpinions = ({ className }: ClientsOpinionsProps) => {
     />
   ))
   return (
-    <div className={`py-y md:py-28 clients-opinion-container ${className}`}>
+    <div className={`py-9 md:py-28 clients-opinion-container ${className}`}>
       <div className="relative z-10">
         <div className="text-white mb-7 ml-3 flex items-center clients-opinion-container__recomends">
           <span className="ml-9">REKOMENDACJE</span>
         </div>
         <SubTitle className="mb-9 ml-3 text-white">
-          Co mówią nasi kliencji
+          Co piszą o nas nasi klienci
         </SubTitle>
         <SimpleSlider>{opinionsClients}</SimpleSlider>
       </div>

@@ -12,7 +12,8 @@ module.exports = {
       ...theme('colors'),
       'primary': colors.mainColor,
       'secondary': colors.secondaryColor,
-      'primary-opacity': colors.mainOpacityColor
+      'primary-opacity': colors.mainOpacityColor,
+      'white-opacity': 'rgba(255,255,255,.8)'
     }),
     textColor: theme => ({
       ...theme('colors'),
