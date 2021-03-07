@@ -1,8 +1,9 @@
 import React from "react"
 import Image from "gatsby-image"
 import { Animate, typeAnimation } from "../Animate/Animate"
-import { graphql, useStaticQuery } from "gatsby"
+import { graphql, useStaticQuery, navigate } from "gatsby"
 import { Button } from "../Button/Button"
+import { routes } from "../../routes"
 
 export const query = graphql`
   {
@@ -23,6 +24,9 @@ type BurgerProps = {
 export const Header = ({ siteTitle }: BurgerProps) => {
   const { file } = useStaticQuery(query)
 
+  const goToOffer = () => {
+    navigate(routes.offer)
+  }
   return (
     <header
       className="text-lg relative h-auto "
@@ -49,7 +53,7 @@ export const Header = ({ siteTitle }: BurgerProps) => {
 
         <div className="">
           <Animate type={typeAnimation.slideUp}>
-            <Button>SPRAWDŹ OFERTĘ</Button>
+            <Button onClick={goToOffer}>SPRAWDŹ OFERTĘ</Button>
           </Animate>
         </div>
       </div>

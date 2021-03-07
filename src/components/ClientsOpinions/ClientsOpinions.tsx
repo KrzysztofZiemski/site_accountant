@@ -2,6 +2,9 @@ import React, { useEffect } from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import { ClientPost } from "../ClientPost/ClientPost"
 import { SimpleSlider } from "../SimpleSlider/SimpleSlider"
+import { SubTitle } from "../SubTitle/SubTitle"
+
+import "./ClientsOpinions.css"
 
 const query = graphql`
   {
@@ -19,8 +22,11 @@ type ClientType = {
   clientOpinion: string
   score: number
 }
+interface ClientsOpinionsProps {
+  className: string
+}
 
-export const ClientsOpinions = () => {
+export const ClientsOpinions = ({ className }: ClientsOpinionsProps) => {
   const { allDatoCmsClient: nodes } = useStaticQuery(query)
   const clients: Array<ClientType> = nodes.nodes
 
@@ -33,13 +39,20 @@ export const ClientsOpinions = () => {
     />
   ))
   return (
-    <div className="pb-7 bg-gray-100">
-      <h2 className="text-center uppercase font-bold text-secondary p-3 text-md">
-        Zobacz co mówią nasi kliencji
-      </h2>
-      <SimpleSlider className="w-10/12 md:w-11/12 m-auto text-white">
-        {opinionsClients}
-      </SimpleSlider>
+    <div className={`py-y md:py-28 clients-opinion-container ${className}`}>
+      <div className="relative z-10">
+        <div className="text-white mb-7 ml-3 flex items-center clients-opinion-container__recomends">
+          <span className="ml-9">REKOMENDACJE</span>
+        </div>
+        <SubTitle className="mb-9 ml-3 text-white">
+          Co mówią nasi kliencji
+        </SubTitle>
+        <SimpleSlider>{opinionsClients}</SimpleSlider>
+      </div>
     </div>
   )
+}
+
+ClientsOpinions.defaultProps = {
+  className: "",
 }

@@ -8,7 +8,7 @@ import { GoogleMap } from "../components/GoogleMap/GoogleMap"
 
 import Events from "../components/Events/Events"
 import { Header } from "../components/Header/Header"
-import { SimpleSlider } from "../components/SimpleSlider/SimpleSlider"
+import { LatestArticles } from "../components/LatestArticles/LatestArticles"
 
 export const query = graphql`
   {
@@ -27,8 +27,9 @@ const IndexPage = ({ data: datoCmsMetaDataPage }) => {
       <SEO title={title || "Home"} description={description || ""} />
       <Header siteTitle={title} />
       <OfferServices />
-      <Events />
       <ClientsOpinions />
+      {/* <Events /> */}
+      <LatestArticles />
     </Layout>
   )
 }

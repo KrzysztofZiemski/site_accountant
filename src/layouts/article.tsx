@@ -92,11 +92,13 @@ const PostLayout = ({ data }) => {
       <Navigation />
       <main className="mx-auto flex-grow">
         <h1 className="text-center text-xl m-5 font-bold	">{title}</h1>
-        <Image
-          fluid={feathuredImage.fluid}
-          className="w-full h-auto object-cover	max-h-96"
-          alt={feathuredImage.alt}
-        />
+        {feathuredImage && (
+          <Image
+            fluid={feathuredImage.fluid}
+            className="w-full h-auto object-cover	max-h-96"
+            alt={feathuredImage.alt}
+          />
+        )}
         <div className="flex-grow p-3 text-justify	">{content}</div>
         <address className="text-right px-2 mt-2 mb-6">{author}</address>
         <time dateTime={date || ""} title="August 28th, 2011">

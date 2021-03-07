@@ -15,7 +15,7 @@ exports.onCreateWebpackConfig = ({ stage, actions }) => {
 
 exports.createPages = async ({ graphql, actions }) => {
     const { createPage } = actions;
-    const blogPostTemplate = path.resolve(`src/layouts/article.tsx`);
+    const articlePostTemplate = path.resolve(`src/layouts/article.tsx`);
 
     const result = await graphql(`
       query queryCMSPage {
@@ -33,7 +33,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
         createPage({
             path: `articles/${slugifiedTitle}`,
-            component: blogPostTemplate,
+            component: articlePostTemplate,
             context: {
                 id: post.id
             },

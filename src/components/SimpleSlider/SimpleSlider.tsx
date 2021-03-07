@@ -51,13 +51,13 @@ export const SimpleSlider = ({ children, countShow, className }) => {
 
   const settings = {
     arrows: true,
-    dots: false,
+    dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 3,
+    slidesToShow: 2,
+    slidesToScroll: 2,
     autoplay: true,
-    autoplaySpeed: 6000,
+    autoplaySpeed: 10000,
     pauseOnHover: true,
     //@ts-ignore
     nextArrow: <NextButton />,
@@ -87,7 +87,7 @@ export const SimpleSlider = ({ children, countShow, className }) => {
       <Slider
         ref={c => (refSlider.current = c)}
         {...settings}
-        className={className}
+        className={`w-10/12 md:w-11/12 m-auto ${className}`}
       >
         {children}
       </Slider>

@@ -29,7 +29,7 @@ export const CookieBanner = () => {
       cookieAgreeUse[cookiesName.googleTagManager] === "true"
     )
   }, [cookieAgreeUse])
-  console.log(isAccepted)
+
   return (
     !isAccepted && (
       <aside className="z-50 w-screen fixed bottom-0 bg-primary-opacity">

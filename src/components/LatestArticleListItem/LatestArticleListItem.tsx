@@ -2,7 +2,7 @@ import React from "react"
 import { Link } from "gatsby"
 import Image, { GatsbyImageFluidProps } from "gatsby-image"
 
-interface ArticleListItemProps {
+interface LatestArticleListItemProps {
   title: string
   author: string
   date: string
@@ -12,7 +12,7 @@ interface ArticleListItemProps {
   className: string
 }
 // / md:mt-5 md:w-2/5  lg:p-5
-export const ArticleListItem = ({
+export const LatestArticleListItem = ({
   date,
   intro,
   author,
@@ -21,10 +21,10 @@ export const ArticleListItem = ({
   link,
   className,
   ...props
-}: ArticleListItemProps) => {
+}: LatestArticleListItemProps) => {
   return (
-    <li
-      className={`shadow-xl h-full rounded-lg mb-10 py-3 px-6 md:w-2/5 md:m-5 ${className}`}
+    <div
+      className={`bg-white p-4 overflow-y-auto text-secondary h-60 m-2 mt-4 rounded-lg md:h-80 ring-2 flex flex-col`}
       {...props}
     >
       {image ? (
@@ -53,27 +53,14 @@ export const ArticleListItem = ({
           {author}
         </address>
       </article>
-    </li>
+    </div>
   )
 }
 
-ArticleListItem.defaultProps = {
+LatestArticleListItem.defaultProps = {
   date: "",
   intro: "",
   author: "",
   title: "",
   className: "",
-}
-
-{
-  /* <Image
-            style={{
-              maxWidth: "54rem",
-              width: "100%",
-              margin: "1rem auto",
-            }}
-            alt={item[itemKey].alt}
-            key={item.id}
-            fluid={item[itemKey].fluid}
-          /> */
 }
