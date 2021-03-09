@@ -40,8 +40,27 @@ const charity = ({ data }) => {
         description={description || ""}
       />
 
-      <div className="p-2 pt-6">
-        <div className="mx-6">
+      <div className="">
+        <div className="p-2 md:p-6 pt-6 bg-primary text-white">
+          <div className="flex text-center items-center">
+            <div className="h-28 w-28 p-3">
+              <Image
+                className="h-full w-full"
+                fluid={data.charityLogo.childImageSharp.fluid}
+              />
+            </div>
+            <div>
+              <h1 className="font-bold">
+                Dolnośląskie Koło Przyjaciół Dzieci z Fenyloketonurią{" "}
+                <span className="block">KRS 0000062454</span>
+              </h1>
+              <p>
+                <Link to="http://pkuwroc.pl/" className="text-primary">
+                  pkuwroc.pl
+                </Link>{" "}
+              </p>
+            </div>
+          </div>
           <p className="my-1">
             {" "}
             Od wielu lat polscy podatnicy mają możliwość przekazania 1% swojego
@@ -139,7 +158,7 @@ const charity = ({ data }) => {
             </li>
           </ul>
         </div>
-        <div className="flex text-center md:w-1/3 mx-auto">
+        <div className="flex text-center p-2  items-center md:p-6 md:w-1/3 my-3 md:my-9">
           <div className="h-28 w-28 p-3 flex-shrink-0 sm:h-32 sm:w-32 sm:p-6 md:h-40 md:w-40">
             <Image
               className="h-full w-full"
