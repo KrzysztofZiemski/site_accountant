@@ -28,7 +28,7 @@ const IndexPage = ({ data: datoCmsMetaDataPage }) => {
       <Header siteTitle={title} />
       <OfferServices />
       <ClientsOpinions />
-      {/* <Events /> */}
+      <Events />
       <LatestArticles />
     </Layout>
   )

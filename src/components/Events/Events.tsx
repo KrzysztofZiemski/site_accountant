@@ -2,8 +2,8 @@ import React, { useEffect, useState, useMemo } from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import ReactMarkdown from "react-markdown"
 import { Calendar } from "./Calendar/Calendar"
+import { DashboardEvents } from "./DashboardEvents/DashboardEvents"
 
-import { Slider } from "../Slider/Slider"
 import { isSameDate, showDate } from "../../helpers/date"
 
 const query = graphql`
@@ -61,62 +61,57 @@ export const Events = () => {
   const { allDatoCmsTermsCyclic, allDatoCmsTermsDate } = useStaticQuery(query)
 
   const cyclicEvents: Array<EventCyclicType> = allDatoCmsTermsCyclic.nodes
-  const singleEvents: Array<EventSingleType> = allDatoCmsTermsDate.nodes
+  const disposableEvents: Array<EventSingleType> = allDatoCmsTermsDate.nodes
 
   const [selectedDate, setSelectedDate] = useState(
     getNearestEvent(cyclicEvents.map(({ dayOfTheMonth }) => dayOfTheMonth))
   )
 
-  const events = useMemo(() => {
-    const listDates = singleEvents.map(singleEvent => ({
-      date: new Date(singleEvent.date),
-      description: singleEvent.description,
-    }))
-
-    cyclicEvents.forEach(({ dayOfTheMonth, description }) => {
-      const arrDates = getDatesFromNumber(dayOfTheMonth)
-      arrDates.forEach(date => {
-        const index = listDates.findIndex(item => isSameDate(item.date, date))
-        if (index !== -1) {
-          listDates[index].description += `\  
-          ${description}`
-          return
-        }
-        listDates.push({ date, description })
-      })
-    })
-    listDates.sort((a, b) => a.date.getTime() - b.date.getTime())
-    return listDates
-  }, [])
-
-  const activeIndex = () =>
-    events.findIndex(({ date }) => isSameDate(selectedDate, date))
-
-  const renderList = () => {
-    return events.map(({ description, date }) => (
-      <>
-        <h3 className="mb-2 font-bold">{showDate(date)}</h3>
-        <ReactMarkdown>{description}</ReactMarkdown>
-      </>
-    ))
+  const rendreCyclicEventContent = () => {
+    const day = selectedDate.getDate()
+    const selectedEvent = cyclicEvents.find(
+      eventCalendar => eventCalendar.dayOfTheMonth === day
+    )
+    return selectedEvent ? selectedEvent.description : null
+  }
+  const rendreEventContent = () => {
+    const selectedEvent = disposableEvents.find(eventCalendar =>
+      isSameDate(new Date(eventCalendar.date), selectedDate)
+    )
+    return selectedEvent ? selectedEvent.description : null
   }
 
+  const dayOfMonthCyclicEvents = useMemo(() => {
+    return cyclicEvents.map(({ dayOfTheMonth }) => dayOfTheMonth)
+  }, [cyclicEvents])
+  const dateEvents = useMemo(() => {
+    return disposableEvents.map(({ date }) => date)
+  }, [cyclicEvents])
+
   return (
-    <div className="md:flex md:justify-center md:items-center items-center bg-secondary py-10">
+    <div className="bg-secondary p-4 overflow-auto md:flex md:justify-center md:items-start">
       <div className="m-auto md:m-3 flex justify-center items-center max-w-sm md:w-1/2 ">
-        <Calendar
-          date={selectedDate}
-          eventDays={events.map(({ date }) => date)}
-          setDate={setSelectedDate}
-        />
+        <div className="overflow-auto ">
+          <Calendar
+            className="w-96 md:h-96"
+            date={selectedDate}
+            markedDaysOfMonth={dayOfMonthCyclicEvents}
+            markedDate={dateEvents}
+            setDate={setSelectedDate}
+          />
+        </div>
       </div>
-      <Slider
-        list={renderList()}
-        className="h-48 md:h-72 md:w-1/2"
-        activeIndex={activeIndex()}
-      />
+      <DashboardEvents className="m-auto md:w-7/8 md:w-1/2">
+        <h3 className="font-bold mb-3">{showDate(selectedDate)}</h3>
+        <div>
+          <ReactMarkdown>{rendreCyclicEventContent()}</ReactMarkdown>
+        </div>
+        <div>
+          <ReactMarkdown>{rendreEventContent()}</ReactMarkdown>
+        </div>
+      </DashboardEvents>
     </div>
   )
 }
-
+//h-full md:h-72 md:w-1/2
 export default Events
