@@ -52,13 +52,18 @@ export const TableOffer = ({ className }: TableOfferProps) => {
         ></span>
       </div>
       <p>
-        *cena uzależniona jest od ilości obsługiwanych dokumentów. W celu
-        uzyskania dodatkowych informacji{" "}
+        *Ceny usług ustalane są indywidualnie, w oparciu o ilość przetwarzanych
+        dokumentów oraz czas poświęcony na obsługę klienta. Podane kwoty dotyczą
+        obsługi 1-10 dokumentów i są stawkami wyjściowymi. Do ceny należy
+        doliczyć podatek VAT.{" "}
+      </p>
+      <p>
+        W celu uzyskania dodatkowych informacji{" "}
         <Link className="text-primary underline" to={routes.contact}>
           napisz do nas
         </Link>
-        .
       </p>
+      .
     </>
   )
 }
