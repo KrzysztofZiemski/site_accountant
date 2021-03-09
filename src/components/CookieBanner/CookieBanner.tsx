@@ -17,9 +17,14 @@ export const CookieBanner = () => {
   ])
 
   const setAgreeCookie = () => {
-    setCookieAgreeUse(cookiesName.googleAnalytics, true)
-    setCookieAgreeUse(cookiesName.googleTagManager, true)
-    setCookieAgreeUse(cookiesName.facebookPixel, true)
+    const farFutureDate = new Date(new Date().getFullYear() + 4, 1, 1)
+    const options = {
+      expires: farFutureDate,
+    }
+
+    setCookieAgreeUse(cookiesName.googleAnalytics, true, options)
+    setCookieAgreeUse(cookiesName.googleTagManager, true, options)
+    setCookieAgreeUse(cookiesName.facebookPixel, true, options)
   }
 
   const isAccepted = useMemo(() => {
