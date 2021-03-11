@@ -89,9 +89,9 @@ export const Events = () => {
   }, [cyclicEvents])
 
   return (
-    <div className="bg-secondary p-4 overflow-auto md:flex md:justify-center md:items-start">
+    <div className="bg-gray-200 p-4 overflow-auto md:flex md:justify-center md:items-start">
       <div className="m-auto md:m-3 flex justify-center items-center max-w-sm md:w-1/2 ">
-        <div className="overflow-auto ">
+        <div className="overflow-auto border-secondary">
           <Calendar
             className="w-96 md:h-96"
             date={selectedDate}
@@ -101,7 +101,7 @@ export const Events = () => {
           />
         </div>
       </div>
-      <DashboardEvents className="m-auto md:w-7/8 md:w-1/2">
+      <DashboardEvents className=" mx-auto p-3 md:w-7/8 md:w-1/2">
         <h3 className="font-bold mb-3">{showDate(selectedDate)}</h3>
         <div>
           <ReactMarkdown>{rendreCyclicEventContent()}</ReactMarkdown>

@@ -1,0 +1,26 @@
+.pointer {
+  padding-left: 20px;
+  width: 330px;
+  height: 40px;
+  position: relative;
+  background: #033f76;
+}
+
+.pointer:after,
+.pointer:before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 0;
+  height: 0;
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+}
+.pointer:after {
+  left: 0;
+  border-left: 20px solid #02a1e3;
+}
+.pointer:before {
+  right: -20px;
+  border-left: 20px solid #033f76;
+}

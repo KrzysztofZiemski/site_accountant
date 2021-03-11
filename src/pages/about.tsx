@@ -10,6 +10,7 @@ import { GoogleMap } from "../components/GoogleMap/GoogleMap"
 import { ClientsOpinions } from "../components/ClientsOpinions/ClientsOpinions"
 
 import "../styles/aboutPage.css"
+import { CertificatesList } from "../components/CertificatesList/CertificatesList"
 
 export const query = graphql`
   {
@@ -119,6 +120,7 @@ const AboutPage = ({
           </div>
         </div>
       </div>
+      <CertificatesList />
       <ClientsOpinions className="py-12" />
     </Layout>
   )
