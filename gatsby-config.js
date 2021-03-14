@@ -15,29 +15,29 @@ module.exports = {
       options: {
         googleAnalytics: {
           trackingId: process.env.GOOGLE_ANALYTICS_TRACKING_ID,
-          cookieName: 'gatsby-gdpr-google-analytics',
+          cookieName: "gatsby-gdpr-google-analytics",
           anonymize: true,
-          allowAdFeatures: false
+          allowAdFeatures: false,
         },
         googleTagManager: {
           trackingId: process.env.GOOGLE_TAG_MANAGER_TRACKING_ID,
-          cookieName: 'gatsby-gdpr-google-tagmanager',
-          dataLayerName: 'dataLayer',
+          cookieName: "gatsby-gdpr-google-tagmanager",
+          dataLayerName: "dataLayer",
         },
         facebookPixel: {
           pixelId: process.env.FACEBOOK_PIXEL_ID,
-          cookieName: 'gatsby-gdpr-facebook-pixel',
+          cookieName: "gatsby-gdpr-facebook-pixel",
         },
-        environments: ['production', 'development']
+        environments: ["production", "development"],
       },
     },
     {
-      resolve: 'gatsby-plugin-web-font-loader',
+      resolve: "gatsby-plugin-web-font-loader",
       options: {
         google: {
-          families: [`Montserrat`, `Roboto`, `Lato`,]
-        }
-      }
+          families: [`Montserrat`, `Roboto`, `Lato`],
+        },
+      },
     },
     {
       resolve: `gatsby-source-datocms`,
@@ -46,12 +46,12 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-plugin-react-svg',
+      resolve: "gatsby-plugin-react-svg",
       options: {
         rule: {
-          include: /assets/
-        }
-      }
+          include: /assets/,
+        },
+      },
     },
     {
       resolve: `gatsby-source-filesystem`,
@@ -67,7 +67,8 @@ module.exports = {
       options: {
         printRejected: true,
         tailwind: true,
-      }
+        ignore: ["calendar.css"],
+      },
     },
     {
       resolve: "gatsby-plugin-webpack-bundle-analyser-v2",

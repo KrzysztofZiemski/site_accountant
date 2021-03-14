@@ -12,3 +12,5 @@
     scroll-behavior: smooth;
   }
 }
+
+@import "./calendar.css";

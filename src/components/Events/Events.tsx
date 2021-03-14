@@ -94,7 +94,7 @@ export const Events = () => {
   }, [cyclicEvents])
 
   return (
-    <div className="bg-gray-200 p-4">
+    <div className="bg-gray-200 p-4 mb-5">
       <div className="overflow-auto md:flex md:justify-center md:items-start">
         <div className="m-auto md:m-3 flex justify-center items-center max-w-sm md:w-1/2 ">
           <div className="overflow-auto border-secondary">
