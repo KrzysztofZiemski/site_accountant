@@ -1,2 +1,2 @@
-
-import './src/styles/global.css';
+import "react-calendar/dist/Calendar.css"
+import "./src/styles/global.css"

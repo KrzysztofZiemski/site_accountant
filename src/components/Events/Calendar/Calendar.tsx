@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react"
 import ReactCalendar, { OnChangeDateCallback } from "react-calendar"
-import "./Calendar.css"
 import { isSameDate } from "../../../helpers/date"
 
 const markDays = (
