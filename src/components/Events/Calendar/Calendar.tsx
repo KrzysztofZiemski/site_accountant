@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 import ReactCalendar, { OnChangeDateCallback } from "react-calendar"
-import "react-calendar/dist/Calendar.css"
+import "./Calendar.css"
 import { isSameDate } from "../../../helpers/date"
 
 const markDays = (
@@ -16,8 +16,13 @@ const markDays = (
         ? true
         : false
 
-      // const isEvent = eventsDate.find(eventDate => isSameDate(eventDate, date))
-      const isEvent = false
+      const isEvent =
+        eventsDate.findIndex(eventDate =>
+          isSameDate(new Date(eventDate), date)
+        ) > -1
+          ? true
+          : false
+
       return isEvent || isMarkedDay ? "ring-1 m-1" : ""
     } else {
       return null
@@ -52,7 +57,6 @@ export const Calendar = ({
       onChange={handleChangeDate}
       value={date}
       tileClassName={markDays(markedDaysOfMonth, markedDate)}
-      onDrillUp={() => console.log("click")}
     />
   )
 }

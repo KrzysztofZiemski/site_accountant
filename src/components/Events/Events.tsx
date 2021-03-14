@@ -82,7 +82,7 @@ export const Events = () => {
       isSameDate(new Date(eventCalendar.date), selectedDate)
     )
     return selectedEvent ? (
-      <ReactMarkdown>selectedEvent.description</ReactMarkdown>
+      <ReactMarkdown>{selectedEvent.description}</ReactMarkdown>
     ) : null
   }
 
