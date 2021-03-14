@@ -50,7 +50,7 @@ export const HowCanIHelp = () => {
 
   return (
     <div
-      className="bg-primary mx-auto w-full transition relative overflow-hidden h-72 sm:h-96"
+      className="bg-primary mx-auto w-full overflow-hidden transition relative h-80 sm:h-96"
       style={{ maxWidth: "720px" }}
     >
       <IsShowWrapper show={showOption()}>

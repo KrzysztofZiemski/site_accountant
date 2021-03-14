@@ -43,7 +43,7 @@ export const LatestArticles = () => {
   }, [nodes])
 
   return (
-    <div className="p-2 bg-gray-100">
+    <div className="p-2 pb-8 bg-gray-100">
       <SubTitle className="text-secondary text-center mt-4">
         Ostatnie Artykuły
       </SubTitle>

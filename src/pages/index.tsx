@@ -28,11 +28,11 @@ const IndexPage = ({ data: datoCmsMetaDataPage }) => {
       <SEO title={title || "Home"} description={description || ""} />
       <Header siteTitle={title} />
       <OfferServices />
-      <ClientsOpinions />
+
       <HowCanIHelp />
-      <Events />
+      <ClientsOpinions />
       <LatestArticles />
-        
+      <Events />
     </Layout>
   )
 }
