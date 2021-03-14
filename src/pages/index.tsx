@@ -32,6 +32,7 @@ const IndexPage = ({ data: datoCmsMetaDataPage }) => {
       <HowCanIHelp />
       <Events />
       <LatestArticles />
+        
     </Layout>
   )
 }

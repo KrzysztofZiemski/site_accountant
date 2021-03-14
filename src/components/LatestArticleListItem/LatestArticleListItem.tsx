@@ -24,7 +24,7 @@ export const LatestArticleListItem = ({
 }: LatestArticleListItemProps) => {
   return (
     <div
-      className={`bg-white p-4 overflow-y-auto text-secondary h-60 m-2 mt-4 rounded-lg md:h-80 ring-2 flex flex-col`}
+      className={`bg-white p-4 overflow-y-auto text-secondary h-60 m-2 mt-4 rounded-lg md:h-80 ring-2 flex flex-col outline-none`}
       {...props}
     >
       {image ? (

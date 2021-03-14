@@ -72,13 +72,18 @@ export const Events = () => {
     const selectedEvent = cyclicEvents.find(
       eventCalendar => eventCalendar.dayOfTheMonth === day
     )
-    return selectedEvent ? selectedEvent.description : null
+    return selectedEvent ? (
+      <ReactMarkdown>{selectedEvent.description}</ReactMarkdown>
+    ) : null
   }
+
   const rendreEventContent = () => {
     const selectedEvent = disposableEvents.find(eventCalendar =>
       isSameDate(new Date(eventCalendar.date), selectedDate)
     )
-    return selectedEvent ? selectedEvent.description : null
+    return selectedEvent ? (
+      <ReactMarkdown>selectedEvent.description</ReactMarkdown>
+    ) : null
   }
 
   const dayOfMonthCyclicEvents = useMemo(() => {
@@ -89,29 +94,27 @@ export const Events = () => {
   }, [cyclicEvents])
 
   return (
-    <div className="bg-gray-200 p-4 overflow-auto md:flex md:justify-center md:items-start">
-      <div className="m-auto md:m-3 flex justify-center items-center max-w-sm md:w-1/2 ">
-        <div className="overflow-auto border-secondary">
-          <Calendar
-            className="w-96 md:h-96"
-            date={selectedDate}
-            markedDaysOfMonth={dayOfMonthCyclicEvents}
-            markedDate={dateEvents}
-            setDate={setSelectedDate}
-          />
+    <div className="bg-gray-200 p-4">
+      <div className="overflow-auto md:flex md:justify-center md:items-start">
+        <div className="m-auto md:m-3 flex justify-center items-center max-w-sm md:w-1/2 ">
+          <div className="overflow-auto border-secondary">
+            <Calendar
+              className="w-96 md:h-96"
+              date={selectedDate}
+              markedDaysOfMonth={dayOfMonthCyclicEvents}
+              markedDate={dateEvents}
+              setDate={setSelectedDate}
+            />
+          </div>
         </div>
+        <DashboardEvents className=" mx-auto p-3 md:w-7/8 md:w-1/2">
+          <h3 className="font-bold mb-3">{showDate(selectedDate)}</h3>
+          <div>{rendreCyclicEventContent()}</div>
+          <div>{rendreEventContent()}</div>
+        </DashboardEvents>
       </div>
-      <DashboardEvents className=" mx-auto p-3 md:w-7/8 md:w-1/2">
-        <h3 className="font-bold mb-3">{showDate(selectedDate)}</h3>
-        <div>
-          <ReactMarkdown>{rendreCyclicEventContent()}</ReactMarkdown>
-        </div>
-        <div>
-          <ReactMarkdown>{rendreEventContent()}</ReactMarkdown>
-        </div>
-      </DashboardEvents>
     </div>
   )
 }
-//h-full md:h-72 md:w-1/2
+
 export default Events

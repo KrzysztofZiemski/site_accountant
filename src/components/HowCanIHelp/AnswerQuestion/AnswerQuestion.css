@@ -1,0 +1,63 @@
+:root {
+  --height-primary: 40px;
+  --height-desc: 60px;
+}
+
+.pointer {
+  padding-left: calc(
+    (var(--height-primary) / 2) + ((var(--height-primary) / 2.5))
+  );
+  height: var(--height-primary);
+  position: relative;
+  background: #1e3c72; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #1e3c72,
+    #2a5298
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #1e3c72, #2a5298);
+  transform: translateX(calc(var(--height-primary) / -2.5));
+}
+
+.pointer:after,
+.pointer:before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 0;
+  height: 0;
+  border-top: calc(var(--height-primary) / 2) solid transparent;
+  border-bottom: calc(var(--height-primary) / 2) solid transparent;
+}
+.pointer:after {
+  left: 0;
+  border-left: calc(var(--height-primary) / 2) solid #02a1e3;
+}
+.pointer:before {
+  right: calc(var(--height-primary) / -2);
+  border-left: calc(var(--height-primary) / 2) solid #2a5298;
+}
+
+@media (min-width: 641px) {
+  .pointer {
+    height: var(--height-desc);
+    transform: translateX(calc(var(--height-desc) / -2.5));
+    padding-left: calc((var(--height-primary) / 2) + ((var(--height-primary))));
+    padding-right: calc(
+      (var(--height-primary) / 2) + ((var(--height-primary) / 2.5))
+    );
+  }
+
+  .pointer:after,
+  .pointer:before {
+    border-top: calc(var(--height-desc) / 2) solid transparent;
+    border-bottom: calc(var(--height-desc) / 2) solid transparent;
+  }
+  .pointer:after {
+    border-left: calc(var(--height-desc) / 2) solid #02a1e3;
+  }
+  .pointer:before {
+    right: calc(var(--height-desc) / -2);
+    border-left: calc(var(--height-desc) / 2) solid #2a5298;
+  }
+}

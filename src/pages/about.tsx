@@ -7,7 +7,8 @@ import { SiteTitle } from "../components/SiteTitle/SiteTitle"
 import Layout from "../layouts/layout"
 import SEO from "../components/seo"
 import { GoogleMap } from "../components/GoogleMap/GoogleMap"
-import { ClientsOpinions } from "../components/ClientsOpinions/ClientsOpinions"
+import 
+{ ClientsOpinions } from "../components/ClientsOpinions/ClientsOpinions"
 
 import "../styles/aboutPage.css"
 import { CertificatesList } from "../components/CertificatesList/CertificatesList"
@@ -103,7 +104,7 @@ const AboutPage = ({
           className="uppercase bg-primary p-3 pt-10 text-7xl font-bold"
           style={{ lineHeight: "1.2", fontFamily: "Montserrat" }}
         >
-          <p>kilka słów</p>
+        <p>kilka słów</p>
           <h1 className="bg-white mt-2">o nas</h1>
         </div>
         <div className=" bg-white">
@@ -120,7 +121,9 @@ const AboutPage = ({
           </div>
         </div>
       </div>
+  
       <CertificatesList />
+   
       <ClientsOpinions className="py-12" />
     </Layout>
   )

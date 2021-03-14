@@ -1,30 +1,67 @@
-import React, { useState } from "react"
+import React, { useState, useCallback } from "react"
 import { Animate } from "../Animate/Animate"
-
-import "./HowCanIHelp.css"
-
-enum steps {
+import { IsShowWrapper, showEnum } from "./IsShowWrapper"
+import { Button } from "../Button/Button"
+import { ButtonBack } from "../Button/ButtonBack"
+import AnswerQuestion from "./AnswerQuestion/AnswerQuestion"
+import { WantOpenCompany } from "./WantOpenCompany/WantOpenCompany"
+import { WantChangeAccountant } from "./WantChangeAccountant/WantChangeAccountant"
+export enum steps {
   askQuestion,
   wantOpenCompany,
   wantChangeAccountant,
 }
 
-const HowCanIHelp = () => {
+export const HowCanIHelp = () => {
   const [step, setStep] = useState(steps.askQuestion)
-  return (
-    <div className="bg-primary p-6">
-      <p className="text-white text-2xl text-center mb-5">
-        Sprawdź jak możemy Ci pomóc
-      </p>
-      <div className="flex flex-col justify-around items-center h-44 text-xl font-bold whitespace-nowrap overflow-hidden md:h-56">
-        <button className="border-none pointer transition text-yellow-400 focus:outline-none hover:text-yellow-100">
-          <strong>Chcesz założyć działalność?</strong>
-        </button>
 
-        <button className="border-none pointer transition yellow-200 text-yellow-400 focus:outline-none hover:text-yellow-100">
-          <strong> Chcesz przenieść księgowość?</strong>
-        </button>
-      </div>
+  const isShowWantChangeAccountant = () => {
+    if (step === steps.askQuestion) {
+      return showEnum.next
+    } else if (step === steps.wantChangeAccountant) {
+      return showEnum.show
+    } else {
+      return showEnum.prev
+    }
+  }
+  const changeStep = useCallback((value: steps) => {
+    setStep(value)
+  }, [])
+
+  const isShowWantOpenCompany = () => {
+    if (step === steps.askQuestion) {
+      return showEnum.next
+    } else if (step === steps.wantOpenCompany) {
+      return showEnum.show
+    } else {
+      return showEnum.prev
+    }
+  }
+  const showOption = () => {
+    if (step === steps.askQuestion) {
+      return showEnum.show
+    } else if (
+      step === steps.wantChangeAccountant ||
+      step === steps.wantOpenCompany
+    ) {
+      return showEnum.prev
+    }
+  }
+
+  return (
+    <div
+      className="bg-primary mx-auto w-full transition relative overflow-hidden h-72 sm:h-96"
+      style={{ maxWidth: "720px" }}
+    >
+      <IsShowWrapper show={showOption()}>
+        <AnswerQuestion setStep={changeStep} />
+      </IsShowWrapper>
+      <IsShowWrapper show={isShowWantOpenCompany()}>
+        <WantOpenCompany setStep={changeStep} />
+      </IsShowWrapper>
+      <IsShowWrapper show={isShowWantChangeAccountant()}>
+        <WantChangeAccountant setStep={changeStep} />
+      </IsShowWrapper>
     </div>
   )
 }
