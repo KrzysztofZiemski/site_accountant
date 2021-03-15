@@ -38,7 +38,7 @@ export const Footer = () => {
               <p>ul. Łukasińskiego 12-14/4</p>
               <p> 50-436 Wrocław</p>
               <p className="mt-3">604065485</p>
-              <p>magifi@gmail.com</p>
+              <p>kontakt.magfi@gmail.com</p>
               <div className="flex md:block mb-2 mt-5">
                 <p className="mr-1"> NIP 9151737051</p>
                 <p> Regon 380206135</p>

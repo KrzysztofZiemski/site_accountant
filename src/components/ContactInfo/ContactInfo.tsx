@@ -14,10 +14,10 @@ export const ContactInfo = () => {
       </h2>
       <div>
         <p>
-          Telefon: <span className="text-primary">604065485</span>
+          Telefon: <span className="text-primary">729976922</span>
         </p>
         <p>
-          E-mail: <span className="text-primary">magifi@gmail.com</span>
+          E-mail: <span className="text-primary">kontakt.magfi@gmail.com</span>
         </p>
         <p>
           Facebook:{" "}
