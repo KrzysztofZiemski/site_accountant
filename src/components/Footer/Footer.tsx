@@ -22,8 +22,8 @@ export const Footer = () => {
   const { file } = useStaticQuery(query)
 
   return (
-    <footer className="bg-secondary flex flex-col md:flex-row text-white md:justify-between md:flex-wrap">
-      <address className="p-2 pt-2 sm:w-2/5 md:flex-grow md:text-base md:flex md:justify-around items-center md:order-2 lg:order-2">
+    <footer className="bg-secondary flex flex-col z-10 md:flex-row text-white md:justify-between md:flex-wrap">
+      <address className="p-2 pt-2 not-italic	 sm:w-2/5 md:flex-grow md:text-base md:flex md:justify-around items-center md:order-2 lg:order-2">
         <div className="mb-4">
           <p className="leading-9">GODZINY OTWARCIA</p>
           <p className="leading-9">PN - PT: 8 - 19</p>
@@ -50,9 +50,6 @@ export const Footer = () => {
           </div>
         </div>
       </address>
-      {/* <div className="text-center w-full p-2 sm:text-left sm:ml-8 md:order-3 md:text-center">
-        <Link to={routes.policy}>Polityka prywatności</Link>
-      </div> */}
       <div className="w-full md:order-1 md:w-2/5">
         <Image
           className="footer-image h-full w-full"

@@ -38,8 +38,8 @@ export const OfferPromotion = (props: OfferPromotionProps) => {
       <div className="flex items-center mb-3">
         <CheckItemIcon className="w-9 h-9 mr-6 flex-shrink-0" />
         <p>
-          Zwolnienie opłaty przez pierwsze 2 miesiące współpracy, podpisując
-          umowę na 12 misięcy.
+          Zwolnienie z opłaty przez pierwsze 2 miesiące współpracy, przy umowie
+          na 12 misięcy.
         </p>
       </div>
       <div className="flex items-center mb-3">
@@ -47,7 +47,7 @@ export const OfferPromotion = (props: OfferPromotionProps) => {
         <p>Usługi księgowe na najwyższym poziomie.</p>
       </div>
       <p className="mt-7">
-        Sprawdź nasz{" "}
+        Sprawdź nas{" "}
         <a
           href={promotionRules}
           onClick={downloadPromotionRules}
@@ -57,7 +57,7 @@ export const OfferPromotion = (props: OfferPromotionProps) => {
         </a>{" "}
         i{" "}
         <Link to={routes.contact} className="text-primary">
-          sknataktuj się z nami
+          skontaktuj się z nami
         </Link>
         .
       </p>

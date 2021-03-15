@@ -26,7 +26,7 @@ export const TableOffer = ({ className }: TableOfferProps) => {
   const serviceItemArray: ServiceItem[] = allDatoCmsServiceAndPrice.nodes
 
   const servicetableItems = useMemo(() => {
-    return serviceItemArray.map(({ nameService, price }) => (
+    return serviceItemArray.reverse().map(({ nameService, price }) => (
       <div
         key={nameService}
         className={`flex items-center w-full my-5 md:my-8 md:text-xl ${className}`}

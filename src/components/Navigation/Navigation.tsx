@@ -40,7 +40,7 @@ export const Navigation = () => {
 
         <NavMenuItem to={routes.articles}>AKTUALNOŚCI</NavMenuItem>
 
-        <NavMenuItem to={routes.charity}>DZIAŁALNOŚĆ CHARYTATYWNA</NavMenuItem>
+        <NavMenuItem to={routes.charity}>PRZEKAŻ 1% PODATKU</NavMenuItem>
 
         <NavMenuItem to={routes.contact}>KONTAKT</NavMenuItem>
       </ul>

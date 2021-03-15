@@ -36,9 +36,9 @@ const policy = () => {
         <h1 className="text-center">Polityka Cookies</h1>
         <p>
           Poniższa Polityka Cookies określa zasady zapisywania i uzyskiwania
-          dostępu do danych na Urządzeniach Użytkowników korzystających z
-          Serwisu do celów świadczenia usług drogą elektroniczną przez
-          Administratora Serwisu.
+          dostępu do danych na urządzeniach użytkowników korzystających z
+          serwisu do celów świadczenia usług drogą elektroniczną przez
+          administratora serwisu.
         </p>
 
         <h2 className="text-center">§ 1 Definicje</h2>
@@ -54,8 +54,8 @@ const policy = () => {
           </li>
           <li className="my-2">
             <p>
-              <strong>Serwis zewnętrzny</strong> - serwis internetowe partnerów,
-              usługodawców lub usługobiorców Administratora
+              <strong>Serwis zewnętrzny</strong> - serwisy internetowe
+              partnerów, usługodawców lub usługobiorców administratora
             </p>
           </li>
           <li className="my-2">
@@ -73,27 +73,27 @@ const policy = () => {
               </span>
               , świadcząca usługi drogą elektroniczną za pośrednictwem Serwisu
               oraz przechowująca i uzyskująca dostęp do informacji w
-              urządzeniach Użytkownika
+              urządzeniach użytkownika
             </p>
           </li>
           <li className="my-2">
             <p>
               <strong>Użytkownik</strong> - osba fizyczna, dla której
-              Administrator świadczy usługi drogą elektroniczna za pośrednictwem
-              Serwisu.
+              administrator świadczy usługi drogą elektroniczna za pośrednictwem
+              serwisu.
             </p>
           </li>
           <li className="my-2">
             <p>
               <strong>Urządzenie</strong> - elektroniczne urządzenie wraz z
-              oprogramowaniem, za pośrednictwem, którego Użytkownik uzyskuje
-              dostęp do Serwisu
+              oprogramowaniem, za pośrednictwem którego użytkownik uzyskuje
+              dostęp do serwisu
             </p>
           </li>
           <li className="my-2">
             <p>
               <strong>Cookies (ciasteczka)</strong> - dane tekstowe gromadzone w
-              formie plików zamieszczanych na Urządzeniu Użytkownika
+              formie plików zamieszczanych na urządzeniu użytkownika
             </p>
           </li>
         </ul>
@@ -102,35 +102,35 @@ const policy = () => {
           <li className="my-2">
             <p>
               <strong>Cookies wewnętrzne</strong> - pliki zamieszczane i
-              odczytywane z Urządzenia Użytkownika przes system
-              teleinformatyczny Serwisu
+              odczytywane z urządzenia użytkownika przes system
+              teleinformatyczny serwisu
             </p>
           </li>
           <li className="my-2">
             <p>
               <strong>Cookies zewnętrzne</strong> - pliki zamieszczane i
-              odczytywane z Urządzenia Użytkownika przez systemy
-              teleinformatyczne Serwisów zewnętrznych
+              odczytywane z urządzenia użytkownika przez systemy
+              teleinformatyczne serwisów zewnętrznych
             </p>
           </li>
           <li className="my-2">
             <p>
               <strong>Cookies sesyjne</strong> - pliki zamieszczane i
-              odczytywane z Urządzenia Użytkownika przez Serwis{" "}
-              <span id="sz1">lub Serwisy zewnętrzne</span> podczas jednej sesji
-              danego Urządzenia. Po zakończeniu sesji pliki są usuwane z
-              Urządzenia Użytkownika.
+              odczytywane z urządzenia użytkownika przez serwis{" "}
+              <span id="sz1">lub serwisy zewnętrzne</span> podczas jednej sesji
+              danego urządzenia. Po zakończeniu sesji pliki są usuwane z
+              urządzenia użytkownika.
             </p>
           </li>
           <li className="my-2">
             <p>
               <strong>Cookies trwałe</strong> - pliki zamieszczane i odczytywane
-              z Urządzenia Użytkownika przez Serwis{" "}
-              <span id="sz2">lub Serwisy zewnętrzne</span> do momentu ich
+              z urządzenia użytkownika przez serwis{" "}
+              <span id="sz2">lub serwisy zewnętrzne</span> do momentu ich
               ręcznego usunięcia. Pliki nie są usuwane automatycznie po
-              zakończeniu sesji Urządzenia chyba że konfiguracja Urządzenia
-              Użytkownika jest ustawiona na tryb usuwanie plików Cookie po
-              zakończeniu sesji Urządzenia.
+              zakończeniu sesji urządzenia, chyba że konfiguracja urządzenia
+              użytkownika jest ustawiona na tryb usuwanie plików cookie po
+              zakończeniu sesji urządzenia.
             </p>
           </li>
         </ul>
@@ -140,10 +140,10 @@ const policy = () => {
           <li className="my-2">
             <p>
               <strong>Mechanizmy składowania i odczytu</strong> - Mechanizmy
-              składowania i odczytu Cookies nie pozwalają na pobierania
+              składowania i odczytu cookies nie pozwalają na pobieranie
               jakichkolwiek danych osobowych ani żadnych informacji poufnych z
-              Urządzenia Użytkownika. Przeniesienie na Urządzenie Użytkownika
-              wirusów, koni trojańskich oraz innych robaków jest praktynie
+              urządzenia użytkownika. Przeniesienie na urządzenie użytkownika
+              wirusów, koni trojańskich oraz innych robaków jest praktycznie
               niemożliwe.
             </p>
           </li>
@@ -186,11 +186,12 @@ const policy = () => {
               <strong>
                 <span className="text-primary">Dane statystyczne</span>
               </strong>{" "}
-              - Administrator <span id="sz4">oraz Serwisy zewnętrzne</span>{" "}
-              wykorzystuje pliki Cookie do zbirania i przetwarzania danych
-              statystycznych takich jak np. statystyki odwiedzin, statystyki
-              Urządzeń Użytkowników czy statystyki zachowań użytkowników. Dane
-              te zbierane są w celu analizy i ulepszania Serwisu.
+              - Administrator <span id="sz4">oraz serwisy zewnętrzne</span>{" "}
+              wykorzystują pliki cookie do zbierania i przetwarzania danych
+              statystycznych takich jak na przykład statystyki odwiedzin,
+              statystyki urządzeniach użytkowników czy statystyki zachowań
+              użytkowników. Dane te zbierane są w celu analizy i ulepszania
+              serwisu.
             </p>
           </li>
           <li className="my-2">
@@ -201,7 +202,7 @@ const policy = () => {
                 </span>
               </strong>{" "}
               - Administrator <span id="sz5">oraz Serwisy zewnętrzne</span>{" "}
-              wykorzystuje pliki Cookie do serwowania Użytkownikom usług
+              wykorzystują pliki Cookie do serwowania Użytkownikom usług
               multimedialnych.
             </p>
           </li>
@@ -219,7 +220,7 @@ const policy = () => {
         <p id="zewinfo">
           <span className="text-primary">
             Administrator współpracuje z następującymi serwisami zewnętrznymi,
-            które mogą zamieszczać pliki Cookie na Urządzeniach Użytkownika:
+            które mogą zamieszczać pliki Cookie na urządzeniach użytkownika:
           </span>
         </p>
         <ul id="zewnetrzne">
@@ -240,20 +241,20 @@ const policy = () => {
         </ul>
         <h2 className="text-center">
           § 6 Możliwości określania warunków przechowywania i uzyskiwania
-          dostępu na Urządzeniach Użytkownika przez Serwis
-          <span id="sz6"> i Serwisy zewnętrzne</span>
+          dostępu na Urządzeniach użytkownika przez serwis
+          <span id="sz6"> i serwisy zewnętrzne</span>
         </h2>
         <ul>
           <li className="my-2">
             <p>
-              Użytkownik może w dowolnym momencie, samodzielnie zmienić
+              Użytkownik może w dowolnym momencie samodzielnie zmienić
               ustawienia dotyczące zapisywania, usuwania oraz dostępu do danych
-              zapisanych plików Cookies
+              zapisanych plików cookies.
             </p>
           </li>
           <li className="my-2">
             <p>
-              Informacje o sposobie wyłączenia plików Cookie w
+              Informacje o sposobie wyłączenia plików cookie w
               najpopularniejszych przeglądarkach komputerowych i urządzeń
               mobilnych dostępna są na stronie:{" "}
               <a href="http://jakwylaczyccookie.pl" className="text-primary">
@@ -265,8 +266,8 @@ const policy = () => {
           <li className="my-2">
             <p>
               Użytkownik może w dowolnym momencie usunąć wszelkie zapisane do
-              tej pory pliki Cookie korzystając z narzędzi Urządzenia
-              Użytkownika za pośrednictwem którego Użytkowanik korzysta z usług
+              tej pory pliki Cookie korzystając z narzędzi urządzenia
+              użytkownika, za pośrednictwem którego Użytkowanik korzysta z usług
               Serwisu.
             </p>
           </li>
@@ -278,8 +279,8 @@ const policy = () => {
             Administrator stosuje wszelkie możliwe środki w celu zapewnienia
             bezpieczeństwa danych umieszczanych w plikach Cookie. Należy jednak
             zwrócić uwagę, że zapewnienie bezpieczeństwa tych danych zależy od
-            obu stron, w tym działalności Użytkownika oraz satnu zabezpieczeń
-            urządzenia z którego korzysta.
+            obu stron, w tym działalności Użytkownika oraz stanu zabezpieczeń
+            urządzenia, z którego korzysta.
           </li>
           <li className="my-2">
             Administrator nie bierze odpowiedzialności za przechwycenie danych

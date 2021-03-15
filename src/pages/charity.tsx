@@ -3,6 +3,7 @@ import { graphql, Link } from "gatsby"
 import Image from "gatsby-image"
 import Layout from "../layouts/layout"
 import SEO from "../components/seo"
+//@ts-ignore
 
 export const query = graphql`
   {
@@ -25,6 +26,13 @@ export const query = graphql`
         }
       }
     }
+    percentLetter: file(name: { regex: "/percentLetter/" }) {
+      childImageSharp {
+        fluid {
+          ...GatsbyImageSharpFluid_tracedSVG
+        }
+      }
+    }
   }
 `
 const charity = ({ data }) => {
@@ -40,10 +48,10 @@ const charity = ({ data }) => {
         description={description || ""}
       />
 
-      <div className="">
-        <div className="p-2 md:p-6 pt-6 bg-primary text-white">
+      <div className="flex flex-col p-6 sm:p-9 md:flex-row md:justify-around">
+        <div className="mb-5 sm:mb-9 md:mb-0 md:w-1/2">
           <div className="flex text-center items-center">
-            <div className="h-28 w-28 p-3">
+            <div className="h-28 w-28 p-3 flex-shrink-0">
               <Image
                 className="h-full w-full"
                 fluid={data.charityLogo.childImageSharp.fluid}
@@ -113,8 +121,8 @@ const charity = ({ data }) => {
             <Link to="http://pkuwroc.pl/" className="text-primary">
               pkuwroc.pl
             </Link>{" "}
-            <h2 className="text-lg my-2">1% podatku są przeznaczane na:</h2>
           </p>
+          <h2 className="text-lg my-2">1% podatku są przeznaczane na:</h2>
           <ul>
             <li className="p-1 m-l-3 mb-2">
               <span className="font-bold mr-2">1.</span> konferencje, które mają
@@ -158,96 +166,11 @@ const charity = ({ data }) => {
             </li>
           </ul>
         </div>
-        <div className="flex text-center p-2  items-center md:p-6 md:w-1/3 my-3 md:my-9">
-          <div className="h-28 w-28 p-3 flex-shrink-0 sm:h-32 sm:w-32 sm:p-6 md:h-40 md:w-40">
-            <Image
-              className="h-full w-full"
-              fluid={data.charityLogo.childImageSharp.fluid}
-            />
-          </div>
-          <div>
-            <h1 className="font-bold">
-              Dolnośląskie Koło Przyjaciół Dzieci z Fenyloketonurią{" "}
-              <span className="block">KRS 0000062454</span>
-            </h1>
-            <p>
-              <Link to="http://pkuwroc.pl/" className="text-primary">
-                pkuwroc.pl
-              </Link>{" "}
-            </p>
-          </div>
-        </div>
-        <div>
-          <p>
-            Dolnośląskie Koło Przyjaciół Dzieci z Fenyloketonurią istnieje już
-            ponad 30 lat.
-          </p>
-          <p>
-            Członkami koła są osoby chore na Fenyloketonurię(PKU) oraz ich
-            opiekunowie.
-          </p>
-          <p>
-            Od 2009 roku nieprzerwanie mamy status Organizacji Pożytku
-            publicznego. Jesteśmy organizacją non profit nie prowadzimy
-            działalności gospodarczej.
-          </p>
-          <div>
-            <p>Głównym zadaniem naszego stowarzyszenia jest:</p>
-            <ul>
-              <li className="my-2">
-                <span className="font-bold mr-1"> 1.</span> Organizowanie
-                szkoleń na temat Fenyloketonurii (PKU) ora\z warszatatów
-                kulinarno-dietetycznych zarówno dla rodziców (opiekunów) i dla
-                osób z PKU.
-              </li>
-              <li className="my-2">
-                <span className="font-bold mr-1"> 2.</span> Reprezentowanie
-                interesów dzieci, młodzieży i osób dorosłych chorych na
-                Fenyloketonurię.
-              </li>
-              <li className="my-2">
-                <span className="font-bold mr-1"> 2.</span> Umożliwienie
-                wszystkim chorym na Fenyloketonurię optymalnego dostępu do
-                preparatów medycznych oraz żywności niskobiałkowej.
-              </li>
-            </ul>
-          </div>
-          <div className="flex flex-col sm:flex-row">
-            <div className="w-full p-4 my-5 flex-shrink-0 sm:order-2 sm:w-1/2">
-              <Image
-                className="w-full"
-                fluid={data.percentOfTax.childImageSharp.fluid}
-              />
-            </div>
-            <div className="sm:py-10 sm:order-1  text-justify">
-              <p>
-                Współpracujemy ściśle z Poradnią Chorób Metabolicznych we
-                Wrocławiu, ponieważ wsparcie merytoryczne jest dla nas
-                najważniejsze.
-              </p>
-              <p>
-                Propagujemy stosowanie Wymiennikó Fenyloalaninowych w diecie
-                osób chorych na Fenyloketonurię. Własnoręcznie tworzymy klocki
-                PKU, które są ułatwieniem w planowaniu i przelicznaiu posiłków.
-                Wspomagamy możliwość równego dostępu do wiedzy.
-              </p>
-              <p>
-                Jako Stowarzyszenie 1% wykorzystujemy na organizację warsztatów
-                "Mamusie PKU", konferencje dla osób z PKU i ich rodzin z Dolnego
-                Śląska oraz Opolszczyzny. Jesteśmy współorganizatorami Spotkań
-                PKU Wrocław oraz Warsztatów kulinarnych, psychologicznych
-                organizowanych dla osób z PKU oraz zakup żywności
-                niskobiałkowej.
-              </p>
-              <p>
-                W tym roku razem z lek. med. Renatą Mozrzymas oraz Wydziałem
-                Dietetyki Uniwersytetu Medycznego tworzymy "album kanapek PKU",
-                które mają być wskazówką i urozmaiceniem diety
-                niskofenyloalaninowej.
-              </p>
-              <p>Bardzo liczymy na Państwa wsparcie.</p>
-            </div>
-          </div>
+        <div className="w-full flex-shrink-0 md:ml-6 md:w-96 lg:w-5/12 ">
+          <Image
+            className="mb-3 border h-auto w-auto "
+            fluid={data.percentLetter.childImageSharp.fluid}
+          />
         </div>
       </div>
     </Layout>
@@ -255,3 +178,4 @@ const charity = ({ data }) => {
 }
 
 export default charity
+//md:fixed md:right-2 lg:right-32 z-0
