@@ -6,6 +6,7 @@ import { ButtonBack } from "../Button/ButtonBack"
 import AnswerQuestion from "./AnswerQuestion/AnswerQuestion"
 import { WantOpenCompany } from "./WantOpenCompany/WantOpenCompany"
 import { WantChangeAccountant } from "./WantChangeAccountant/WantChangeAccountant"
+import { isMobileOnly } from "react-device-detect"
 export enum steps {
   askQuestion,
   wantOpenCompany,
@@ -47,11 +48,17 @@ export const HowCanIHelp = () => {
       return showEnum.prev
     }
   }
+  const style = isMobileOnly
+    ? {}
+    : {
+        maxWidth: "720px",
+        height: "29rem",
+      }
 
   return (
     <div
-      className="bg-primary mx-auto my-5 w-full overflow-hidden transition relative h-80 sm:h-96 sm:my-8 md:my-12"
-      style={{ maxWidth: "720px" }}
+      className="bg-primary mx-auto my-5 w-full overflow-hidden transition relative h-80 sm:h-96 sm:my-8 md:my-12 transition"
+      style={style}
     >
       <IsShowWrapper show={showOption()}>
         <AnswerQuestion setStep={changeStep} />

@@ -54,7 +54,7 @@ const getNearestEvent = (daysEvent: Array<number>): Date => {
       break
     }
   }
-  return output
+  return output || new Date(todayYear, todayMonth, daysEvent[0])
 }
 
 export const Events = () => {
@@ -93,27 +93,32 @@ export const Events = () => {
     return disposableEvents.map(({ date }) => date)
   }, [cyclicEvents])
 
+  const show = cyclicEvents.length > 0 || disposableEvents.length > 0
   return (
-    <div className="bg-gray-200 p-4 mb-5">
-      <div className="overflow-auto md:flex md:justify-center md:items-start">
-        <div className="m-auto md:m-3 flex justify-center items-center max-w-sm md:w-1/2 ">
-          <div className="overflow-auto border-secondary">
-            <Calendar
-              className="w-96 md:h-96"
-              date={selectedDate}
-              markedDaysOfMonth={dayOfMonthCyclicEvents}
-              markedDate={dateEvents}
-              setDate={setSelectedDate}
-            />
+    <>
+      {show && (
+        <div className="bg-gray-200 p-4 mb-5">
+          <div className="overflow-auto md:flex md:justify-center md:items-start">
+            <div className="m-auto md:m-3 flex justify-center items-center max-w-sm md:w-1/2 ">
+              <div className="overflow-auto border-secondary">
+                <Calendar
+                  className="w-96 md:h-96"
+                  date={selectedDate}
+                  markedDaysOfMonth={dayOfMonthCyclicEvents}
+                  markedDate={dateEvents}
+                  setDate={setSelectedDate}
+                />
+              </div>
+            </div>
+            <DashboardEvents className=" mx-auto p-3 md:w-7/8 md:w-1/2">
+              <h3 className="font-bold mb-3">{showDate(selectedDate)}</h3>
+              <div>{rendreCyclicEventContent()}</div>
+              <div>{rendreEventContent()}</div>
+            </DashboardEvents>
           </div>
         </div>
-        <DashboardEvents className=" mx-auto p-3 md:w-7/8 md:w-1/2">
-          <h3 className="font-bold mb-3">{showDate(selectedDate)}</h3>
-          <div>{rendreCyclicEventContent()}</div>
-          <div>{rendreEventContent()}</div>
-        </DashboardEvents>
-      </div>
-    </div>
+      )}
+    </>
   )
 }
 

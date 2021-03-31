@@ -8,6 +8,7 @@ import { ArticleListItem } from "../components/ArticleListItem/ArticleListItem"
 import { FilterBar } from "../components/FilterBar/FilterBar"
 import { GatsbyImageFluidProps } from "gatsby-image"
 import { SiteTitle } from "../components/SiteTitle/SiteTitle"
+import { list } from "postcss"
 
 export const query = graphql`
   {
@@ -86,13 +87,23 @@ const ArticlesPage = ({
       <SEO title={title || "Articles"} description={description || "opis"} />
       <div className="mb-10 ">
         <SiteTitle>Aktualności</SiteTitle>
-        <div className="my-3 flex justify-center">
-          <FilterBar search={handleFilter} />
-        </div>
+        {listArticles.length > 0 ? (
+          <>
+            <div className="my-3 flex justify-center">
+              <FilterBar search={handleFilter} />
+            </div>
 
-        <ul className="flex flex-col px-2 flex-wrap md:flex-row md:justify-center mx-auto">
-          {renderListItem()}
-        </ul>
+            <ul className="flex flex-col px-2 flex-wrap md:flex-row md:justify-center mx-auto">
+              {renderListItem()}
+            </ul>
+          </>
+        ) : (
+          <div className="pt-12">
+            <p className="text-center md:text-1xl">
+              Niestety nie zostały jeszcze dodane żadne artykuły
+            </p>
+          </div>
+        )}
       </div>
     </Layout>
   )

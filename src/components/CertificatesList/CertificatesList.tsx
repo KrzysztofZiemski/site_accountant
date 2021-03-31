@@ -1,5 +1,5 @@
 import React, { useMemo } from "react"
-import { graphql, useStaticQuery } from "gatsby"
+import { graphql, Link, useStaticQuery } from "gatsby"
 import Image from "gatsby-image"
 
 import "./CertificatesList.css"
@@ -13,6 +13,7 @@ export const query = graphql`
           fluid {
             ...GatsbyDatoCmsFluid_tracedSVG
           }
+          url
         }
       }
     }
@@ -26,11 +27,13 @@ export const CertificatesList = () => {
   const renderCertyficate = useMemo(() => {
     return certyficateImageList.map(({ image, id }) => {
       return (
-        <Image
-          key={id}
-          className="w-2/3 m-5 h-auto mx-auto sm:m-6 sm:w-60"
-          fluid={image.fluid}
-        ></Image>
+        <Link to={image.url}>
+          <Image
+            key={id}
+            className="w-2/3 m-5 h-96 sm:m-6 sm:w-72"
+            fluid={image.fluid}
+          ></Image>
+        </Link>
       )
     })
   }, [])
@@ -44,7 +47,7 @@ export const CertificatesList = () => {
         <span className="absolute top-0 left-0 block w-full h-full bg-primary certyficate-header__spanDecorator"></span>
       </div>
 
-      <div className="flex flex-col sm:flex-row sm:flex-wrap px-3 justify-center">
+      <div className="flex flex-col sm:flex-row sm:flex-wrap px-3 items-center justify-center">
         {" "}
         {renderCertyficate}
       </div>

@@ -7,6 +7,7 @@ import { routes } from "../../../routes"
 import "./WantChangeAccountant.css"
 import { Button } from "../../Button/Button"
 import { ButtonLink } from "../../Button/ButtonLink"
+import { IconsContact } from "../../IconsContact/IconsContact"
 
 interface WantChangeAccountantProps {
   setStep: (value: steps) => void
@@ -18,25 +19,34 @@ export const WantChangeAccountant = ({
   return (
     <div className="flex flex-col p-4 w-full h-full justify-between overflow-y-auto">
       <div className="flex-grow mb-3">
-        <h2 className="text-white text-xl sm:text-2xl p-4 sm:mt-5 text-center mb-5 md:text-3xl md:mb-7">
-          Zmiana księgowości
+        <h2 className="text-white text-2xl p-4 text-center mb-5 md:text-2xl">
+          Chcę zmienić biuro rachunkowe
         </h2>
         <ul className="want-change-accountant-list text-white">
-          <li>Sprawdź okres wypowiedzenia w aktualnym biurze księgowym</li>
-          <li className="text-secondary underline">
-            <Link to={routes.offer}> Skorzystaj z 2 miesięcy za darmo</Link>
+          <li>
+            Przygotuj niezbędne informacje - NIP firmy, dotychczasowa forma
+            opodatkowania, czas, w którym chcesz rozpocząć współpracę.
+          </li>
+          <li className="flex items-center">
+            <span className="mr-1">
+              {" "}
+              Skontaktuj się z nami - opowiemy Ci, jak wygląda współpraca.
+            </span>
+
+            <IconsContact />
           </li>
           <li>
-            Poproś o wysłanie wszystkich dokumentów z aktualnego biura
-            księgowego
+            Przekaż nam niezbędne dokumenty, których listę od nas otrzymasz.
           </li>
-          <li className="text-secondary underline">
-            <Link to={routes.contact}>Skontaktu się ze mną</Link>
+          <li>
+            Jeżeli zgłosiłeś w CEiDG miejsce przechowywania dokumentacji
+            księgowej, dokonaj stosownej zmiany.
+          </li>
+          <li>
+            Złóż w urzędzie skarbowym i ZUS pełnomocnictwa, które od nas
+            otrzymasz.
           </li>
         </ul>{" "}
-        <div className="text-center">
-          <ButtonLink to={routes.contact}>Chętnie pomogę</ButtonLink>
-        </div>
       </div>
 
       <ButtonBack

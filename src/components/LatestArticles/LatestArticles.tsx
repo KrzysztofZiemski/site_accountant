@@ -43,11 +43,15 @@ export const LatestArticles = () => {
   }, [nodes])
 
   return (
-    <div className="p-2 pb-8 bg-gray-100">
-      <SubTitle className="text-secondary text-center mt-4">
-        Ostatnie Artykuły
-      </SubTitle>
-      <SimpleSlider className="py-7 md:py-14">{articles}</SimpleSlider>
-    </div>
+    <>
+      {articleIntro.length > 0 && (
+        <div className="p-2 pb-8 bg-gray-100">
+          <SubTitle className="text-secondary text-center mt-4">
+            Ostatnie Artykuły
+          </SubTitle>
+          <SimpleSlider className="py-7 md:py-14">{articles}</SimpleSlider>
+        </div>
+      )}
+    </>
   )
 }

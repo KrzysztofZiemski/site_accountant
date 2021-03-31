@@ -6,7 +6,7 @@ import { routes } from "../../routes"
 export const query = graphql`
   {
     file(name: { regex: "/regulamin/" }) {
-      relativePath
+      publicURL
     }
   }
 `
@@ -15,7 +15,8 @@ interface OfferPromotionProps {
 }
 export const OfferPromotion = (props: OfferPromotionProps) => {
   const { file } = useStaticQuery(query)
-  const promotionRules = file.relativePath
+  console.log("file", file)
+  const promotionRules = file.publicURL
   const downloadPromotionRules = (
     e: React.MouseEvent<HTMLAnchorElement, MouseEvent>
   ) => {

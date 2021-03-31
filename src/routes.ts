@@ -1,9 +1,9 @@
 export enum routes {
   main = "/",
-  about = "/about",
-  articles = "/articles",
-  charity = "/charity",
-  contact = "/contact",
-  offer = "/offer",
+  about = "/o_nas",
+  articles = "/artykuly",
+  charity = "/1_procent_podatku",
+  contact = "/kontakt",
+  offer = "/oferta",
   policy = "/policy",
 }

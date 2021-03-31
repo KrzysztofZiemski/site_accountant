@@ -133,7 +133,7 @@ export const ContactForm = ({ ...props }) => {
   }
 
   return (
-    <div className="bg-white shadow-md rounded px-2 pt-6 pb-3 w-full overflow-hidden">
+    <div className="bg-white shadow-md rounded px-2 pt-6 pb-5 w-full overflow-hidden">
       <h3 className="text-center text-2xl p-3 mb-6">Formularz kontaktowy</h3>
       {errorFetch.isError && (
         <Modal
@@ -205,7 +205,7 @@ export const ContactForm = ({ ...props }) => {
           >
             <ReCAPTCHA sitekey={RECAPTCHA_KEY} onChange={verifyRecaptcha} />
           </div>
-          <div className="flex flex-col m-auto w-full md:w-4/5 lg:w-2/5 mt-2">
+          <div className="flex flex-col m-auto w-full md:w-4/5 lg:w-2/5 mt-4">
             <Button>WYŚLIJ</Button>
           </div>
         </form>

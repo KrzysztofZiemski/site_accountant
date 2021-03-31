@@ -4,8 +4,12 @@ import React from "react"
 import PhoneIcon from "../../assets/phone-call.svg"
 //@ts-ignore
 import PointerIcon from "../../assets/location-pointer.svg"
+import { isMobileOnly } from "react-device-detect"
 
 export const ContactInfo = () => {
+  const handleGoCall = () => {
+    isMobileOnly && window.open("tel:729976922")
+  }
   return (
     <div>
       <PhoneIcon className="w-12 h-12 mb-4" style={{ marginLeft: "17px" }} />
@@ -13,7 +17,7 @@ export const ContactInfo = () => {
         <strong>Kontakt ze mną</strong>
       </h2>
       <div>
-        <p>
+        <p onClick={handleGoCall}>
           Telefon: <span className="text-primary">729976922</span>
         </p>
         <p>
