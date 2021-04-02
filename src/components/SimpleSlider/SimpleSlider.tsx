@@ -39,7 +39,7 @@ export const SimpleSlider = ({ children, countShow, className }) => {
 
   const checkNumberSlideToShow = () => {
     if (windowMoreThan(768) && numberSlideToshow !== 2) {
-      setNumberSlideToshow(2)
+      // setNumberSlideToshow(2)
     } else if (!windowMoreThan(768) && numberSlideToshow !== 1) {
       setNumberSlideToshow(1)
     }
@@ -54,8 +54,8 @@ export const SimpleSlider = ({ children, countShow, className }) => {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 2,
-    slidesToScroll: 2,
+    slidesToShow: children.length > 1 ? 2 : 1,
+    slidesToScroll: children.length > 1 ? 2 : 1,
     autoplay: true,
     autoplaySpeed: 10000,
     pauseOnHover: true,

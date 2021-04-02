@@ -43,9 +43,10 @@ export const ClientsOpinions = ({ className }: ClientsOpinionsProps) => {
       />
     )
   )
+  console.log(opinionsClients)
   return (
     <>
-      {clients.length > 0 && (
+      {opinionsClients.length > 0 && (
         <>
           <div
             className={`py-9 md:py-28 clients-opinion-container ${className}`}
