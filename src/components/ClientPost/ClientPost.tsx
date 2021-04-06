@@ -11,6 +11,7 @@ type ClientOpinionType = {
   score: number
   className: string
   company: string
+  link?: string
 }
 
 const renderStars = (score: number) => {
@@ -31,16 +32,17 @@ export const ClientPost = ({
   score,
   className,
   company,
+  link,
 }: ClientOpinionType) => {
   const stars = useMemo(() => renderStars(score), [score])
 
   return (
     <article
-      className={`bg-white-opacity p-4 overflow-y-auto overflow-x-hidden text-secondary h-60 m-2 mt-4 rounded-lg md:h-80 ring-2 flex flex-col ${className}`}
+      className={`bg-white-opacity p-4 overflow-y-auto overflow-x-hidden text-secondary h-96 md:h-72 m-2 mt-4 rounded-lg ring-2 flex flex-col ${className}`}
     >
       <div className="flex w-full justify-between items-center border-b p-2">
         <h2 className="ml-4 sm:text-lg font-bold text-center lg:text-left">
-          {company}
+          {link ? <link href={link}>{company}</link> : company}
         </h2>
         <div className="flex justify-self-end	self-end flex-shrink-0">
           {stars}

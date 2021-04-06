@@ -3,7 +3,7 @@ import { graphql, useStaticQuery } from "gatsby"
 import slugify from "slugify"
 import { SimpleSlider } from "../SimpleSlider/SimpleSlider"
 import { LatestArticleListItem } from "../LatestArticleListItem/LatestArticleListItem"
-import { SubTitle } from "../SubTitle/SubTitle"
+import { SubTitle } from "../HeaderComponent/SubTitle/SubTitle"
 
 const query = graphql`
   {
@@ -43,7 +43,7 @@ export const LatestArticles = () => {
   }, [nodes])
 
   return (
-    <>
+    <div>
       {articleIntro.length > 0 && (
         <div className="p-2 pb-8 bg-gray-100">
           <SubTitle className="text-secondary text-center mt-4">
@@ -52,6 +52,6 @@ export const LatestArticles = () => {
           <SimpleSlider className="py-7 md:py-14">{articles}</SimpleSlider>
         </div>
       )}
-    </>
+    </div>
   )
 }

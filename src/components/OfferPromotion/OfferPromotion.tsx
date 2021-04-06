@@ -15,7 +15,6 @@ interface OfferPromotionProps {
 }
 export const OfferPromotion = (props: OfferPromotionProps) => {
   const { file } = useStaticQuery(query)
-  console.log("file", file)
   const promotionRules = file.publicURL
   const downloadPromotionRules = (
     e: React.MouseEvent<HTMLAnchorElement, MouseEvent>

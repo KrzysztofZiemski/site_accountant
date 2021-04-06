@@ -46,7 +46,7 @@ export const Header = ({ siteTitle }: BurgerProps) => {
         </Animate>
 
         <Animate type={typeAnimation.slideRight}>
-          <h2 className="tracking-wide font-bold mb-6 md:mb-9 text-white text-center w-full text-2xl sm:text-4xl md:text6x1 lg:text-5xl">
+          <h2 className="tracking-wide font-bold mb-8 md:mb-9 text-white text-center w-full text-2xl sm:text-4xl md:text5x1 lg:text-5xl">
             Księgowa przez Internet
           </h2>
         </Animate>

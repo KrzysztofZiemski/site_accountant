@@ -74,8 +74,8 @@ export const SimpleSlider = ({ children, countShow, className }) => {
       {
         breakpoint: 1199,
         settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
+          slidesToShow: children.length > 1 ? 2 : 1,
+          slidesToScroll: children.length > 1 ? 2 : 1,
         },
       },
     ],

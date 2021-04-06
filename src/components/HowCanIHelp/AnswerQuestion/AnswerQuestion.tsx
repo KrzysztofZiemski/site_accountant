@@ -1,6 +1,7 @@
 import React from "react"
+import { ButtonWhite } from "../../Button/ButtonWhite"
 import { steps } from "../HowCanIHelp"
-import "./AnswerQuestion.css"
+import { HeaderComponent } from "../../HeaderComponent/HeaderComponent"
 
 interface AnswerQuestionProps {
   setStep: (value: steps) => void
@@ -8,29 +9,30 @@ interface AnswerQuestionProps {
 
 const AnswerQuestion = ({ setStep }) => {
   return (
-    <div className="p-4 w-full h-full overflow-y-auto flex items-center justify-center	">
-      <div>
-        <p className="text-white text-2xl p-4 sm:mt-5 text-center mb-5 md:text-3xl md:mb-7 ">
-          Sprawdź jak możemy Ci pomóc
-        </p>
-        <div className="flex flex-col justify-around items-center h-44 text-xl font-bold whitespace-nowrap overflow-hidden sm:text-base md:text-lg md:h-56">
-          <button
+    <div className="w-full h-full overflow-y-auto text-white flex flex-col p-4 ">
+      <HeaderComponent
+        className="w-full"
+        title="WSPÓŁPRACA"
+        subTitle="Sprawdź jak możemy Ci pomóc"
+      />
+      <div className="flex flex-grow p-4 flex-col justify-around h-44 text-xl font-bold overflow-hidden ">
+        <div className=" w-full md:w-7/12 md:m-auto">
+          <ButtonWhite
             onClick={() => {
               setStep(steps.wantOpenCompany)
             }}
-            className="border-none pointer transition text-yellow-400 focus:outline-none hover:text-yellow-100"
           >
             <strong>Chcesz założyć działalność?</strong>
-          </button>
-
-          <button
+          </ButtonWhite>
+        </div>
+        <div className="w-full md:w-7/12 md:m-auto">
+          <ButtonWhite
             onClick={() => {
               setStep(steps.wantChangeAccountant)
             }}
-            className="border-none pointer transition yellow-200 text-yellow-400 focus:outline-none hover:text-yellow-100"
           >
             <strong> Chcesz przenieść księgowość?</strong>
-          </button>
+          </ButtonWhite>
         </div>
       </div>
     </div>

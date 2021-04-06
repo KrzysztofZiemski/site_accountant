@@ -27,12 +27,8 @@ export const CertificatesList = () => {
   const renderCertyficate = useMemo(() => {
     return certyficateImageList.map(({ image, id }) => {
       return (
-        <Link to={image.url}>
-          <Image
-            key={id}
-            className="w-2/3 m-5 h-96 sm:m-6 sm:w-72"
-            fluid={image.fluid}
-          ></Image>
+        <Link to={image.url} className="w-2/3 m-5 sm:m-6 sm:w-72" key={id}>
+          <Image style={{ minWidth: "100%" }} fluid={image.fluid}></Image>
         </Link>
       )
     })

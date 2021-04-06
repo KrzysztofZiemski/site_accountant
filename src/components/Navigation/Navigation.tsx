@@ -16,7 +16,7 @@ export const Navigation = () => {
   //
   return (
     <nav
-      className={`sticky p-0 top-0 w-full flex flex-col lg:flex-row lg:items-center transition-all ease-in duration-400 z-50 bg-white lg:bg-secondary text-white`}
+      className={`sticky p-0 top-0 w-full flex flex-col lg:flex-row lg:items-center transition-all ease-in duration-400 z-50 bg-white`}
     >
       <div className="flex items-center p-2 justify-between flex-wrap px-2 lg:mx-4 xl:mx-4 z-50 lg:hidden">
         <span>
@@ -32,7 +32,7 @@ export const Navigation = () => {
         } lg:h-auto`}
       >
         <Link to={routes.main} className="lg:mr-9 hidden lg:block py-2 pr-9">
-          <LogoWhite />
+          <LogoBlue />
         </Link>
         <NavMenuItem to={routes.about}>O NAS</NavMenuItem>
 

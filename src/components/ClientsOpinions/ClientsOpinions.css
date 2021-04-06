@@ -18,15 +18,6 @@
   z-index: 1;
 }
 
-.clients-opinion-container__recomends::before {
-  height: 1px;
-  width: 40px;
-  margin-left: 1rem;
-  content: "";
-  display: block;
-  background: #fff;
-}
-
 @media (min-width: 401px) {
   .clients-opinion-container {
     background-image: url("../../../static/OpinionsImage/opinion-backgroundx800.jpg");

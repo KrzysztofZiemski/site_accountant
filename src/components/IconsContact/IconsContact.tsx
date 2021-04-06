@@ -17,9 +17,10 @@ export const IconsContact = () => {
         style={{ height: "35px", cursor: "pointer" }}
         className="mx-5 "
         onClick={handleGoCall}
+        alt="telefon"
       />
       <Link to={routes.contact}>
-        <MessageIcon style={{ height: "35px" }} />
+        <MessageIcon alt="e-mail" style={{ height: "35px" }} />
       </Link>
     </div>
   )

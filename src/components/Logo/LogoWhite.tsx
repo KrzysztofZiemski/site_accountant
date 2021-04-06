@@ -17,7 +17,13 @@ export const query = graphql`
 const LogoWhite = () => {
   const { file } = useStaticQuery(query)
 
-  return <Image className="h-auto w-28" fluid={file.childImageSharp.fluid} />
+  return (
+    <Image
+      alt="MagFi Magdalena Pol"
+      className="h-auto w-28"
+      fluid={file.childImageSharp.fluid}
+    />
+  )
 }
 
 export default LogoWhite

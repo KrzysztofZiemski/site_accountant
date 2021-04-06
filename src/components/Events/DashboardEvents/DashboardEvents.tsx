@@ -11,10 +11,11 @@ export const DashboardEvents = ({
 }: DashboardEventsProps) => {
   return (
     <div className={`${className}`}>
-      <div className="w-full h-48 md:h-96 py-2 md:p-0 text-justify overflow-auto">
-        <div className="shadow p-3 h-full bg-white rounded-lg overflow-auto">
-          {children}
-        </div>
+      <div
+        className="w-full bg-white-opacity py-2 text-justify overflow-auto rounded-lg ring-2 md:p-0"
+        // style={{ backgroundColor: "#e3e4e3" }}
+      >
+        <div className="shadow p-3 h-full overflow-auto">{children}</div>
       </div>
     </div>
   )

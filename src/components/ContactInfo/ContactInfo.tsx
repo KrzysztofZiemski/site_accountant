@@ -1,9 +1,15 @@
 import React from "react"
 
 //@ts-ignore
+import HouseIcon from "../../assets/house.svg"
+//@ts-ignore
 import PhoneIcon from "../../assets/phone-call.svg"
 //@ts-ignore
 import PointerIcon from "../../assets/location-pointer.svg"
+//@ts-ignore
+import MessageIcon from "../../assets/message.svg"
+//@ts-ignore
+import FacebookIcon from "../../assets/facebook.svg"
 import { isMobileOnly } from "react-device-detect"
 
 export const ContactInfo = () => {
@@ -12,23 +18,29 @@ export const ContactInfo = () => {
   }
   return (
     <div>
-      <PhoneIcon className="w-12 h-12 mb-4" style={{ marginLeft: "17px" }} />
+      <HouseIcon className="w-12 h-12 mb-4" style={{ marginLeft: "17px" }} />
       <h2 className="mb-4 text-2xl">
         <strong>Kontakt ze mną</strong>
       </h2>
       <div>
-        <p onClick={handleGoCall}>
-          Telefon: <span className="text-primary">729976922</span>
-        </p>
-        <p>
-          E-mail: <span className="text-primary">kontakt.magfi@gmail.com</span>
-        </p>
-        <p>
-          Facebook:{" "}
+        <div onClick={handleGoCall} className="flex my-1">
+          <PhoneIcon alt="telefon" className="w-5 mr-4" />
+          <span className="text-primary">729976922</span>
+        </div>
+        <div className="flex my-1">
+          <MessageIcon alt="e-mail" className="w-5 mr-4" />
+          <span className="text-primary">kontakt.magfi@gmail.com</span>
+        </div>
+        <div className="flex my-1">
+          <FacebookIcon
+            alt="facebook"
+            className="w-5 mr-4"
+            style={{ fill: "black" }}
+          />
           <a href="https://www.facebook.com/magfipol" className="text-primary">
             facebook.com/magfipol
           </a>
-        </p>
+        </div>
       </div>
       <div className="mt-4">
         <p className="text-xl">Godziny pracy</p>
@@ -37,7 +49,11 @@ export const ContactInfo = () => {
         </p>
       </div>
       <div className="mt-10">
-        <PointerIcon className="w-12 h-12 mb-4" style={{ fill: "black" }} />
+        <PointerIcon
+          className="w-12 h-12 mb-4"
+          style={{ fill: "black" }}
+          alt="nasze biuro"
+        />
         <h2 className="mb-4 text-2xl">Nasze biuro</h2>
         <address>
           <p className="text-xl mb-2">

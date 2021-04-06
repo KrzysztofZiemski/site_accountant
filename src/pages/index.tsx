@@ -30,9 +30,9 @@ const IndexPage = ({ data: datoCmsMetaDataPage }) => {
       <OfferServices />
 
       <HowCanIHelp />
+      <Events />
       <ClientsOpinions />
       <LatestArticles />
-      <Events />
     </Layout>
   )
 }

@@ -51,13 +51,12 @@ export const HowCanIHelp = () => {
   const style = isMobileOnly
     ? {}
     : {
-        maxWidth: "720px",
         height: "29rem",
       }
 
   return (
     <div
-      className="bg-primary mx-auto my-5 w-full overflow-hidden transition relative h-80 sm:h-96 sm:my-8 md:my-12 transition"
+      className="bg-primary w-full overflow-hidden transition relative h-96 transition"
       style={style}
     >
       <IsShowWrapper show={showOption()}>

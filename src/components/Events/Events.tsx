@@ -5,6 +5,7 @@ import { Calendar } from "./Calendar/Calendar"
 import { DashboardEvents } from "./DashboardEvents/DashboardEvents"
 
 import { isSameDate, showDate } from "../../helpers/date"
+import { HeaderComponent } from "../HeaderComponent/HeaderComponent"
 
 const query = graphql`
   {
@@ -40,22 +41,22 @@ const getDatesFromNumber = (numberOfDay: number): Array<Date> => {
   return [thisMonth, nextMonth]
 }
 
-const getNearestEvent = (daysEvent: Array<number>): Date => {
-  const now = new Date()
-  const todayNumber = now.getDate()
-  const todayMonth = now.getMonth()
-  const todayYear = now.getFullYear()
+// const getNearestEvent = (daysEvent: Array<number>): Date => {
+//   const now = new Date()
+//   const todayNumber = now.getDate()
+//   const todayMonth = now.getMonth()
+//   const todayYear = now.getFullYear()
 
-  let output: Date
+//   let output: Date
 
-  for (let i = 0; i < daysEvent.length; i++) {
-    if (daysEvent[i] >= todayNumber) {
-      output = new Date(todayYear, todayMonth, daysEvent[i])
-      break
-    }
-  }
-  return output || new Date(todayYear, todayMonth, daysEvent[0])
-}
+//   for (let i = 0; i < daysEvent.length; i++) {
+//     if (daysEvent[i] >= todayNumber) {
+//       output = new Date(todayYear, todayMonth, daysEvent[i])
+//       break
+//     }
+//   }
+//   return output || new Date(todayYear, todayMonth, daysEvent[0])
+// }
 
 export const Events = () => {
   const { allDatoCmsTermsCyclic, allDatoCmsTermsDate } = useStaticQuery(query)
@@ -63,11 +64,9 @@ export const Events = () => {
   const cyclicEvents: Array<EventCyclicType> = allDatoCmsTermsCyclic.nodes
   const disposableEvents: Array<EventSingleType> = allDatoCmsTermsDate.nodes
 
-  const [selectedDate, setSelectedDate] = useState(
-    getNearestEvent(cyclicEvents.map(({ dayOfTheMonth }) => dayOfTheMonth))
-  )
+  const [selectedDate, setSelectedDate] = useState(new Date())
 
-  const rendreCyclicEventContent = () => {
+  const cyclicItems = (() => {
     const day = selectedDate.getDate()
     const selectedEvent = cyclicEvents.find(
       eventCalendar => eventCalendar.dayOfTheMonth === day
@@ -75,16 +74,16 @@ export const Events = () => {
     return selectedEvent ? (
       <ReactMarkdown>{selectedEvent.description}</ReactMarkdown>
     ) : null
-  }
+  })()
 
-  const rendreEventContent = () => {
+  const eventsItems = (() => {
     const selectedEvent = disposableEvents.find(eventCalendar =>
       isSameDate(new Date(eventCalendar.date), selectedDate)
     )
     return selectedEvent ? (
       <ReactMarkdown>{selectedEvent.description}</ReactMarkdown>
     ) : null
-  }
+  })()
 
   const dayOfMonthCyclicEvents = useMemo(() => {
     return cyclicEvents.map(({ dayOfTheMonth }) => dayOfTheMonth)
@@ -97,7 +96,12 @@ export const Events = () => {
   return (
     <>
       {show && (
-        <div className="bg-gray-200 p-4 mb-5">
+        <div className="bg-white p-4">
+          <HeaderComponent
+            title="Kalendarz"
+            subTitle="Poznaj ważne daty"
+            className="text-primary"
+          />
           <div className="overflow-auto md:flex md:justify-center md:items-start">
             <div className="m-auto md:m-3 flex justify-center items-center max-w-sm md:w-1/2 ">
               <div className="overflow-auto border-secondary">
@@ -110,11 +114,13 @@ export const Events = () => {
                 />
               </div>
             </div>
-            <DashboardEvents className=" mx-auto p-3 md:w-7/8 md:w-1/2">
-              <h3 className="font-bold mb-3">{showDate(selectedDate)}</h3>
-              <div>{rendreCyclicEventContent()}</div>
-              <div>{rendreEventContent()}</div>
-            </DashboardEvents>
+            {(eventsItems || cyclicItems) && (
+              <DashboardEvents className="mx-auto p-3 md:w-7/8 md:w-1/2">
+                <h3 className="font-bold mb-3">{showDate(selectedDate)}</h3>
+                <div>{cyclicItems}</div>
+                <div>{eventsItems}</div>
+              </DashboardEvents>
+            )}
           </div>
         </div>
       )}
