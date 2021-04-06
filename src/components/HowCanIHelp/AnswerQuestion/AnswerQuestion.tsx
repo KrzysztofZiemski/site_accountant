@@ -15,8 +15,8 @@ const AnswerQuestion = ({ setStep }) => {
         title="WSPÓŁPRACA"
         subTitle="Sprawdź jak możemy Ci pomóc"
       />
-      <div className="flex flex-grow p-4 flex-col justify-around h-44 text-xl font-bold overflow-hidden ">
-        <div className=" w-full md:w-7/12 md:m-auto">
+      <div className="flex h-full p-4 flex-col h-44 text-xl font-bold overflow-hidden ">
+        <div className=" w-full my-8 md:w-7/12 md:m-auto lg:w-1/2">
           <ButtonWhite
             onClick={() => {
               setStep(steps.wantOpenCompany)
@@ -25,7 +25,7 @@ const AnswerQuestion = ({ setStep }) => {
             <strong>Chcesz założyć działalność?</strong>
           </ButtonWhite>
         </div>
-        <div className="w-full md:w-7/12 md:m-auto">
+        <div className="w-full my-8 md:w-7/12 md:m-auto lg:w-1/2">
           <ButtonWhite
             onClick={() => {
               setStep(steps.wantChangeAccountant)

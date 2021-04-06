@@ -6,6 +6,7 @@ import { DashboardEvents } from "./DashboardEvents/DashboardEvents"
 
 import { isSameDate, showDate } from "../../helpers/date"
 import { HeaderComponent } from "../HeaderComponent/HeaderComponent"
+import { isMobileOnly } from "react-device-detect"
 
 const query = graphql`
   {
@@ -102,7 +103,7 @@ export const Events = () => {
             subTitle="Poznaj ważne daty"
             className="text-primary"
           />
-          <div className="overflow-auto md:flex md:justify-center md:items-start">
+          <div className="overflow-auto md:flex md:items-start">
             <div className="m-auto md:m-3 flex justify-center items-center max-w-sm md:w-1/2 ">
               <div className="overflow-auto border-secondary">
                 <Calendar
@@ -115,7 +116,7 @@ export const Events = () => {
               </div>
             </div>
             {(eventsItems || cyclicItems) && (
-              <DashboardEvents className="mx-auto p-3 md:w-7/8 md:w-1/2">
+              <DashboardEvents className="mx-auto p-3 md:w-7/8 md:w-1/2 md:flex-grow">
                 <h3 className="font-bold mb-3">{showDate(selectedDate)}</h3>
                 <div>{cyclicItems}</div>
                 <div>{eventsItems}</div>

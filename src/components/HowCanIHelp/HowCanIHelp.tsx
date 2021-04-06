@@ -49,14 +49,14 @@ export const HowCanIHelp = () => {
     }
   }
   const style = isMobileOnly
-    ? {}
+    ? { height: "35rem" }
     : {
         height: "29rem",
       }
 
   return (
     <div
-      className="bg-primary w-full overflow-hidden transition relative h-96 transition"
+      className="bg-primary w-full overflow-hidden transition relative transition"
       style={style}
     >
       <IsShowWrapper show={showOption()}>
