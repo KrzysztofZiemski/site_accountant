@@ -14,13 +14,13 @@ export const IconsContact = () => {
   return (
     <div className="flex items-center">
       <PhoneIcon
-        style={{ height: "35px", cursor: "pointer" }}
-        className="mx-5 "
+        style={{ height: "35px", cursor: "pointer", fill: "white" }}
+        className="mx-8 "
         onClick={handleGoCall}
         alt="telefon"
       />
       <Link to={routes.contact}>
-        <MessageIcon alt="e-mail" style={{ height: "35px" }} />
+        <MessageIcon alt="e-mail" style={{ height: "35px", fill: "white" }} />
       </Link>
     </div>
   )
