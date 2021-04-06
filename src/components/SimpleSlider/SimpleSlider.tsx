@@ -60,9 +60,9 @@ export const SimpleSlider = ({ children, countShow, className }) => {
     autoplaySpeed: 10000,
     pauseOnHover: true,
     //@ts-ignore
-    nextArrow: <NextButton />,
-    //@ts-ignore
-    prevArrow: <PreviousButton />,
+    // nextArrow: <NextButton />,
+    // //@ts-ignore
+    // prevArrow: <PreviousButton />,
     responsive: [
       {
         breakpoint: 768,
