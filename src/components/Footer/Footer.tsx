@@ -94,7 +94,7 @@ export const Footer = () => {
                   className="w-5 h-5 mr-4"
                   style={{ fill: "white" }}
                 />
-                <p onClick={handleGoCall}>604065485</p>
+                <p onClick={handleGoCall}>729976922</p>
               </div>
               <div className="flex items-center mt-3">
                 <MessageIcon
