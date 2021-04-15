@@ -35,9 +35,9 @@ export const OfferPromotion = (props: OfferPromotionProps) => {
       <p className="py-3 text-lg">Oferujemy:</p>
       <div className="flex items-center mb-3">
         <CheckItemIcon className="w-9 h-9 mr-6 flex-shrink-0" />
-        <p>
-          Za pierwszy miesiąc współpracy zapłacisz jedynie 1zł, przy umowie na
-          12 miesięcy.
+        <p className="text-bold">
+          Obniżenie opłaty w pierwszym miesiącu świadczenia usług do zaledwie
+          1zł.
         </p>
       </div>
       <div className="flex items-center mb-3">
