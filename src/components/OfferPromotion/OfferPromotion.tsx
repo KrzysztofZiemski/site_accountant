@@ -30,16 +30,14 @@ export const OfferPromotion = (props: OfferPromotionProps) => {
         Aktualne promocje
       </h2>
       <p className="leading-7 mb-2">
-        <strong>
-          Uzyskaj profesjonalną obsługę księgową przez 2 miesiące za darmo.
-        </strong>
+        <strong>Uzyskaj profesjonalną obsługę księgową.</strong>
       </p>
       <p className="py-3 text-lg">Oferujemy:</p>
       <div className="flex items-center mb-3">
         <CheckItemIcon className="w-9 h-9 mr-6 flex-shrink-0" />
         <p>
-          Zwolnienie z opłaty przez pierwsze 2 miesiące współpracy, przy umowie
-          na 12 misięcy.
+          Za pierwszy miesiąc współpracy zapłacisz jedynie 1zł, przy umowie na
+          12 miesięcy.
         </p>
       </div>
       <div className="flex items-center mb-3">
