@@ -5,10 +5,7 @@ interface SubTitleProps {
 }
 export const SubTitle = ({ children, className }) => {
   return (
-    <h3
-      style={{ fontFamily: "'Lato' sans-serif" }}
-      className={`text-3xl font-bold  p-3 ${className}`}
-    >
+    <h3 className={`text-3xl font-bold font-Lato  p-3 ${className}`}>
       {children}
     </h3>
   )

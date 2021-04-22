@@ -1,9 +1,14 @@
 import React from "react"
 import { Link } from "gatsby"
 import { ButtonBack } from "../../Button/ButtonBack"
+import {
+  VerticalTimeline,
+  VerticalTimelineElement,
+} from "react-vertical-timeline-component"
+import "react-vertical-timeline-component/style.min.css"
 import { steps } from "../HowCanIHelp"
 import { routes } from "../../../routes"
-
+import { LineTimeElement } from "../../LineTimeElement/LineTimeElement"
 import "./WantChangeAccountant.css"
 import { Button } from "../../Button/Button"
 import { ButtonLink } from "../../Button/ButtonLink"
@@ -22,31 +27,31 @@ export const WantChangeAccountant = ({
         <h2 className="text-white text-2xl p-4 text-center mb-5 md:text-2xl">
           Chcę zmienić biuro rachunkowe
         </h2>
-        <ul className="want-change-accountant-list text-white">
-          <li>
+        <VerticalTimeline className="font-MonTserrat">
+          <LineTimeElement>
             Przygotuj niezbędne informacje - NIP firmy, dotychczasowa forma
             opodatkowania, czas, w którym chcesz rozpocząć współpracę.
-          </li>
-          <li className="flex items-center">
+          </LineTimeElement>
+          <LineTimeElement className="flex items-center">
             <span className="mr-1">
               {" "}
               Skontaktuj się z nami - opowiemy Ci, jak wygląda współpraca.
             </span>
 
             <IconsContact />
-          </li>
-          <li>
+          </LineTimeElement>
+          <LineTimeElement>
             Przekaż nam niezbędne dokumenty, których listę od nas otrzymasz.
-          </li>
-          <li>
+          </LineTimeElement>
+          <LineTimeElement>
             Jeżeli zgłosiłeś w CEiDG miejsce przechowywania dokumentacji
             księgowej, dokonaj stosownej zmiany.
-          </li>
-          <li>
+          </LineTimeElement>
+          <LineTimeElement>
             Złóż w urzędzie skarbowym i ZUS pełnomocnictwa, które od nas
             otrzymasz.
-          </li>
-        </ul>{" "}
+          </LineTimeElement>
+        </VerticalTimeline>{" "}
       </div>
 
       <ButtonBack

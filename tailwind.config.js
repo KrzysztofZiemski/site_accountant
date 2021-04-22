@@ -6,6 +6,7 @@ module.exports = {
   theme: {
     fontFamily: {
       MonTserrat: [`MonTserrat`, "Open Sans"],
+      Lato: [`Lato`, `sans-serif`],
     },
     backgroundColor: theme => ({
       ...theme("colors"),
