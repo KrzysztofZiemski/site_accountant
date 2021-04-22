@@ -1,4 +1,11 @@
-import React, { useEffect, useState, useRef } from "react"
+import React, {
+  useEffect,
+  useState,
+  useRef,
+  ReactChild,
+  ReactFragment,
+  ReactPortal,
+} from "react"
 import Slider from "react-slick"
 //@ts-ignore
 import RightArrowIcon from "../../assets/right-arrow.svg"
@@ -8,8 +15,10 @@ import LeftArrowIcon from "../../assets/left-arrow.svg"
 import "./SimpleSlider.css"
 
 interface SimpleSliderProps {
+  children: ReactChild | ReactFragment | ReactPortal
   countShow: number
   className: string
+  settings?: any
 }
 const windowMoreThan = (value: number) => {
   return value <= window.innerWidth
@@ -30,10 +39,16 @@ const PreviousButton = ({ currentSlide, slideCount, ...props }) => {
   )
 }
 
-export const SimpleSlider = ({ children, countShow, className }) => {
+export const SimpleSlider = ({
+  children,
+  countShow,
+  className,
+  settings,
+}: SimpleSliderProps) => {
   const refSlider = useRef()
   const [numberSlideToshow, setNumberSlideToshow] = useState(1)
   const [isRendered, setIsRendered] = useState(false)
+  const refCount = useRef(0)
   //@ts-ignore
   const next = () => refSlider.current.slickNext()
 
@@ -45,17 +60,25 @@ export const SimpleSlider = ({ children, countShow, className }) => {
     }
   }
 
+  let countChildren = 0
+
+  useEffect(() => {
+    React.Children.forEach(children, () => {
+      refCount.current++
+    })
+  })
+
   useEffect(() => {
     setIsRendered(true)
   }, [])
 
-  const settings = {
+  const defaultSettings = {
     arrows: false,
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: children.length > 1 ? 2 : 1,
-    slidesToScroll: children.length > 1 ? 2 : 1,
+    slidesToShow: refCount.current > 1 ? 2 : 1,
+    slidesToScroll: refCount.current > 1 ? 2 : 1,
     autoplay: true,
     autoplaySpeed: 10000,
     pauseOnHover: true,
@@ -74,20 +97,22 @@ export const SimpleSlider = ({ children, countShow, className }) => {
       {
         breakpoint: 1199,
         settings: {
-          slidesToShow: children.length > 1 ? 2 : 1,
-          slidesToScroll: children.length > 1 ? 2 : 1,
+          slidesToShow: refCount.current > 1 ? 2 : 1,
+          slidesToScroll: refCount.current > 1 ? 2 : 1,
         },
       },
     ],
   }
+  const comineSetting = { ...defaultSettings, ...settings }
+
   if (!isRendered) {
     return <div></div>
   } else {
     return (
       <Slider
         ref={c => (refSlider.current = c)}
-        {...settings}
         className={`w-10/12 md:w-11/12 m-auto ${className}`}
+        {...comineSetting}
       >
         {children}
       </Slider>

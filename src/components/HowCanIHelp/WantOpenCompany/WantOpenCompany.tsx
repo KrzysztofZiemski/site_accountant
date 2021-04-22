@@ -43,7 +43,7 @@ export const WantOpenCompany = ({ setStep }: WantOpenCompanyProps) => {
         </ul>
       </div>
       <ButtonBack
-        className="self-start"
+        className="self-end"
         onClick={() => setStep(steps.askQuestion)}
       >
         powrót

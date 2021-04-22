@@ -45,6 +45,7 @@
   "devDependencies": {
     "@hot-loader/react-dom": "^17.0.1",
     "@types/react-calendar": "^3.1.4",
+    "@types/react-slick": "^0.23.4",
     "gatsby-plugin-webpack-bundle-analyser-v2": "^1.1.20",
     "prettier": "2.2.1"
   },

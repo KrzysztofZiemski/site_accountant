@@ -1,73 +1,57 @@
-import React, { useState, useCallback } from "react"
+import React, { useState, useCallback, useRef } from "react"
 import { Animate } from "../Animate/Animate"
-import { IsShowWrapper, showEnum } from "./IsShowWrapper"
 import { Button } from "../Button/Button"
 import { ButtonBack } from "../Button/ButtonBack"
 import AnswerQuestion from "./AnswerQuestion/AnswerQuestion"
 import { WantOpenCompany } from "./WantOpenCompany/WantOpenCompany"
 import { WantChangeAccountant } from "./WantChangeAccountant/WantChangeAccountant"
 import { isMobileOnly } from "react-device-detect"
+import Slider from "react-slick"
+
+import "./HowCanIHelp.css"
+
 export enum steps {
-  askQuestion,
-  wantOpenCompany,
-  wantChangeAccountant,
+  askQuestion = 0,
+  wantOpenCompany = 1,
+  wantChangeAccountant = 2,
+}
+const settings = {
+  adaptiveHeight: true,
+  accessibility: false,
+  autoplay: false,
+  draggable: false,
+  infinite: false,
+  initialSlide: steps.askQuestion,
 }
 
 export const HowCanIHelp = () => {
   const [step, setStep] = useState(steps.askQuestion)
+  const sliderRef = useRef<Slider | undefined>()
 
-  const isShowWantChangeAccountant = () => {
-    if (step === steps.askQuestion) {
-      return showEnum.next
-    } else if (step === steps.wantChangeAccountant) {
-      return showEnum.show
-    } else {
-      return showEnum.prev
-    }
-  }
   const changeStep = useCallback((value: steps) => {
     setStep(value)
+    sliderRef.current?.slickGoTo(value)
   }, [])
 
-  const isShowWantOpenCompany = () => {
-    if (step === steps.askQuestion) {
-      return showEnum.next
-    } else if (step === steps.wantOpenCompany) {
-      return showEnum.show
-    } else {
-      return showEnum.prev
-    }
-  }
-  const showOption = () => {
-    if (step === steps.askQuestion) {
-      return showEnum.show
-    } else if (
-      step === steps.wantChangeAccountant ||
-      step === steps.wantOpenCompany
-    ) {
-      return showEnum.prev
-    }
-  }
   const style = isMobileOnly
-    ? { height: "35rem" }
+    ? { maxHeight: "35rem" }
     : {
-        height: "29rem",
+        maxHeight: "29rem",
       }
 
   return (
-    <div
-      className="bg-primary w-full overflow-hidden transition relative transition"
-      style={style}
-    >
-      <IsShowWrapper show={showOption()}>
+    <div className="flex bg-primary width:100% overflow-hidden	">
+      <Slider className="w-full " ref={sliderRef} {...settings}>
         <AnswerQuestion setStep={changeStep} />
-      </IsShowWrapper>
-      <IsShowWrapper show={isShowWantOpenCompany()}>
-        <WantOpenCompany setStep={changeStep} />
-      </IsShowWrapper>
-      <IsShowWrapper show={isShowWantChangeAccountant()}>
-        <WantChangeAccountant setStep={changeStep} />
-      </IsShowWrapper>
+        <>
+          {step === steps.wantChangeAccountant && (
+            <WantChangeAccountant setStep={changeStep} />
+          )}
+          {step === steps.wantOpenCompany && (
+            <WantOpenCompany setStep={changeStep} />
+          )}
+        </>
+      </Slider>
     </div>
   )
 }
