@@ -5,10 +5,12 @@ import {
   VerticalTimeline,
   VerticalTimelineElement,
 } from "react-vertical-timeline-component"
+//@ts-ignore
+import PhoneIcon from "../../../assets/phone-call.svg"
 import "react-vertical-timeline-component/style.min.css"
 import { steps } from "../HowCanIHelp"
 import { routes } from "../../../routes"
-import { LineTimeElement } from "../../LineTimeElement/LineTimeElement"
+import { TimeLineElement } from "../../TimeLineElement/TimeLineElement"
 import "./WantChangeAccountant.css"
 import { Button } from "../../Button/Button"
 import { ButtonLink } from "../../Button/ButtonLink"
@@ -28,29 +30,31 @@ export const WantChangeAccountant = ({
           Chcę zmienić biuro rachunkowe
         </h2>
         <VerticalTimeline className="font-MonTserrat">
-          <LineTimeElement>
+          <TimeLineElement>
             Przygotuj niezbędne informacje - NIP firmy, dotychczasowa forma
             opodatkowania, czas, w którym chcesz rozpocząć współpracę.
-          </LineTimeElement>
-          <LineTimeElement className="flex items-center">
+          </TimeLineElement>
+          <TimeLineElement
+            className="flex items-center"
+            icon={<PhoneIcon className="w-full" />}
+          >
             <span className="mr-1">
-              {" "}
               Skontaktuj się z nami - opowiemy Ci, jak wygląda współpraca.
             </span>
 
             <IconsContact />
-          </LineTimeElement>
-          <LineTimeElement>
+          </TimeLineElement>
+          <TimeLineElement>
             Przekaż nam niezbędne dokumenty, których listę od nas otrzymasz.
-          </LineTimeElement>
-          <LineTimeElement>
+          </TimeLineElement>
+          <TimeLineElement>
             Jeżeli zgłosiłeś w CEiDG miejsce przechowywania dokumentacji
             księgowej, dokonaj stosownej zmiany.
-          </LineTimeElement>
-          <LineTimeElement>
+          </TimeLineElement>
+          <TimeLineElement>
             Złóż w urzędzie skarbowym i ZUS pełnomocnictwa, które od nas
             otrzymasz.
-          </LineTimeElement>
+          </TimeLineElement>
         </VerticalTimeline>{" "}
       </div>
 

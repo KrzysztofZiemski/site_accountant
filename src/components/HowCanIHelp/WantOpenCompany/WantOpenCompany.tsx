@@ -6,7 +6,7 @@ import {
   VerticalTimelineElement,
 } from "react-vertical-timeline-component"
 import "react-vertical-timeline-component/style.min.css"
-import { LineTimeElement } from "../../LineTimeElement/LineTimeElement"
+import { TimeLineElement } from "../../TimeLineElement/TimeLineElement"
 import { routes } from "../../../routes"
 import { ButtonBack } from "../../Button/ButtonBack"
 import { ButtonLink } from "../../Button/ButtonLink"
@@ -26,29 +26,29 @@ export const WantOpenCompany = ({ setStep }: WantOpenCompanyProps) => {
           Otworzenie działalności
         </h2>
         <VerticalTimeline className="font-MonTserrat">
-          <LineTimeElement>
+          <TimeLineElement>
             Przygotuj niezbędne informacje - PKD wiodące i dodatkowe, krótki
             biznes plan (wysokość planowanych przychodów, wydatków miesięcznych,
             itp.), orientacyjny czas otwarcia firmy, NIP (jeżeli posiadasz).
-          </LineTimeElement>
-          <LineTimeElement>
+          </TimeLineElement>
+          <TimeLineElement>
             Zgłoś się do nas. Porozmawiamy o dogodnej formie opodatkowania i
             podpowiemy, jak dokonać formalności związanych z założeniem firmy.
-          </LineTimeElement>
-          <LineTimeElement>Zarejestruj firmę.</LineTimeElement>
-          <LineTimeElement>
+          </TimeLineElement>
+          <TimeLineElement>Zarejestruj firmę.</TimeLineElement>
+          <TimeLineElement>
             Podpisz z nami umowę na obsługę księgową.
-          </LineTimeElement>
-          <LineTimeElement>
+          </TimeLineElement>
+          <TimeLineElement>
             Złóż w urzędzie skarbowym i ZUS pełnomocnictwa, które od nas
             otrzymasz.
-          </LineTimeElement>
-          <LineTimeElement className="flex items-center">
+          </TimeLineElement>
+          <TimeLineElement className="flex items-center">
             <span className="m-1">
               Działaj! A jeśli masz wątpliwości, skonsultuj się z nami
             </span>
             <IconsContact />
-          </LineTimeElement>
+          </TimeLineElement>
         </VerticalTimeline>
       </div>
       <ButtonBack
