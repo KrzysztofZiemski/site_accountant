@@ -6,6 +6,7 @@ import React, {
   ReactFragment,
   ReactPortal,
 } from "react"
+
 import Slider from "react-slick"
 //@ts-ignore
 import RightArrowIcon from "../../assets/right-arrow.svg"
@@ -45,7 +46,7 @@ export const SimpleSlider = ({
   className,
   settings,
 }: SimpleSliderProps) => {
-  const refSlider = useRef()
+  const refSlider = useRef<Slider | undefined>()
   const [numberSlideToshow, setNumberSlideToshow] = useState(1)
   const [isRendered, setIsRendered] = useState(false)
   const refCount = useRef(0)
