@@ -5,6 +5,13 @@ import { routes } from "../../routes"
 interface ServiceItem {
   nameService: string
   price: string
+  index: string
+}
+
+const sorter = (a: ServiceItem, b: ServiceItem) => {
+  if (a.index < b.index) return -1
+  if (a.index > b.index) return 1
+  return 0
 }
 
 export const query = graphql`
@@ -13,6 +20,7 @@ export const query = graphql`
       nodes {
         nameService
         price
+        index
       }
     }
   }
@@ -24,9 +32,9 @@ interface TableOfferProps {
 export const TableOffer = ({ className }: TableOfferProps) => {
   const { allDatoCmsServiceAndPrice } = useStaticQuery(query)
   const serviceItemArray: ServiceItem[] = allDatoCmsServiceAndPrice.nodes
-
+  console.log("serviceItemArray", serviceItemArray)
   const servicetableItems = useMemo(() => {
-    return serviceItemArray.reverse().map(({ nameService, price }) => (
+    return serviceItemArray.sort(sorter).map(({ nameService, price }) => (
       <div
         key={nameService}
         className={`flex items-center w-full my-5 md:my-8 md:text-xl ${className}`}

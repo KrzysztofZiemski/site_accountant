@@ -182,4 +182,3 @@ const charity = ({ data }) => {
 }
 
 export default charity
-//md:fixed md:right-2 lg:right-32 z-0

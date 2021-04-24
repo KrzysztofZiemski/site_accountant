@@ -7,19 +7,27 @@ import {
 } from "react-vertical-timeline-component"
 import { TimeLineElement } from "../../TimeLineElement/TimeLineElement"
 import { routes } from "../../../routes"
-import { ButtonBack } from "../../Button/ButtonBack"
 import { ButtonLink } from "../../Button/ButtonLink"
 import { IconsContact } from "../../IconsContact/IconsContact"
 import { steps } from "../HowCanIHelp"
 //@ts-ignore
 import PhoneIcon from "../../../assets/phone-call.svg"
+//@ts-ignore
+import PaperIcon from "../../../assets/paper.svg"
+//@ts-ignore
+import ComputerIcon from "../../../assets/computer.svg"
+//@ts-ignore
+import WritingIcon from "../../../assets/writing.svg"
+//@ts-ignore
+import FileIcon from "../../../assets/file.svg"
 
-import "./WantOpenCompany.css"
 import { call } from "../../../helpers/call"
 
+const colorIcon = "white"
 interface WantOpenCompanyProps {
   setStep: (value: steps) => void
 }
+
 export const WantOpenCompany = ({ setStep }: WantOpenCompanyProps) => {
   return (
     <div className="flex flex-col p-4 pt-0 w-full h-full justify-between overflow-y-auto ">
@@ -28,29 +36,55 @@ export const WantOpenCompany = ({ setStep }: WantOpenCompanyProps) => {
           Otworzenie działalności
         </h2>
         <VerticalTimeline className="font-MonTserrat">
-          <TimeLineElement>
+          <TimeLineElement icon={<FileIcon style={{ fill: colorIcon }} />}>
             Przygotuj niezbędne informacje - PKD wiodące i dodatkowe, krótki
             biznes plan (wysokość planowanych przychodów, wydatków miesięcznych,
             itp.), orientacyjny czas otwarcia firmy, NIP (jeżeli posiadasz).
           </TimeLineElement>
-          <TimeLineElement>
+          <TimeLineElement
+            icon={
+              <PhoneIcon
+                className="w-full cursor-pointer"
+                style={{ fill: colorIcon }}
+                onClick={call}
+              />
+            }
+          >
             Zgłoś się do nas. Porozmawiamy o dogodnej formie opodatkowania i
             podpowiemy, jak dokonać formalności związanych z założeniem firmy.
           </TimeLineElement>
-          <TimeLineElement>Zarejestruj firmę.</TimeLineElement>
-          <TimeLineElement>
+          <TimeLineElement icon={<ComputerIcon style={{ fill: colorIcon }} />}>
+            Zarejestruj firmę.
+          </TimeLineElement>
+          <TimeLineElement
+            icon={
+              <WritingIcon
+                className="w-full cursor-pointer"
+                style={{ fill: colorIcon }}
+                onClick={call}
+              />
+            }
+          >
             Podpisz z nami umowę na obsługę księgową.
           </TimeLineElement>
-          <TimeLineElement>
+          <TimeLineElement
+            icon={
+              <PaperIcon
+                className="w-full cursor-pointer"
+                style={{ fill: colorIcon }}
+                onClick={call}
+              />
+            }
+          >
             Złóż w urzędzie skarbowym i ZUS pełnomocnictwa, które od nas
             otrzymasz.
           </TimeLineElement>
           <TimeLineElement
-            className="flex items-center"
+            className="flex flex-col items-center sm:flex-row sm:justify-center"
             icon={
               <PhoneIcon
                 className="w-full cursor-pointer"
-                style={{ fill: "white" }}
+                style={{ fill: colorIcon }}
                 onClick={call}
               />
             }
@@ -58,16 +92,10 @@ export const WantOpenCompany = ({ setStep }: WantOpenCompanyProps) => {
             <span className="m-1">
               Działaj! A jeśli masz wątpliwości, skonsultuj się z nami
             </span>
-            <IconsContact />
+            <IconsContact className="justify-center mt-3 sm:mt-0" />
           </TimeLineElement>
         </VerticalTimeline>
       </div>
-      <ButtonBack
-        className="self-end"
-        onClick={() => setStep(steps.askQuestion)}
-      >
-        powrót
-      </ButtonBack>
     </div>
   )
 }

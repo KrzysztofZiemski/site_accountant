@@ -1,22 +1,27 @@
 import React from "react"
 import { Link } from "gatsby"
-import { ButtonBack } from "../../Button/ButtonBack"
 import {
   VerticalTimeline,
   VerticalTimelineElement,
 } from "react-vertical-timeline-component"
-//@ts-ignore
-import PhoneIcon from "../../../assets/phone-call.svg"
 import "react-vertical-timeline-component/style.min.css"
 import { steps } from "../HowCanIHelp"
-import { routes } from "../../../routes"
 import { TimeLineElement } from "../../TimeLineElement/TimeLineElement"
-import "./WantChangeAccountant.css"
-import { Button } from "../../Button/Button"
-import { ButtonLink } from "../../Button/ButtonLink"
 import { IconsContact } from "../../IconsContact/IconsContact"
-import { colors } from "../../../styles/colors"
 import { call } from "../../../helpers/call"
+
+//@ts-ignore
+import PhoneIcon from "../../../assets/phone-call.svg"
+//@ts-ignore
+import PaperIcon from "../../../assets/paper.svg"
+//@ts-ignore
+import ComputerIcon from "../../../assets/computer.svg"
+//@ts-ignore
+import WritingIcon from "../../../assets/writing.svg"
+//@ts-ignore
+import FileIcon from "../../../assets/file.svg"
+
+const colorIcon = "white"
 
 interface WantChangeAccountantProps {
   setStep: (value: steps) => void
@@ -32,12 +37,20 @@ export const WantChangeAccountant = ({
           Chcę zmienić biuro rachunkowe
         </h2>
         <VerticalTimeline className="font-MonTserrat">
-          <TimeLineElement>
+          <TimeLineElement
+            icon={
+              <FileIcon
+                className="w-full cursor-pointer"
+                style={{ fill: colorIcon }}
+                onClick={call}
+              />
+            }
+          >
             Przygotuj niezbędne informacje - NIP firmy, dotychczasowa forma
             opodatkowania, czas, w którym chcesz rozpocząć współpracę.
           </TimeLineElement>
           <TimeLineElement
-            className="flex items-center"
+            className="flex flex-col items-center sm:flex-row sm:justify-center"
             icon={
               <PhoneIcon
                 className="w-full cursor-pointer"
@@ -50,28 +63,45 @@ export const WantChangeAccountant = ({
               Skontaktuj się z nami - opowiemy Ci, jak wygląda współpraca.
             </span>
 
-            <IconsContact />
+            <IconsContact className="justify-center mt-3 sm:mt-0" />
           </TimeLineElement>
-          <TimeLineElement>
+          <TimeLineElement
+            icon={
+              <WritingIcon
+                className="w-full cursor-pointer"
+                style={{ fill: colorIcon }}
+                onClick={call}
+              />
+            }
+          >
             Przekaż nam niezbędne dokumenty, których listę od nas otrzymasz.
           </TimeLineElement>
-          <TimeLineElement>
+          <TimeLineElement
+            icon={
+              <ComputerIcon
+                className="w-full cursor-pointer"
+                style={{ fill: colorIcon }}
+                onClick={call}
+              />
+            }
+          >
             Jeżeli zgłosiłeś w CEiDG miejsce przechowywania dokumentacji
             księgowej, dokonaj stosownej zmiany.
           </TimeLineElement>
-          <TimeLineElement>
+          <TimeLineElement
+            icon={
+              <PaperIcon
+                className="w-full cursor-pointer"
+                style={{ fill: colorIcon }}
+                onClick={call}
+              />
+            }
+          >
             Złóż w urzędzie skarbowym i ZUS pełnomocnictwa, które od nas
             otrzymasz.
           </TimeLineElement>
         </VerticalTimeline>{" "}
       </div>
-
-      <ButtonBack
-        className="self-start"
-        onClick={() => setStep(steps.askQuestion)}
-      >
-        powrót
-      </ButtonBack>
     </div>
   )
 }

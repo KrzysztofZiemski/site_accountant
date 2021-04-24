@@ -6,8 +6,8 @@ export const query = graphql`
   {
     file(name: { regex: "/logo-blue/" }) {
       childImageSharp {
-        fluid {
-          ...GatsbyImageSharpFluid_tracedSVG
+        fixed(width: 170) {
+          ...GatsbyImageSharpFixed_tracedSVG
         }
       }
     }
@@ -17,7 +17,7 @@ export const query = graphql`
 const LogoBlue = () => {
   const { file } = useStaticQuery(query)
 
-  return <Image className="h-auto w-28" fluid={file.childImageSharp.fluid} />
+  return <Image className="h-auto w-28" fixed={file.childImageSharp.fixed} />
 }
 
 export default LogoBlue

@@ -1,11 +1,7 @@
 import React, { useState, useCallback, useRef } from "react"
-import { Animate } from "../Animate/Animate"
-import { Button } from "../Button/Button"
-import { ButtonBack } from "../Button/ButtonBack"
 import AnswerQuestion from "./AnswerQuestion/AnswerQuestion"
 import { WantOpenCompany } from "./WantOpenCompany/WantOpenCompany"
 import { WantChangeAccountant } from "./WantChangeAccountant/WantChangeAccountant"
-import { isMobileOnly } from "react-device-detect"
 import Slider from "react-slick"
 
 import "./HowCanIHelp.css"
@@ -32,12 +28,6 @@ export const HowCanIHelp = () => {
     setStep(value)
     sliderRef.current?.slickGoTo(value)
   }, [])
-
-  const style = isMobileOnly
-    ? { maxHeight: "35rem" }
-    : {
-        maxHeight: "29rem",
-      }
 
   return (
     <div className="flex bg-primary width:100% overflow-hidden	">
