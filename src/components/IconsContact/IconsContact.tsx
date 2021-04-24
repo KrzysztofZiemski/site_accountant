@@ -7,15 +7,13 @@ import React from "react"
 import { Link, navigate } from "gatsby"
 import { isMobileOnly } from "react-device-detect"
 import { colors } from "../../styles/colors"
+import { call } from "../../helpers/call"
 
 interface IconsContactProps {
   fill?: string
   className?: string
 }
 export const IconsContact = ({ fill, className }: IconsContactProps) => {
-  const handleGoCall = () => {
-    isMobileOnly ? window.open("tel:729976922") : navigate(routes.contact)
-  }
   return (
     <div className={`flex items-center ${className}`}>
       <PhoneIcon
@@ -25,7 +23,7 @@ export const IconsContact = ({ fill, className }: IconsContactProps) => {
           fill: fill || colors.mainColor,
         }}
         className="mx-6 "
-        onClick={handleGoCall}
+        onClick={call}
         alt="telefon"
       />
       <Link to={routes.contact}>

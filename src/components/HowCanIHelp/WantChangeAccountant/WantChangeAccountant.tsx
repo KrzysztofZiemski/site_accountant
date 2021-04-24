@@ -15,6 +15,8 @@ import "./WantChangeAccountant.css"
 import { Button } from "../../Button/Button"
 import { ButtonLink } from "../../Button/ButtonLink"
 import { IconsContact } from "../../IconsContact/IconsContact"
+import { colors } from "../../../styles/colors"
+import { call } from "../../../helpers/call"
 
 interface WantChangeAccountantProps {
   setStep: (value: steps) => void
@@ -36,7 +38,13 @@ export const WantChangeAccountant = ({
           </TimeLineElement>
           <TimeLineElement
             className="flex items-center"
-            icon={<PhoneIcon className="w-full" />}
+            icon={
+              <PhoneIcon
+                className="w-full cursor-pointer"
+                style={{ fill: "white" }}
+                onClick={call}
+              />
+            }
           >
             <span className="mr-1">
               Skontaktuj się z nami - opowiemy Ci, jak wygląda współpraca.

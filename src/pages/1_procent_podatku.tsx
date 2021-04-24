@@ -3,6 +3,7 @@ import { graphql, Link } from "gatsby"
 import Image from "gatsby-image"
 import Layout from "../layouts/layout"
 import SEO from "../components/seo"
+import { ContactForm } from "../components/ContactForm/ContactForm"
 //@ts-ignore
 
 export const query = graphql`
@@ -172,6 +173,9 @@ const charity = ({ data }) => {
             fluid={data.percentLetter.childImageSharp.fluid}
           />
         </div>
+      </div>
+      <div className="p-4">
+        <ContactForm />
       </div>
     </Layout>
   )

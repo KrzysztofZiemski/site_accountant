@@ -12,6 +12,7 @@ import { ClientsOpinions } from "../components/ClientsOpinions/ClientsOpinions"
 import "../styles/aboutPage.css"
 import { CertificatesList } from "../components/CertificatesList/CertificatesList"
 import { routes } from "../routes"
+import { ContactForm } from "../components/ContactForm/ContactForm"
 
 export const query = graphql`
   {
@@ -137,6 +138,9 @@ const AboutPage = ({
       <CertificatesList />
 
       <ClientsOpinions className="py-12" />
+      <div className="p-4">
+        <ContactForm />
+      </div>
     </Layout>
   )
 }

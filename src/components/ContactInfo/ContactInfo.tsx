@@ -11,11 +11,9 @@ import MessageIcon from "../../assets/message.svg"
 //@ts-ignore
 import FacebookIcon from "../../assets/facebook.svg"
 import { isMobileOnly } from "react-device-detect"
+import { call } from "../../helpers/call"
 
 export const ContactInfo = () => {
-  const handleGoCall = () => {
-    isMobileOnly && window.open("tel:729976922")
-  }
   return (
     <div>
       <HouseIcon className="w-12 h-12 mb-4" style={{ marginLeft: "17px" }} />
@@ -23,7 +21,7 @@ export const ContactInfo = () => {
         <strong>Kontakt ze mną</strong>
       </h2>
       <div>
-        <div onClick={handleGoCall} className="flex my-1">
+        <div onClick={call} className="flex my-1">
           <PhoneIcon alt="telefon" className="w-5 mr-4" />
           <span className="text-primary">729976922</span>
         </div>
@@ -32,11 +30,13 @@ export const ContactInfo = () => {
           <span className="text-primary">kontakt.magfi@gmail.com</span>
         </div>
         <div className="flex my-1">
-          <FacebookIcon
-            alt="facebook"
-            className="w-5 mr-4"
-            style={{ fill: "black" }}
-          />
+          <a href="https://www.facebook.com/magfipol" className="text-primary">
+            <FacebookIcon
+              alt="facebook"
+              className="w-5 mr-4"
+              style={{ fill: "black" }}
+            />
+          </a>
           <a href="https://www.facebook.com/magfipol" className="text-primary">
             facebook.com/magfipol
           </a>

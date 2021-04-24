@@ -11,8 +11,11 @@ import { ButtonBack } from "../../Button/ButtonBack"
 import { ButtonLink } from "../../Button/ButtonLink"
 import { IconsContact } from "../../IconsContact/IconsContact"
 import { steps } from "../HowCanIHelp"
+//@ts-ignore
+import PhoneIcon from "../../../assets/phone-call.svg"
 
 import "./WantOpenCompany.css"
+import { call } from "../../../helpers/call"
 
 interface WantOpenCompanyProps {
   setStep: (value: steps) => void
@@ -42,7 +45,16 @@ export const WantOpenCompany = ({ setStep }: WantOpenCompanyProps) => {
             Złóż w urzędzie skarbowym i ZUS pełnomocnictwa, które od nas
             otrzymasz.
           </TimeLineElement>
-          <TimeLineElement className="flex items-center">
+          <TimeLineElement
+            className="flex items-center"
+            icon={
+              <PhoneIcon
+                className="w-full cursor-pointer"
+                style={{ fill: "white" }}
+                onClick={call}
+              />
+            }
+          >
             <span className="m-1">
               Działaj! A jeśli masz wątpliwości, skonsultuj się z nami
             </span>

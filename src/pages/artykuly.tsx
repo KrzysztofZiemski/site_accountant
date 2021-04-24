@@ -9,6 +9,7 @@ import { FilterBar } from "../components/FilterBar/FilterBar"
 import { GatsbyImageFluidProps } from "gatsby-image"
 import { SiteTitle } from "../components/SiteTitle/SiteTitle"
 import { list } from "postcss"
+import { ContactForm } from "../components/ContactForm/ContactForm"
 
 export const query = graphql`
   {
@@ -104,6 +105,9 @@ const ArticlesPage = ({
             </p>
           </div>
         )}
+      </div>
+      <div className="p-4">
+        <ContactForm />
       </div>
     </Layout>
   )

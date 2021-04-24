@@ -133,7 +133,7 @@ export const ContactForm = ({ ...props }) => {
   }
 
   return (
-    <div className="bg-white shadow-md rounded px-2 pt-6 pb-5 w-full overflow-hidden">
+    <div className="bg-white rounded px-2 pt-6 pb-5 w-full overflow-hidden">
       <h3 className="text-center text-2xl p-3 mb-6">Formularz kontaktowy</h3>
       {errorFetch.isError && (
         <Modal

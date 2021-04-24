@@ -10,6 +10,9 @@ import Events from "../components/Events/Events"
 import { Header } from "../components/Header/Header"
 import { LatestArticles } from "../components/LatestArticles/LatestArticles"
 import HowCanIHelp from "../components/HowCanIHelp/HowCanIHelp"
+import { ContactForm } from "../components/ContactForm/ContactForm"
+import { SubTitle } from "../components/HeaderComponent/SubTitle/SubTitle"
+import { HeaderComponent } from "../components/HeaderComponent/HeaderComponent"
 
 export const query = graphql`
   {
@@ -33,6 +36,9 @@ const IndexPage = ({ data: datoCmsMetaDataPage }) => {
       <Events />
       <ClientsOpinions />
       <LatestArticles />
+      <div className="p-4">
+        <ContactForm />
+      </div>
     </Layout>
   )
 }

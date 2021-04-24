@@ -13,6 +13,7 @@ import FacebookIcon from "../../assets/facebook.svg"
 import "./Footer.css"
 import { routes } from "../../routes"
 import { isMobileOnly } from "react-device-detect"
+import { call } from "../../helpers/call"
 
 export const query = graphql`
   {
@@ -28,9 +29,6 @@ export const query = graphql`
 
 export const Footer = () => {
   const { file } = useStaticQuery(query)
-  const handleGoCall = () => {
-    isMobileOnly && window.open("tel:729976922")
-  }
 
   return (
     <footer className="bg-secondary flex flex-col z-10 py-3 md:flex-row text-white md:justify-between md:flex-wrap">
@@ -88,13 +86,13 @@ export const Footer = () => {
                 </div>
               </div>
 
-              <div className="flex items-center mt-3">
+              <div className="flex items-center mt-3" onClick={call}>
                 <PhoneIcon
                   alt="telefon"
                   className="w-5 h-5 mr-4"
                   style={{ fill: "white" }}
                 />
-                <p onClick={handleGoCall}>729976922</p>
+                <p>729976922</p>
               </div>
               <div className="flex items-center mt-3">
                 <MessageIcon
@@ -105,11 +103,13 @@ export const Footer = () => {
                 <p>kontakt.magfi@gmail.com</p>
               </div>
               <div className="flex items-center mt-3">
-                <FacebookIcon
-                  className="w-5 h-5 mr-4"
-                  style={{ fill: "white" }}
-                  alt="facebook"
-                />
+                <a href="https://www.facebook.com/magfipol">
+                  <FacebookIcon
+                    className="w-5 h-5 mr-4"
+                    style={{ fill: "white" }}
+                    alt="facebook"
+                  />
+                </a>
                 <p>
                   <a href="https://www.facebook.com/magfipol">
                     facebook.com/magfipol

@@ -1,5 +1,6 @@
 import React from "react"
 import { VerticalTimelineElement } from "react-vertical-timeline-component"
+import { colors } from "../../styles/colors"
 
 interface TimeLineElement {
   children: React.ReactNode | React.ReactPortal | React.ReactChild
@@ -9,20 +10,19 @@ interface TimeLineElement {
   iconStyle?: React.CSSProperties
 }
 
-const defaultStyleIcon = { background: "rgb(33, 150, 243)", color: "#fff" }
+const defaultStyleIcon = { background: colors.secondaryColor, color: "#fff" }
 export const TimeLineElement = ({
   children,
   icon,
   iconStyle,
   ...props
 }: TimeLineElement) => {
-  console.log(icon)
   return (
     <VerticalTimelineElement
       icon={icon || null}
       iconStyle={iconStyle || defaultStyleIcon}
     >
-      <p {...props}>{children}</p>
+      <div {...props}>{children}</div>
     </VerticalTimelineElement>
   )
 }
