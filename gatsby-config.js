@@ -1,5 +1,29 @@
 require("dotenv").config()
 
+const options = { environments: ["production", "development"] }
+
+if (process.env.GOOGLE_ANALYTICS_TRACKING_ID) {
+  options.googleAnalytics = {
+    trackingId: process.env.GOOGLE_ANALYTICS_TRACKING_ID,
+    cookieName: "gatsby-gdpr-google-analytics",
+    anonymize: true,
+    allowAdFeatures: false,
+  }
+}
+if (process.env.GOOGLE_TAG_MANAGER_TRACKING_ID) {
+  options.googleTagManager = {
+    trackingId: process.env.GOOGLE_TAG_MANAGER_TRACKING_ID,
+    cookieName: "gatsby-gdpr-google-tagmanager",
+    dataLayerName: "dataLayer",
+  }
+}
+if (process.env.FACEBOOK_PIXEL_ID) {
+  options.facebookPixel = {
+    pixelId: process.env.FACEBOOK_PIXEL_ID,
+    cookieName: "gatsby-gdpr-facebook-pixel",
+  }
+}
+
 module.exports = {
   siteMetadata: {
     title: `Magfi księgowość - Magdalena Pol`,
@@ -12,24 +36,7 @@ module.exports = {
     `gatsby-plugin-postcss`,
     {
       resolve: `gatsby-plugin-gdpr-cookies`,
-      options: {
-        googleAnalytics: {
-          trackingId: process.env.GOOGLE_ANALYTICS_TRACKING_ID,
-          cookieName: "gatsby-gdpr-google-analytics",
-          anonymize: true,
-          allowAdFeatures: false,
-        },
-        googleTagManager: {
-          trackingId: process.env.GOOGLE_TAG_MANAGER_TRACKING_ID,
-          cookieName: "gatsby-gdpr-google-tagmanager",
-          dataLayerName: "dataLayer",
-        },
-        facebookPixel: {
-          pixelId: process.env.FACEBOOK_PIXEL_ID,
-          cookieName: "gatsby-gdpr-facebook-pixel",
-        },
-        environments: ["production", "development"],
-      },
+      options: options,
     },
     {
       resolve: "gatsby-plugin-web-font-loader",
