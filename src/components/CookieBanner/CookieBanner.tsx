@@ -23,10 +23,11 @@ export const CookieBanner = () => {
       expires: farFutureDate,
       domain: "magfi.pl",
     }
-
-    setCookieAgreeUse(cookiesName.googleAnalytics, true, options)
-    setCookieAgreeUse(cookiesName.googleTagManager, true, options)
-    setCookieAgreeUse(cookiesName.facebookPixel, true, options)
+    document.cookie =
+      "gatsby-gdpr-google-analytics=true; gatsby-gdpr-google-tagmanager=true; gatsby-gdpr-facebook-pixel=true"
+    // setCookieAgreeUse(cookiesName.googleAnalytics, true, options)
+    // setCookieAgreeUse(cookiesName.googleTagManager, true, options)
+    // setCookieAgreeUse(cookiesName.facebookPixel, true, options)
     console.log("po")
   }
 
