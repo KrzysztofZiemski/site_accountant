@@ -15,6 +15,19 @@ export const CookieBanner = () => {
     cookiesName.googleTagManager,
     cookiesName.facebookPixel,
   ])
+  console.log("cookieAgreeUse", cookieAgreeUse)
+  console.log(
+    " cookieAgreeUse[cookiesName.facebookPixel]",
+    cookieAgreeUse[cookiesName.facebookPixel]
+  )
+  console.log(
+    " cookieAgreeUse[cookiesName.googleAnalytics]",
+    cookieAgreeUse[cookiesName.googleAnalytics]
+  )
+  console.log(
+    "cookieAgreeUse[cookiesName.googleTagManager]",
+    cookieAgreeUse[cookiesName.googleTagManager]
+  )
 
   const setAgreeCookie = () => {
     const farFutureDate = new Date(new Date().getFullYear() + 4, 1, 1)
