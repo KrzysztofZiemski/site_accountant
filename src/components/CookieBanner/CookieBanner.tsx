@@ -25,9 +25,9 @@ export const CookieBanner = () => {
       path: "/",
     }
 
-    setCookieAgreeUse(cookiesName.googleAnalytics, true, options)
-    setCookieAgreeUse(cookiesName.googleTagManager, true, options)
-    setCookieAgreeUse(cookiesName.facebookPixel, true, options)
+    setCookieAgreeUse(cookiesName.googleAnalytics, "true", options)
+    setCookieAgreeUse(cookiesName.googleTagManager, "true", options)
+    setCookieAgreeUse(cookiesName.facebookPixel, "true", options)
   }
 
   const isAccepted = useMemo(() => {
