@@ -15,20 +15,19 @@ export const CookieBanner = () => {
     cookiesName.googleTagManager,
     cookiesName.facebookPixel,
   ])
-
+  console.log("cookieAgreeUse", cookieAgreeUse)
   const setAgreeCookie = () => {
     console.log("weszło")
     const farFutureDate = new Date(new Date().getFullYear() + 4, 1, 1)
     const options = {
       expires: farFutureDate,
       domain: "magfi.pl",
+      path: "/",
     }
-    document.cookie =
-      "gatsby-gdpr-google-analytics=true; gatsby-gdpr-google-tagmanager=true; gatsby-gdpr-facebook-pixel=true"
-    // setCookieAgreeUse(cookiesName.googleAnalytics, true, options)
-    // setCookieAgreeUse(cookiesName.googleTagManager, true, options)
-    // setCookieAgreeUse(cookiesName.facebookPixel, true, options)
-    console.log("po")
+
+    setCookieAgreeUse(cookiesName.googleAnalytics, true, options)
+    setCookieAgreeUse(cookiesName.googleTagManager, true, options)
+    setCookieAgreeUse(cookiesName.facebookPixel, true, options)
   }
 
   const isAccepted = useMemo(() => {
