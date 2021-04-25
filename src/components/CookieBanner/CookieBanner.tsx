@@ -1,7 +1,17 @@
-import React, { useMemo } from "react"
+import React, { useMemo, useState } from "react"
 import { Link } from "gatsby"
 import { useCookies } from "react-cookie"
 import { routes } from "../../routes"
+
+function setCookie(name: string, value: string, days: number) {
+  let expires = ""
+  if (days) {
+    let date = new Date()
+    date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000)
+    expires = "; expires=" + date.toUTCString()
+  }
+  document.cookie = name + "=" + (value || "") + expires + "; path=/"
+}
 
 export enum cookiesName {
   googleAnalytics = "gatsby-gdpr-google-analytics",
@@ -15,28 +25,23 @@ export const CookieBanner = () => {
     cookiesName.googleTagManager,
     cookiesName.facebookPixel,
   ])
-  console.log("cookieAgreeUse", cookieAgreeUse)
+  const [isJustSettedCookie, setIsJustSettedCookie] = useState(false)
   const setAgreeCookie = () => {
-    console.log("weszło")
     const farFutureDate = new Date(new Date().getFullYear() + 4, 1, 1)
-    const options = {
-      expires: farFutureDate,
-      domain: "magfi.pl",
-      path: "/",
-    }
-
-    setCookieAgreeUse(cookiesName.googleAnalytics, "true", options)
-    setCookieAgreeUse(cookiesName.googleTagManager, "true", options)
-    setCookieAgreeUse(cookiesName.facebookPixel, "true", options)
+    setCookie(cookiesName.googleAnalytics, "true", 5 * 365)
+    setCookie(cookiesName.googleTagManager, "true", 5 * 365)
+    setCookie(cookiesName.facebookPixel, "true", 5 * 365)
+    setIsJustSettedCookie(true)
   }
 
   const isAccepted = useMemo(() => {
     return (
-      cookieAgreeUse[cookiesName.facebookPixel] === "true" &&
-      cookieAgreeUse[cookiesName.googleAnalytics] === "true" &&
-      cookieAgreeUse[cookiesName.googleTagManager] === "true"
+      (cookieAgreeUse[cookiesName.facebookPixel] === "true" &&
+        cookieAgreeUse[cookiesName.googleAnalytics] === "true" &&
+        cookieAgreeUse[cookiesName.googleTagManager] === "true") ||
+      isJustSettedCookie
     )
-  }, [cookieAgreeUse])
+  }, [cookieAgreeUse, isJustSettedCookie])
 
   return (
     !isAccepted && (
