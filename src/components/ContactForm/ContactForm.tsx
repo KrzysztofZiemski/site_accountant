@@ -165,7 +165,7 @@ export const ContactForm = ({ ...props }) => {
             <select
               value={typeOfContactClient}
               onChange={handleTypeOfContactClient}
-              className="block appearance-none w-full border text-grey-darker py-2 px-3 rounded outline-none"
+              className="block appearance-none w-full border py-2 px-3 rounded outline-none"
             >
               <option value={TypeOfContactClient.mail}>E-mail</option>
               <option value={TypeOfContactClient.phone}>Telefon</option>

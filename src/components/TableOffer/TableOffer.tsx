@@ -32,7 +32,6 @@ interface TableOfferProps {
 export const TableOffer = ({ className }: TableOfferProps) => {
   const { allDatoCmsServiceAndPrice } = useStaticQuery(query)
   const serviceItemArray: ServiceItem[] = allDatoCmsServiceAndPrice.nodes
-  console.log("serviceItemArray", serviceItemArray)
   const servicetableItems = useMemo(() => {
     return serviceItemArray.sort(sorter).map(({ nameService, price }) => (
       <div

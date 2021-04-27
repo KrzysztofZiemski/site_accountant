@@ -12,21 +12,41 @@ import MessageIcon from "../../assets/message.svg"
 import FacebookIcon from "../../assets/facebook.svg"
 import { isMobileOnly } from "react-device-detect"
 import { call } from "../../helpers/call"
+import { colors } from "../../styles/colors"
+const weekNameDays = [
+  "poniedziałek",
+  "wtorek",
+  "środa",
+  "czwartek",
+  "piątek",
+  "sobota",
+]
 
 export const ContactInfo = () => {
   return (
     <div>
-      <HouseIcon className="w-12 h-12 mb-4" style={{ marginLeft: "17px" }} />
+      <HouseIcon
+        className="w-12 h-12 mb-4"
+        style={{ marginLeft: "17px", fill: colors.secondaryColor }}
+      />
       <h2 className="mb-4 text-2xl">
         <strong>Kontakt ze mną</strong>
       </h2>
       <div>
         <div onClick={call} className="flex my-1">
-          <PhoneIcon alt="telefon" className="w-5 mr-4" />
+          <PhoneIcon
+            alt="telefon"
+            className="w-5 mr-4"
+            style={{ fill: colors.secondaryColor }}
+          />
           <span className="text-primary">729976922</span>
         </div>
         <div className="flex my-1">
-          <MessageIcon alt="e-mail" className="w-5 mr-4" />
+          <MessageIcon
+            alt="e-mail"
+            className="w-5 mr-4"
+            style={{ fill: colors.secondaryColor }}
+          />
           <span className="text-primary">kontakt.magfi@gmail.com</span>
         </div>
         <div className="flex my-1">
@@ -34,7 +54,7 @@ export const ContactInfo = () => {
             <FacebookIcon
               alt="facebook"
               className="w-5 mr-4"
-              style={{ fill: "black" }}
+              style={{ fill: colors.secondaryColor }}
             />
           </a>
           <a href="https://www.facebook.com/magfipol" className="text-primary">
@@ -42,19 +62,25 @@ export const ContactInfo = () => {
           </a>
         </div>
       </div>
-      <div className="mt-4">
-        <p className="text-xl">Godziny pracy</p>
-        <p>
-          pon. - pt. w godzinach <strong>7-20</strong>
-        </p>
+      <div className="mt-4 md:mr-10">
+        <h3 className="text-xl mb-3">Godziny pracy</h3>
+        {weekNameDays.map((day: string, index: number) => {
+          const workHours = index < 5 ? "8.00-19.00" : "10.00-15.00"
+          return (
+            <p key={day} className="flex justify-between my-1 ">
+              <span>{day}</span> <strong>{workHours}</strong>
+            </p>
+          )
+          return
+        })}
       </div>
       <div className="mt-10">
         <PointerIcon
           className="w-12 h-12 mb-4"
-          style={{ fill: "black" }}
+          style={{ fill: colors.secondaryColor }}
           alt="nasze biuro"
         />
-        <h2 className="mb-4 text-2xl">Nasze biuro</h2>
+        <h3 className="mb-4 text-2xl">Nasze biuro</h3>
         <address>
           <p className="text-xl mb-2">
             <strong>MagFi</strong>

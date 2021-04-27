@@ -3,16 +3,6 @@ import { Link } from "gatsby"
 import { useCookies } from "react-cookie"
 import { routes } from "../../routes"
 
-function setCookie(name: string, value: string, days: number) {
-  let expires = ""
-  if (days) {
-    let date = new Date()
-    date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000)
-    expires = "; expires=" + date.toUTCString()
-  }
-  document.cookie = name + "=" + (value || "") + expires + "; path=/"
-}
-
 export enum cookiesName {
   googleAnalytics = "gatsby-gdpr-google-analytics",
   googleTagManager = "gatsby-gdpr-google-tagmanager",
@@ -25,23 +15,26 @@ export const CookieBanner = () => {
     cookiesName.googleTagManager,
     cookiesName.facebookPixel,
   ])
-  const [isJustSettedCookie, setIsJustSettedCookie] = useState(false)
+
   const setAgreeCookie = () => {
     const farFutureDate = new Date(new Date().getFullYear() + 4, 1, 1)
-    setCookie(cookiesName.googleAnalytics, "true", 5 * 365)
-    setCookie(cookiesName.googleTagManager, "true", 5 * 365)
-    setCookie(cookiesName.facebookPixel, "true", 5 * 365)
-    setIsJustSettedCookie(true)
+    const options = {
+      expires: farFutureDate,
+      path: "/",
+    }
+
+    setCookieAgreeUse(cookiesName.googleAnalytics, true, options)
+    setCookieAgreeUse(cookiesName.googleTagManager, true, options)
+    setCookieAgreeUse(cookiesName.facebookPixel, true, options)
   }
 
   const isAccepted = useMemo(() => {
     return (
-      (cookieAgreeUse[cookiesName.facebookPixel] === "true" &&
-        cookieAgreeUse[cookiesName.googleAnalytics] === "true" &&
-        cookieAgreeUse[cookiesName.googleTagManager] === "true") ||
-      isJustSettedCookie
+      cookieAgreeUse[cookiesName.facebookPixel] === "true" &&
+      cookieAgreeUse[cookiesName.googleAnalytics] === "true" &&
+      cookieAgreeUse[cookiesName.googleTagManager] === "true"
     )
-  }, [cookieAgreeUse, isJustSettedCookie])
+  }, [cookieAgreeUse])
 
   return (
     !isAccepted && (
