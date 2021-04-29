@@ -174,9 +174,6 @@ const charity = ({ data }) => {
           />
         </div>
       </div>
-      <div className="p-4">
-        <ContactForm />
-      </div>
     </Layout>
   )
 }

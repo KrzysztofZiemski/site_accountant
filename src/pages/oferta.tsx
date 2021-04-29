@@ -30,9 +30,6 @@ const OfferPage = ({ data }) => {
         <OfferPromotion className="mb-4 sm:mb-6 md:mb-8" />
         <TableOffer />
       </div>
-      <div className="p-4">
-        <ContactForm />
-      </div>
     </Layout>
   )
 }
