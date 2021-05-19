@@ -136,8 +136,6 @@ const AboutPage = ({
       </div>
 
       <CertificatesList />
-
-      <ClientsOpinions className="py-12" />
     </Layout>
   )
 }

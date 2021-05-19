@@ -70,14 +70,17 @@ export const Footer = () => {
         <div>
           <div className="flex">
             <div>
-              <div className="flex mb-6">
-                <PointerIcon alt="nasze biuro" className="w-5 h-5 mr-4" />
+              <div className="flex mb-2">
+                <PointerIcon
+                  alt="Biuro Rachunkowe MagFi"
+                  className="w-5 h-5 mr-4"
+                />
                 <div>
                   <p className="uppercase mb-3">
                     <strong>
                       {" "}
                       <Link to={`${routes.contact}#company-base`}>
-                        Nasze biuro{" "}
+                        Biuro Rachunkowe MagFi
                       </Link>
                     </strong>
                   </p>
@@ -85,7 +88,10 @@ export const Footer = () => {
                   <p> 50-436 Wrocław</p>
                 </div>
               </div>
-
+              <div className="flex flex-col md:block mb-4 mt-2 ml-9">
+                <p className="mr-1"> NIP 9151737051</p>
+                <p> Regon 380206135</p>
+              </div>
               <div className="flex items-center mt-3" onClick={call}>
                 <PhoneIcon
                   alt="telefon"
@@ -117,10 +123,6 @@ export const Footer = () => {
                 </p>
               </div>
 
-              <div className="flex flex-col md:block mb-2 mt-5 ml-9">
-                <p className="mr-1"> NIP 9151737051</p>
-                <p> Regon 380206135</p>
-              </div>
               <div className="mt-5 ml-9 sm:mt-7 ">
                 <Link to={routes.policy}>Polityka prywatności</Link>
               </div>
