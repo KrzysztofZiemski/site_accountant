@@ -32,7 +32,7 @@ export const Footer = () => {
 
   return (
     <footer className="bg-secondary flex flex-col z-10 py-3 md:flex-row text-white md:justify-between md:flex-wrap">
-      <div className="flex items-start w-1/3 p-6 md:order-1 md:w-40 lg:w-60 lg:items-center">
+      <div className="flex items-start w-6/12 p-6 md:order-1 md:w-60 lg:w-72 lg:items-center">
         <Image
           className="footer-image w-full"
           fluid={file.childImageSharp.fluid}

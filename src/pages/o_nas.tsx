@@ -100,21 +100,9 @@ const AboutPage = ({
   return (
     <Layout>
       <SEO title={title || "About"} description={description || "nowy opis"} />
+      <SiteTitle>Kilka słów o nas</SiteTitle>
       <div className="flex flex-col sm:flex-row">
-        <div
-          className="uppercase bg-primary p-3 pt-10 text-7xl font-bold"
-          style={{ lineHeight: "1.2", fontFamily: "Montserrat" }}
-        >
-          <p>kilka słów</p>
-          <h1 className="bg-white mt-2">o nas</h1>
-        </div>
-        <div className=" bg-white">
-          <span
-            className="block w-full my-2 bg-primary"
-            style={{ height: "1px" }}
-          ></span>
-        </div>
-        <div className="mx-auto px-3 pt-0 bg-primary">
+        <div className="mx-auto bg-primary">
           <div className="bg-white pb-9">
             <div className="px-5 text-justify">
               <div>{content}</div>
