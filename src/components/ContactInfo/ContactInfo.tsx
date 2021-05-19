@@ -30,7 +30,7 @@ export const ContactInfo = () => {
         style={{ marginLeft: "17px", fill: colors.secondaryColor }}
       />
       <h2 className="mb-4 text-2xl">
-        <strong>Kontakt ze mną</strong>
+        <strong>Kontakt z nami</strong>
       </h2>
       <div>
         <div onClick={call} className="flex my-1">
@@ -81,11 +81,12 @@ export const ContactInfo = () => {
           alt="nasze biuro"
         />
         <h3 className="mb-4 text-2xl">Nasze biuro</h3>
-        <address>
+        <address className="not-italic">
           <p className="text-xl mb-2">
-            <strong>MagFi</strong>
+            <strong>MagFi Magdalena Pol</strong>
           </p>
-          <p> 50-436 Wrocław Łukasińskiego 12-14/4</p>
+          <p>Łukasińskiego 12-14/4</p>
+          <p>50-436 Wrocław</p>
           <p>NIP 9151737051</p>
           <p>REGON 380206135</p>
         </address>
