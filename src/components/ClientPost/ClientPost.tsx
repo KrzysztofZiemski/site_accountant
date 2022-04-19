@@ -42,7 +42,7 @@ export const ClientPost = ({
     >
       <div className="flex w-full justify-between items-center border-b p-2">
         <h2 className="ml-4 sm:text-lg font-bold text-center lg:text-left">
-          {link ? <link href={link}>{company}</link> : company}
+          {link ? <a href={link}>{company}</a> : company}
         </h2>
         <div className="flex justify-self-end	self-end flex-shrink-0">
           {stars}
