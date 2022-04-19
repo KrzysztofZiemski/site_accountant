@@ -7,6 +7,7 @@ import { Footer } from "../components/Footer/Footer"
 import ReactMarkdown from "react-markdown"
 
 import "./article.css"
+import { SiteTitle } from "../components/SiteTitle/SiteTitle"
 
 export const query = graphql`
   query querySingleArticle($id: String!) {
@@ -67,7 +68,14 @@ const PostLayout = ({ data }) => {
       case "contentParagraph":
         return <ReactMarkdown key={item.id} children={item[itemKey]} />
       case "contentHeader":
-        return <h2 key={item.id}>{item[itemKey]}</h2>
+        return (
+          <h2
+            key={item.id}
+            className="text-lg mb-2 mt-4 font-bold text-secondary"
+          >
+            {item[itemKey]}
+          </h2>
+        )
       case "contentImage":
         return (
           <Image
@@ -91,15 +99,17 @@ const PostLayout = ({ data }) => {
       <SEO title={title} description={intro || ""} />
       <Navigation />
       <main className="mx-auto flex-grow">
-        <h1 className="text-center text-xl m-5 font-bold	">{title}</h1>
+        <h1 className="text-2xl font-bold text-center p-2 text-primary border-primary md:text-3xl md:mt-5">
+          {title}
+        </h1>
         {feathuredImage && (
           <Image
             fluid={feathuredImage.fluid}
-            className="w-full h-auto object-cover	max-h-96"
+            className="w-11/12 mx-auto mt-6 h-auto object-cover	max-h-96"
             alt={feathuredImage.alt}
           />
         )}
-        <div className="flex-grow p-3 text-justify	">{content}</div>
+        <div className="flex-grow p-3 text-justify">{content}</div>
         <address className="text-right px-2 mt-2 mb-6">{author}</address>
         <time dateTime={date || ""} title="August 28th, 2011">
           {date || ""}
