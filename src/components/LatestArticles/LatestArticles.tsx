@@ -28,6 +28,7 @@ export const LatestArticles = () => {
   const {
     allDatoCmsArticle: { nodes },
   } = useStaticQuery(query)
+
   const articleIntro: ArticleIntro[] = nodes
   const articles = useMemo(() => {
     return articleIntro.map(el => (
@@ -35,8 +36,7 @@ export const LatestArticles = () => {
         <LatestArticleListItem
           className="bg-white"
           {...el}
-          image={null}
-          link={`articles/${slugify(el.title, { lower: true })}`}
+          link={`artykuly/${slugify(el.title, { lower: true })}`}
         />
       </li>
     ))
