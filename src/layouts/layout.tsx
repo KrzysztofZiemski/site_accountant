@@ -5,7 +5,8 @@ import { CookiesProvider } from "react-cookie"
 import { Header } from "../components/Header/Header"
 import { Navigation } from "../components/Navigation/Navigation"
 import { Footer } from "../components/Footer/Footer"
-import { CookieBanner } from "../components/CookieBanner/CookieBanner"
+//  On 28.09.2024 disable custom cookie and add external tool by tag manager
+// import { CookieBanner } from "../components/CookieBanner/CookieBanner"
 
 type LayoutProps = {}
 
@@ -24,7 +25,8 @@ const Layout = ({ children, includeHeader }) => {
   return (
     <>
       <CookiesProvider>
-        <CookieBanner />
+        {/* On 28.09.2024 disable custom cookie and add external tool by tag manager */}
+        {/* <CookieBanner /> */}
         <div className="flex flex-col" style={{ minHeight: "100vh" }}>
           <Navigation />
           <main
